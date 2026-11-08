@@ -564,7 +564,7 @@ button:focus-visible {
   position: relative;
   max-width: 540px;
   margin: 0 auto;
-  background: var(--misty-blue);
+  background: var(--mist-blue);
   border: var(--border);
   box-shadow: 6px 6px 0 var(--dark-maroon);
   padding: 40px clamp(20px, 5vw, 36px) 0;
