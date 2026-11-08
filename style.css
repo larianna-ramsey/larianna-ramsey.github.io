@@ -35,7 +35,7 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--dark-maroon);
-  background-color: var(--burgundy);
+  background-color: var(--pale-blue);
   background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1.5px);
   background-size: 18px 18px;
 }
@@ -186,6 +186,25 @@ button:focus-visible {
   line-height: 0.95;
   letter-spacing: -0.02em;
   font-variation-settings: "SOFT" 100, "WONK" 1;
+ 
+  /* Name pop: sky-blue letters with a chunky maroon shadow */
+  color: var(--sky-blue);
+  text-shadow: 0.035em 0.035em 0 var(--dark-maroon);
+  cursor: default;
+  transform: translateY(var(--scroll-y, 0px)) scale(var(--scroll-scale, 1));
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+  animation: name-rise 0.9s ease-out backwards;   /* slides up when the page loads */
+}
+ 
+/* Hover: letters turn white, the shadow turns blue, and the name tilts */
+.hero h1:hover {
+  color: #fff;
+  text-shadow: 0.05em 0.05em 0 var(--sky-blue);
+  transform: translateY(var(--scroll-y, 0px)) scale(var(--scroll-scale, 1)) rotate(-2deg);
+}
+ 
+@keyframes name-rise {
+  from { opacity: 0; transform: translateY(32px); }
 }
 
 .tagline {

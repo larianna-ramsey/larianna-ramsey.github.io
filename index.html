@@ -6,7 +6,7 @@
   <title>Larianna Ramsey | Data Science &amp; UX</title>
   <meta name="description" content="I'm a Boston University data science student interested in UX/UI design, especially design driven by data and user research.">
   <meta property="og:title" content="Larianna Ramsey | Data Science & UX">
-  <meta property="og:description" content="I'm a data science student who designs for people. See my projects in data analysis and UX.">
+  <meta property="og:description" content="I'm a data science student who designs with both people and data in mind. See my projects in data analysis and UX.">
   <meta name="theme-color" content="#dcebf7">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' fill='%23c2255c'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
 
@@ -36,9 +36,9 @@
       <span class="star star--a" aria-hidden="true"></span>
       <span class="star star--b" aria-hidden="true"></span>
 
-      <p class="eyebrow eyebrow--hero">Portfolio &middot; 2026</p>
+      <p class="eyebrow eyebrow--hero">Portfolio</p>
       <h1>Larianna Ramsey</h1>
-      <p class="tagline">I&rsquo;m a data science student who designs for people.</p>
+      <p class="tagline">Data science student who designs with both people and data in mind</p>
 
       <ul class="chips" aria-label="Skills">
         <li>Data analysis</li>
@@ -311,6 +311,25 @@
         });
       });
     })();
+
+    // Name in the hero drifts and shrinks slightly as you scroll down
+    (function () {
+      var name = document.querySelector(".hero h1");
+      if (!name || window.matchMedia("(prefers-reduced-motion: reduce)").matches) { return; }
+      var waiting = false;
+
+      function update() {
+        var y = Math.min(window.scrollY, 500);
+        name.style.setProperty("--scroll-y", (y * 0.3) + "px");
+        name.style.setProperty("--scroll-scale", (1 - y / 2500).toFixed(3));
+        waiting = false;
+      }
+
+      window.addEventListener("scroll", function () {
+        if (!waiting) { waiting = true; requestAnimationFrame(update); }
+      }, { passive: true });
+    })();
+    
   </script>
 </body>
 </html>
