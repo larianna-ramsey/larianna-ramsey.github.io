@@ -6,14 +6,13 @@
 
 :root {
   /* Colors: change these and the whole site updates */
-  --pink: #f9d9ec;        /* page background */
-  --pink-deep: #f2a7cb;   /* sticky note, tape */
-  --blush: #fdeef6;       /* light pink sections */
-  --cream: #fffaf3;       /* cards */
-  --lilac: #e3d7ff;       /* tags, stripes */
-  --ink: #1d1a1f;         /* text and outlines */
-  --cherry: #c2255c;      /* accent (links, stars) */
-
+  --pale-blue: #dcebf7;        /* page background (pale blue) */
+  --burgundy-light: #d9a3b3;   /* sticky note, tape (soft burgundy tint) */
+  --blue: #eef5fb;       /* light blue sections */
+  --cream: #fbf8f6;       /* cards */
+  --lilac: #c6dbf0;       /* tags, stripes */
+  --ink: #2b1018;         /* text and outlines (deep maroon-black) */
+  --burgundy: #7a1f3d;      /* accent (burgundy: links, stars, numbers) */
   /* Fonts */
   --serif: "Fraunces", Georgia, "Times New Roman", serif;
   --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -36,7 +35,7 @@ body {
   line-height: 1.6;
   color: var(--ink);
   background-color: var(--pink);
-  background-image: radial-gradient(rgba(29, 26, 31, 0.14) 1px, transparent 1.5px);
+  background-image: radial-gradient(rgba(43, 16, 24, 0.12) 1px, transparent 1.5px);
   background-size: 18px 18px;
 }
 
@@ -173,8 +172,8 @@ button:focus-visible {
   padding: clamp(56px, 11vw, 120px) var(--pad-x);
   background:
     radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.75) 0 30%, transparent 65%),
-    repeating-linear-gradient(115deg, #f9cfe4 0 22px, #fdeaf4 22px 44px, var(--lilac) 44px 66px);
-  border-bottom: var(--border);
+    repeating-linear-gradient(115deg, #cfe2f4 0 22px, #eef5fb 22px 44px, var(--lilac) 44px 66px);
+    border-bottom: var(--border);
 }
 
 .eyebrow--hero { color: var(--ink); }
@@ -292,7 +291,7 @@ button:focus-visible {
 }
 .tag--data { background: var(--lilac); }
 .tag--ux   { background: var(--pink-deep); }
-.tag--wip  { background: #fff3b8; }
+.tag--wip  { background: #ecc9d4; }
 
 .project h3 {
   font-family: var(--serif);
@@ -357,8 +356,8 @@ button:focus-visible {
   position: absolute;
   top: -14px; left: 50%;
   width: 78px; height: 24px;
-  background: rgba(242, 167, 203, 0.85);
-  border: 1px solid rgba(29, 26, 31, 0.25);
+  background: rgba(217, 163, 179, 0.85);
+  border: 1px solid rgba(43, 16, 24, 0.25);
   transform: translateX(-50%) rotate(-4deg);
 }
 .photo {
