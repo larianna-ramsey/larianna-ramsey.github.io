@@ -193,7 +193,6 @@ button:focus-visible {
   cursor: default;
   transform: translateY(var(--scroll-y, 0px)) scale(var(--scroll-scale, 1));
   transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
-  animation: name-rise 0.9s ease-out backwards;   /* slides up when the page loads */
 }
  
 /* Hover: letters turn white, the shadow turns blue, and the name tilts */
@@ -352,7 +351,7 @@ button:focus-visible {
 .link:hover { background: var(--pale-blue); }
 
 /* ---------- About ---------- */
-.section--about { background: var(--ice-blue); }
+.section--about { background: var(--mist-blue); }
 
 .about-grid {
   display: grid;
