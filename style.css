@@ -9,9 +9,9 @@
   --burgundy: #6d1a36;      /* MAIN color: page, hero, buttons, footer */
   --dark-maroon: #2b1018;   /* text and outlines */
   --pale-blue: #dcebf7;     /* soft fills and hovers */
-  --sky-blue: #a9c8e8;      /* sticky note, tape, Design tag */
+  --sky-blue: #a9c8e8;      /* tape and Design tag */
   --mist-blue: #c6dbf0;     /* tags, Process section */
-  --ice-blue: #eef5fb;      /* About section */
+  --ice-blue: #eef5fb;      /* sticky note */
   --off-white: #fbf8f6;     /* cards */
 
   /* Fonts */
@@ -564,8 +564,8 @@ button:focus-visible {
   position: relative;
   max-width: 540px;
   margin: 0 auto;
-  background: var(--sky-blue);
-  border: var(--border);
+  background: var(--ice-blue);
+  border: var(--border)
   box-shadow: 6px 6px 0 var(--dark-maroon);
   padding: 40px clamp(20px, 5vw, 36px) 0;
   text-align: center;
