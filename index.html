@@ -312,24 +312,6 @@
       });
     })();
 
-    // Name in the hero drifts and shrinks slightly as you scroll down
-    (function () {
-      var name = document.querySelector(".hero h1");
-      if (!name || window.matchMedia("(prefers-reduced-motion: reduce)").matches) { return; }
-      var waiting = false;
-
-      function update() {
-        var y = Math.min(window.scrollY, 500);
-        name.style.setProperty("--scroll-y", (y * 0.3) + "px");
-        name.style.setProperty("--scroll-scale", (1 - y / 2500).toFixed(3));
-        waiting = false;
-      }
-
-      window.addEventListener("scroll", function () {
-        if (!waiting) { waiting = true; requestAnimationFrame(update); }
-      }, { passive: true });
-    })();
-    
   </script>
 </body>
 </html>
