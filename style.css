@@ -702,3 +702,75 @@ button:focus-visible {
   box-shadow: 10px 10px 0 var(--dark-maroon);
   z-index: 2;
 }
+
+
+/* ---------- Case study pages ---------- */
+.case-header {
+  padding: clamp(40px, 7vw, 80px) var(--pad-x) 36px;
+  background: var(--ice-blue);
+  border-bottom: var(--border);
+}
+.case-lede {
+  max-width: 640px;
+  margin-top: 16px;
+  font-size: 1.15rem;
+}
+.case-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+.case-meta dt {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+}
+.case-meta dd { margin: 2px 0 0; font-size: 0.95rem; }
+
+.case {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(36px, 6vw, 64px) var(--pad-x);
+}
+.case section { margin-bottom: 52px; }
+.case h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  line-height: 1.1;
+  margin-bottom: 14px;
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+}
+.case h2 span {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--burgundy);
+}
+.case p + p,
+.case p + .project-img,
+.case .project-img + p { margin-top: 14px; }
+.case .project-img { margin-top: 16px; }
+.case-list { padding-left: 1.2rem; list-style: disc; }
+.case-list li { padding: 3px 0; }
+.callout {
+  margin-top: 16px;
+  padding: 16px 18px;
+  background: var(--ice-blue);
+  border: var(--border);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--dark-maroon);
+}
+.project-img figcaption {
+  padding: 8px 12px;
+  border-top: var(--border);
+  background: var(--off-white);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+.case-next { padding: 0 var(--pad-x) 48px; text-align: center; }
