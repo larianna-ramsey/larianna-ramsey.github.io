@@ -67,177 +67,201 @@
         <button type="button" data-filter="design" aria-pressed="false">Design</button>
       </div>
 
+<!-- ===== START PART 1 ===== -->
       <div class="projects">
-
+ 
         <!-- PROJECT 1: ux -->
-        <article class="project" data-tags="ux">
-          <div class="project-top">
-            <span class="num">01</span>
-            <ul class="tags">
-              <li class="tag tag--ux">UX</li>
-              <li class="tag tag--wip">In progress</li>
-            </ul>
+        <article class="project work" data-tags="ux">
+          <button type="button" class="work-thumb" data-images="images/preview-wardrobe.jpg" aria-label="View larger: Building a Professional Wardrobe">
+            <span class="work-thumb-ph">Add image:<br>images/preview-wardrobe.jpg</span>
+            <img src="images/preview-wardrobe.jpg" alt="Screens from the professional wardrobe app" loading="lazy" onerror="this.style.display='none'">
+            <span class="work-thumb-hint">View larger</span>
+          </button>
+ 
+          <div class="work-body">
+            <div class="project-top">
+              <span class="num">01</span>
+              <ul class="tags">
+                <li class="tag tag--ux">UX</li>
+                <li class="tag tag--wip">In progress</li>
+              </ul>
+            </div>
+            <h3>Building a Professional Wardrobe</h3>
+            <p class="context">Solo semester project &middot; UX/UI Design &middot; Boston University</p>
+            <p class="blurb">An app that helps adults entering or re-entering the workforce build a professional wardrobe.</p>
+            <p class="result"><strong>Result</strong>A user interface with features including a scoring system, outfit builder, budget-inspired shopping list, and a personal, digital wardrobe.</p>
+            <p class="tools">Figma &middot; user interviews &middot; affinity mapping &middot; personas &middot; user flows</p>
+ 
+            <details class="more">
+              <summary>More details</summary>
+              <dl class="facts">
+                <dt>Question</dt>
+                <dd>How do adults entering or re-entering the workforce build a professional wardrobe, and where does that process become difficult?</dd>
+ 
+                <dt>What I did</dt>
+                <dd>I ran three user interviews, synthesized the findings, created a persona, and mapped opportunities, user stories and user flows in Figma. Currently using low-fidelity sketches to create a high-fidelity prototype.</dd>
+              </dl>
+            </details>
+ 
+            <a class="link" href="wardrobe-case-study.html">View case study &rarr;</a>
           </div>
-          <h3>Building a Professional Wardrobe</h3>
-          <p class="context">Solo semester project &middot; UX/UI Design &middot; Boston University</p>
-
-          <dl class="facts">
-            <dt>Question</dt>
-            <dd>How do adults entering or re-entering the workforce build a professional wardrobe, and where does that process become difficult?</dd>
-
-            <dt>What I did</dt>
-            <dd>I ran three user interviews, synthesized the findings, created a persona, and mapped opportunities, user stories and user flows in Figma. Currently using low-fidelity sketches to create a high-fidelity prototype.</dd>
-
-            <dt>Result</dt>
-            <dd>A user interface with features including a scoring system, outfit builder, budget-inspired shopping list, and a personal, digital wardrobe.</dd>
-
-            <dt>Tools</dt>
-            <dd>Figma &middot; user interviews &middot; affinity mapping &middot; personas &middot; user flows</dd>
-          </dl>
-
-          <a class="link" href="wardrobe-case-study.html">View case study &rarr;</a>        
         </article>
-
+ 
         <!-- PROJECT 2: data -->
-        <article class="project" data-tags="data">
-          <div class="project-top">
-            <span class="num">02</span>
-            <ul class="tags">
-              <li class="tag tag--data">Data</li>
-            </ul>
+        <article class="project work" data-tags="data">
+          <button type="button" class="work-thumb contain" data-images="images/preview-police-shootings.jpg" aria-label="View larger: Signs of Mental Illness in Fatal Police Shootings">
+            <span class="work-thumb-ph">Add image:<br>images/preview-police-shootings.jpg</span>
+            <img src="images/preview-police-shootings.jpg" alt="Odds ratio chart from the final logistic regression model" loading="lazy" onerror="this.style.display='none'">
+            <span class="work-thumb-hint">View larger</span>
+          </button>
+ 
+          <div class="work-body">
+            <div class="project-top">
+              <span class="num">02</span>
+              <ul class="tags">
+                <li class="tag tag--data">Data</li>
+              </ul>
+            </div>
+            <h3>Signs of Mental Illness in Fatal Police Shootings</h3>
+            <p class="context">Group project &middot; Applied Statistics &middot; Boston University</p>
+            <p class="blurb">A logistic regression analysis of 6,421 fatal police shootings, asking which circumstances go with the person showing signs of mental illness.</p>
+            <p class="result"><strong>Result</strong>People with a knife or other non-gun object had about twice the odds of showing signs of mental illness as people with a gun. People who were fleeing had 60&ndash;74% lower odds.</p>
+            <p class="tools">R &middot; logistic regression &middot; model comparison (AIC) &middot; calibration checks</p>
+ 
+            <details class="more">
+              <summary>More details</summary>
+              <dl class="facts">
+                <dt>Question</dt>
+                <dd>Which circumstances of a fatal police shooting are associated with the person showing signs of mental illness?</dd>
+ 
+                <dt>What we did</dt>
+                <dd>My group and I cleaned the Washington Post Fatal Force database (6,421 cases, 2015&ndash;2021), compared four logistic regression models, and checked the final model's assumptions.</dd>
+ 
+                <dt>My role</dt>
+                <dd>I fit the candidate models in R, compared them, justified the final choice, and interpreted the coefficients and associated errors in context.</dd>
+              </dl>
+            </details>
+ 
+            <a class="link" href="files/police-shootings-presentation.pdf" target="_blank" rel="noopener">View presentation (PDF) &#8599;</a>
           </div>
-          <h3>Signs of Mental Illness in Fatal Police Shootings</h3>
-          <p class="context">Group project &middot; Applied Statistics &middot; Boston University</p>
-
-          <dl class="facts">
-            <dt>Question</dt>
-            <dd>Which circumstances of a fatal police shooting are associated with the person showing signs of mental illness?</dd>
-
-            <dt>What we did</dt>
-            <dd>My group and I cleaned the Washington Post Fatal Force database (6,421 cases, 2015&ndash;2021), compared four logistic regression models, and checked the final model's assumptions.</dd>
-
-            <dt>Result</dt>
-            <dd>People with a knife or other non-gun object had about twice the odds of showing signs of mental illness as people with a gun. People who were fleeing had 60&ndash;74% lower odds.</dd>
-
-            <dt>My role</dt>
-            <dd>I fit the candidate models in R, compared them, justified the final choice, and interpreted the coefficients and associated errors in context. </dd>
-
-            <dt>Tools</dt>
-            <dd>R &middot; logistic regression &middot; model comparison (AIC) &middot; calibration checks</dd>
-          </dl>
-
-          <a class="link" href="files/police-shootings-presentation.pdf" target="_blank" rel="noopener">View presentation (PDF) &#8599;</a>
         </article>
-
-
+ 
         <!-- PROJECT 3: ux -->
-        <article class="project" data-tags="ux">
-          <div class="project-top">
-            <span class="num">03</span>
-            <ul class="tags">
-              <li class="tag tag--ux">UX</li>
-            </ul>
+        <article class="project work" data-tags="ux">
+          <button type="button" class="work-thumb" data-images="images/preview-campfire.jpg" aria-label="View larger: Helping Students Find Community">
+            <span class="work-thumb-ph">Add image:<br>images/preview-campfire.jpg</span>
+            <img src="images/preview-campfire.jpg" alt="Screens from the student community app prototype" loading="lazy" onerror="this.style.display='none'">
+            <span class="work-thumb-hint">View larger</span>
+          </button>
+ 
+          <div class="work-body">
+            <div class="project-top">
+              <span class="num">03</span>
+              <ul class="tags">
+                <li class="tag tag--ux">UX</li>
+              </ul>
+            </div>
+            <h3>Helping Students Find Community</h3>
+            <p class="context">Group monthly challenge &middot; FORGE &middot; Boston University</p>
+            <p class="blurb">An app that helps students find clubs and communities that match their interests on a large, diverse campus.</p>
+            <p class="result"><strong>Result</strong>An app that allows students to swipe through campus organizations, add events to a calendar, view student and club profiles, and chat with each other.</p>
+            <p class="tools">Figma &middot; personas &middot; user flows &middot; low fidelity &middot; high fidelity &middot; prototyping</p>
+ 
+            <details class="more">
+              <summary>More details</summary>
+              <dl class="facts">
+                <dt>Question</dt>
+                <dd>How do students find clubs and communities that match their specific interests, especially on a large, diverse campus?</dd>
+ 
+                <dt>What we did</dt>
+                <dd>We created user personas and a user flow, presented our low fidelity wireframes, and constructed a high fidelity prototype in Figma.</dd>
+ 
+                <dt>My role</dt>
+                <dd>I helped with overall design and branding, including color palette and typeface choices. I also designed and prototyped the profile screens, for both the user's profile, other students' profiles, and club profiles.</dd>
+              </dl>
+            </details>
+ 
+            <a class="link" href="campfire-case-study.html">View case study &rarr;</a>
           </div>
-          <h3>Helping Students Find Community</h3>
-          <p class="context">Group monthly challenge &middot; FORGE &middot; Boston University</p>
-
-          <dl class="facts">
-            <dt>Question</dt>
-            <dd>How do students find clubs and communities that match their specific interests, especially on a large, diverse campus? </dd>
-
-            <dt>What We did</dt>
-            <dd>We created user personas and a user flow, presented our low fidelity wireframes, and constructed a high fidelity prototype in Figma.</dd>
-
-            <dt>My Role</dt>
-            <dd>I helped with overall design and branding, including color palette and typeface choices. I also designed and prototyped the profile screens, for both the user's profile, other students' profiles, and club profiles.</dd>
-
-            <dt>Result</dt>
-            <dd>An app that allows students to swipe through campus organizations, add events to a calendar, view student and club profiles, and chat with each other.</dd>
-
-            <dt>Tools</dt>
-            <dd>Figma &middot; personas &middot; user flows &middot; low fidelity &middot; high fidelity &middot; prototyping</dd>
-          </dl>
-
-          <a class="link" href="campfire-case-study.html">View case study &rarr;</a>        
         </article>
-
-
-                <!-- PROJECT 4: design -->
-        <article class="project" data-tags="design">
-          <div class="project-top">
-            <span class="num">04</span>
-            <ul class="tags">
-              <li class="tag tag--design">Design</li>
-            </ul>
+ 
+        <!-- PROJECT 4: design -->
+        <article class="project work" data-tags="design">
+          <button type="button" class="work-thumb" data-images="images/observatory-night.jpg,images/journal-club.jpg" aria-label="View larger: BU Astronomical Society Social Media">
+            <span class="work-thumb-ph">Add image:<br>images/observatory-night.jpg</span>
+            <img src="images/observatory-night.jpg" alt="A Canva social media graphic announcing Observatory Night for the BU Astronomical Society" loading="lazy" onerror="this.style.display='none'">
+            <span class="work-thumb-hint">View larger</span>
+          </button>
+ 
+          <div class="work-body">
+            <div class="project-top">
+              <span class="num">04</span>
+              <ul class="tags">
+                <li class="tag tag--design">Design</li>
+              </ul>
+            </div>
+            <h3>BU Astronomical Society Social Media</h3>
+            <p class="context">Social Media Coordinator &middot; BU Astronomical Society</p>
+            <p class="blurb">Reusable Canva templates that give the club's meeting announcements a consistent, recognizable look.</p>
+            <p class="result"><strong>Result</strong>Averaged 3000+ views per post and achieved attendance of 40+ new members for meetings.</p>
+            <p class="tools">Canva</p>
+ 
+            <details class="more">
+              <summary>More details</summary>
+              <dl class="facts">
+                <dt>Goal</dt>
+                <dd>Announce club meetings with a consistent, recognizable look.</dd>
+ 
+                <dt>What I did</dt>
+                <dd>Designed reusable Canva templates, one for regular meetings and one for Journal Club, and used them to announce meetings all year.</dd>
+              </dl>
+            </details>
           </div>
-          <h3>BU Astronomical Society Social Media</h3>
-          <p class="context">Social Media Coordinator &middot; BU Astronomical Society</p>
-
-          <figure class="project-img">
-            <img src="images/observatory-night.jpg" alt="A Canva social media graphic announcing Observatory Night for the BU Astronomical Society">
-          </figure>
-          <figure class="project-img">
-            <img src="images/journal-club.jpg" alt="Journal Club announcement graphic showing the featured research paper">
-          </figure>
-
-          <dl class="facts">
-            <dt>Goal</dt>
-            <dd>Announce club meetings with a consistent, recognizable look.</dd>
-
-            <dt>What I did</dt>
-            <dd>Designed reusable Canva templates, one for regular meetings and one for Journal Club, and used them to announce meetings all year.</dd>
-
-            <dt>Result</dt>
-            <dd>Averaged 3000+ views per post and achieved attendance of 40+ new members for meetings. </dd>
-
-            <dt>Tools</dt>
-            <dd>Canva</dd>
-          </dl>
         </article>
-
+ 
         <!-- PROJECT 5: design + data -->
-        <article class="project" data-tags="design data">
-          <div class="project-top">
-            <span class="num">05</span>
-            <ul class="tags">
-              <li class="tag tag--design">Design</li>
-              <li class="tag tag--data">Data</li>
-            </ul>
+        <article class="project work" data-tags="design data">
+          <button type="button" class="work-thumb" data-images="images/mhon-harmful-practices.jpg,images/mhon-self-care.jpg" aria-label="View larger: Research Infographics for Caregivers">
+            <span class="work-thumb-ph">Add image:<br>images/mhon-harmful-practices.jpg</span>
+            <img src="images/mhon-harmful-practices.jpg" alt="Infographic listing harmful employer practices according to caregivers with cancer, in Pinterest and LinkedIn sizes" loading="lazy" onerror="this.style.display='none'">
+            <span class="work-thumb-hint">View larger</span>
+          </button>
+ 
+          <div class="work-body">
+            <div class="project-top">
+              <span class="num">05</span>
+              <ul class="tags">
+                <li class="tag tag--design">Design</li>
+                <li class="tag tag--data">Data</li>
+              </ul>
+            </div>
+            <h3>Research Infographics for Caregivers</h3>
+            <p class="context">Graphic Design &amp; Branding Apprentice &middot; Mom&rsquo;s Hierarchy of Needs, LLC</p>
+            <p class="blurb">Infographics that turn a study on caregivers with cancer into something employers can understand at a glance.</p>
+            <p class="result"><strong>Result</strong>[Where the graphics were published or how they were used.]</p>
+            <p class="tools">Figma</p>
+ 
+            <details class="more">
+              <summary>More details</summary>
+              <dl class="facts">
+                <dt>Goal</dt>
+                <dd>Turn findings from a study on caregivers with cancer into infographics employers can understand quickly.</dd>
+ 
+                <dt>What I did</dt>
+                <dd>Designed a set of infographics in Figma, including versions sized for Pinterest and LinkedIn, and a larger summary graphic of the study. I followed the organization&rsquo;s existing brand and color palette closely.</dd>
+              </dl>
+            </details>
           </div>
-          <h3>Research Infographics for Caregivers</h3>
-          <p class="context">Graphic Design &amp; Branding Apprentice &middot; Mom&rsquo;s Hierarchy of Needs, LLC</p>
-
-          <figure class="project-img">
-            <img src="images/mhon-harmful-practices.jpg" alt="Infographic listing harmful employer practices according to caregivers with cancer, in Pinterest and LinkedIn sizes">
-          </figure>
-          <figure class="project-img">
-            <img src="images/mhon-self-care.jpg" alt="Infographic on how employers can support caregivers with cancer, summarizing a research study">
-          </figure>
-
-          <dl class="facts">
-            <dt>Goal</dt>
-            <dd>Turn findings from a study on caregivers with cancer into infographics employers can understand quickly.</dd>
-
-            <dt>What I did</dt>
-            <dd>Designed a set of infographics in Figma, including versions sized for Pinterest and LinkedIn, and a larger summary graphic of the study. I followed the organization&rsquo;s existing brand and color palette closely.</dd>
-
-            <dt>Result</dt>
-            <dd>[Where the graphics were published or how they were used.]</dd>
-
-            <dt>Tools</dt>
-            <dd>Figma</dd>
-          </dl>
         </article>
-
+ 
         <!--
-          TO ADD A PROJECT: copy one whole <article class="project"> ... </article> block above,
-          paste it here, change the number, text and link.
-          data-tags can be "data", "ux", or "data ux" (shows under both filters).
-          Tag pill classes: tag--data, tag--ux, tag--wip
+          TO ADD A PROJECT: copy one whole <article class="project work"> ... </article> block above,
+          paste it here, then change the number, text, image names and link.
+          data-tags can be "data", "ux", "design", or several, like "design data" (shows under each filter).
+          Tag pill classes: tag--data, tag--ux, tag--design, tag--wip
         -->
-
+ 
       </div>
-    </section>
 
     <!-- ============ ABOUT ============ -->
     <section class="section section--about" id="about" aria-labelledby="about-title">
@@ -370,6 +394,12 @@
 
   </div>
 
+  <dialog id="lightbox" class="lightbox" aria-label="Project images">
+    <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+    <div class="lightbox-images"></div>
+    <p class="lightbox-caption"></p>
+  </dialog>
+
   <script>
     // Project filter (All / Data / UX). Also works from a link like  yoursite.github.io/?focus=ux
     (function () {
@@ -411,29 +441,32 @@
     })();
 
 
-    // Masonry layout: each project card sits right under the card above it in its column
+    // Image popup: click a project's preview image to see it bigger without leaving the page
     (function () {
-      var grid = document.querySelector(".projects");
-      if (!grid) { return; }
-      var GAP = 26; // space between cards, in pixels
+      var box = document.getElementById("lightbox");
+      if (!box || typeof box.showModal !== "function") { return; }
+      var holder = box.querySelector(".lightbox-images");
+      var caption = box.querySelector(".lightbox-caption");
 
-      function layout() {
-        grid.classList.add("masonry");
-        grid.querySelectorAll(".project").forEach(function (card) {
-          if (card.hidden) { return; }
-          card.style.gridRowEnd = "";
-          var h = card.getBoundingClientRect().height;
-          card.style.gridRowEnd = "span " + Math.ceil(h + GAP);
+      document.querySelectorAll(".work-thumb").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var title = btn.closest(".work").querySelector("h3").textContent;
+          holder.textContent = "";
+          (btn.dataset.images || "").split(",").forEach(function (src) {
+            src = src.trim();
+            if (!src) { return; }
+            var img = document.createElement("img");
+            img.src = src;
+            img.alt = title + " (larger view)";
+            holder.appendChild(img);
+          });
+          caption.textContent = title;
+          box.showModal();
         });
-      }
-
-      layout();
-      window.addEventListener("load", layout);
-      window.addEventListener("resize", layout);
-      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(layout); }
-      document.querySelectorAll(".filter button").forEach(function (b) {
-        b.addEventListener("click", function () { setTimeout(layout, 0); });
       });
+
+      box.querySelector(".lightbox-close").addEventListener("click", function () { box.close(); });
+      box.addEventListener("click", function (e) { if (e.target === box) { box.close(); } });
     })();
 
   </script>
