@@ -343,6 +343,32 @@
       });
     })();
 
+
+    // Masonry layout: each project card sits right under the card above it in its column
+    (function () {
+      var grid = document.querySelector(".projects");
+      if (!grid) { return; }
+      var GAP = 26; // space between cards, in pixels
+
+      function layout() {
+        grid.classList.add("masonry");
+        grid.querySelectorAll(".project").forEach(function (card) {
+          if (card.hidden) { return; }
+          card.style.gridRowEnd = "";
+          var h = card.getBoundingClientRect().height;
+          card.style.gridRowEnd = "span " + Math.ceil(h + GAP);
+        });
+      }
+
+      layout();
+      window.addEventListener("load", layout);
+      window.addEventListener("resize", layout);
+      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(layout); }
+      document.querySelectorAll(".filter button").forEach(function (b) {
+        b.addEventListener("click", function () { setTimeout(layout, 0); });
+      });
+    })();
+    
   </script>
 </body>
 </html>

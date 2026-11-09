@@ -774,3 +774,6 @@ button:focus-visible {
   font-size: 0.75rem;
 }
 .case-next { padding: 0 var(--pad-x) 48px; text-align: center; }
+
+/* ---------- Masonry: each card stacks under the one above it ---------- */
+.projects.masonry { grid-auto-rows: 1px; row-gap: 0; }
