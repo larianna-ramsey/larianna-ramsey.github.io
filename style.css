@@ -991,3 +991,22 @@ button:focus-visible {
   font-family: var(--mono);
   font-size: 0.72rem;
 }
+
+/* Show the arrows and counter only when hovering over the image (or tabbing to it with the keyboard) */
+.carousel-btn,
+.carousel-count {
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.15s ease;
+}
+.carousel:hover .carousel-btn,
+.carousel:hover .carousel-count,
+.carousel:focus-within .carousel-btn,
+.carousel:focus-within .carousel-count {
+  opacity: 1;
+}
+
+/* Phones and tablets have no hover, so keep the controls visible there */
+@media (hover: none) {
+  .carousel-btn,
+  .carousel-count { opacity: 1; }
+}
