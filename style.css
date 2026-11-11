@@ -1010,3 +1010,7 @@ button:focus-visible {
   .carousel-btn,
   .carousel-count { opacity: 1; }
 }
+
+/* Project rows without a preview image: text takes the full width */
+.work.no-thumb { grid-template-columns: 1fr; }
+.work.no-thumb .work-body { max-width: 70ch; }   /* keeps lines a comfortable length */
