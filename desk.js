@@ -31,7 +31,7 @@
   }
 
   /* ---------- name: split into letter circles ---------- */
-  $$('.name-line').forEach(function (line) {
+  $$('.split').forEach(function (line) {
     var txt = line.textContent;
     line.textContent = '';
     txt.split('').forEach(function (c, i) {
@@ -41,6 +41,22 @@
       line.appendChild(s);
     });
   });
+
+  /* ---------- fit the big title and signature to the space, whatever font loads ---------- */
+  function fitText() {
+    var isDesk = window.matchMedia('(min-width: 1000px) and (min-height: 540px)').matches;
+    $$('[data-fit]').forEach(function (el) {
+      var target = isDesk
+        ? parseFloat(el.getAttribute('data-fit')) * (stage.getBoundingClientRect().width / 100)
+        : el.parentElement.clientWidth * parseFloat(el.getAttribute('data-fit-m') || '.9');
+      el.style.fontSize = '100px';
+      var nat = el.offsetWidth;
+      if (nat > 0 && target > 0) el.style.fontSize = (100 * target / nat) + 'px';
+    });
+  }
+  fitText();
+  window.addEventListener('resize', fitText);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitText);
 
   /* ---------- hints ---------- */
   function dismissHint(el) {
@@ -82,38 +98,24 @@
     if (pol.classList.contains('is-flipped') && !pol.contains(e.target)) setPol(false);
   });
 
-  /* ---------- lamp ---------- */
-  var lamp = $('#lamp'), overlay = $('.night-overlay');
-  function placeLight() {
-    if (!lamp || !overlay) return;
-    var r = lamp.getBoundingClientRect();
-    overlay.style.setProperty('--lx', (r.left + r.width * 1.0) + 'px');
-    overlay.style.setProperty('--ly', (r.top + r.height * 0.9) + 'px');
-  }
-  lamp.addEventListener('click', function () {
+  /* ---------- theme: vinyl record toggles night mode ---------- */
+  var themeBtn = $('#theme');
+  themeBtn.addEventListener('click', function () {
     var on = !document.body.classList.contains('night');
-    placeLight();
     document.body.classList.toggle('night', on);
-    lamp.setAttribute('aria-pressed', on ? 'true' : 'false');
-    dismissHint(lamp);
+    themeBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    $('.vc-sub', themeBtn).textContent = on ? 'tap for paper mode' : 'tap for night mode';
+    dismissHint(themeBtn);
   });
-  window.addEventListener('resize', placeLight);
 
-  /* ---------- little desk toys ---------- */
-  function toy(id, msg) {
-    var el = $(id);
-    if (!el) return;
-    el.addEventListener('click', function () {
-      el.classList.remove('jiggle');
-      void el.offsetWidth;
-      el.classList.add('jiggle');
-      setTimeout(function () { el.classList.remove('jiggle'); }, 1300);
-      toast(msg);
-    });
-  }
-  toy('#mug', 'Fresh cup of coffee.');
-  toy('#pencils', 'Pencils sharpened.');
-  toy('#plant', 'Plant watered.');
+  /* ---------- pen + airdrop ---------- */
+  var pen = $('#pen');
+  pen.addEventListener('click', function () {
+    pen.classList.remove('jiggle'); void pen.offsetWidth; pen.classList.add('jiggle');
+    setTimeout(function () { pen.classList.remove('jiggle'); }, 700);
+    toast('Doodling in progress.');
+  });
+  $('#ad-no').addEventListener('click', function () { toast('Okay, no pressure. The resume is one click away whenever.'); });
 
   /* ---------- sticky note -> process dialog ---------- */
   var noteDlg = $('#note-dialog');
@@ -436,6 +438,18 @@
 
   // leaving desktop size closes the binder
   onMQ(desk, function () { if (!desk.matches && isOpen) closeBinder(true); });
+
+  // folders on the desk jump to the first project with that tag
+  $$('.folder').forEach(function (f) {
+    f.addEventListener('click', function () {
+      var tag = f.getAttribute('data-jump');
+      var idx = 0;
+      for (var i = 0; i < projects.length; i++) {
+        if ((' ' + projects[i].getAttribute('data-tags') + ' ').indexOf(' ' + tag + ' ') > -1) { idx = i; break; }
+      }
+      openBinder(idx);
+    });
+  });
 
   /* ---------- links from other pages (index.html#work etc.) ---------- */
   var biz = $('.bizcard'); if (biz && !biz.id) biz.id = 'contact';

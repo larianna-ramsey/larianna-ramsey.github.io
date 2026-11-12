@@ -3,20 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Larianna Ramsey | Data Science &amp; UX</title>
-  <meta name="description" content="I'm a Boston University data science student interested in UX/UI design, especially design driven by data and user research. Explore my portfolio on my desk.">
-  <meta name="theme-color" content="#dcebf7">
+  <title>Larianna Ramsey | Portfolio</title>
+  <meta name="description" content="Larianna Ramsey: Boston University data science student interested in UX/UI design driven by data and user research. Explore the portfolio.">
+  <meta name="theme-color" content="#EDE3D0">
   <!-- Remove this next line when you're ready for search engines to find the redesign -->
   <meta name="robots" content="noindex">
 
-  <!-- Fonts: Fraunces (headings), DM Mono (labels), Caveat (handwriting on notes). Body text stays Helvetica. -->
+  <!-- Fonts: Bricolage Grotesque (big bold type), Instrument Serif (italic accents), Mrs Saint Delafield (signature script), Caveat (handwriting), DM Mono (small labels). Body text stays Helvetica. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Caveat:wght@500;700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="desk.css?v=1">
 
-  <!-- If someone has JavaScript turned off, show everything as a simple stacked page -->
   <noscript>
     <style>
       html, body { height: auto !important; overflow: auto !important; }
@@ -31,60 +30,85 @@
 <body>
 <div class="stage" id="stage">
 
+  <!-- Big thin hand-drawn star behind everything -->
+  <svg class="item desk-deco bgstar" viewBox="0 0 1000 900" preserveAspectRatio="none" aria-hidden="true" focusable="false" style="--x:18; --y:1.5; --w:62; --h:53; --z:0">
+    <path d="M494 47 L567 324 L829 207 L656 410 L955 536 L626 546 L706 846 L506 583 L307 796 L352 554 L24 548 L345 415 L115 172 L424 306 Z"/>
+    <path d="M503 -7 L575 316 L884 179 L649 423 L920 529 L643 550 L719 869 L501 606 L287 862 L355 552 L33 553 L341 420 L174 211 L426 329 Z" class="s2"/>
+  </svg>
+
+  <!-- Little labels across the top -->
+  <p class="item desk-deco toplabel" style="--x:3; --y:2.8; --w:14; --h:6; --z:3">data science<br>ux research<br><i>&amp;</i> design</p>
+
   <!-- =====================================================================
-       THE WALL
+       HERO: signature script over giant type
        ===================================================================== -->
-
-  <!-- Name sign -->
-  <header class="item nameplate" style="--x:53; --y:2.4; --w:44; --h:19.5; --z:3">
-    <p class="eyebrow">Portfolio</p>
-    <h1 class="name" aria-label="Larianna Ramsey">
-      <span class="name-line" aria-hidden="true">Larianna</span>
-      <span class="name-line" aria-hidden="true">Ramsey</span>
+  <header class="item hero" style="--x:17; --y:4.6; --w:66; --h:26; --z:2">
+    <h1 class="hero-h" aria-label="Larianna Ramsey, portfolio">
+      <span class="script" data-fit="40" data-fit-m=".8" aria-hidden="true">Larianna Ramsey</span>
+      <span class="bigword split" data-fit="54" data-fit-m=".98" aria-hidden="true">portfolio</span>
     </h1>
-    <p class="tagline">Data science student who designs with both people and data in mind.</p>
   </header>
+  <p class="item tagline" style="--x:63; --y:5.4; --w:18; --h:7; --z:3">Data science student who designs with both people and data in mind.</p>
 
-  <!-- Corkboard: About me -->
-  <section class="item cork" id="about" aria-label="About me" style="--x:3.5; --y:2; --w:46; --h:19.6; --z:2">
+  <!-- Theme switch: vinyl record -->
+  <button type="button" class="item desk-deco vinyl-card" id="theme" aria-pressed="false" aria-label="Switch between paper and night mode" style="--x:82; --y:2.4; --w:15.5; --h:8; --z:8">
+    <svg class="vinyl" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+      <circle cx="50" cy="50" r="48" fill="#2a0a12"/>
+      <circle cx="50" cy="50" r="40" fill="none" stroke="#5B3C45" stroke-width=".8"/>
+      <circle cx="50" cy="50" r="34" fill="none" stroke="#5B3C45" stroke-width=".8"/>
+      <circle cx="50" cy="50" r="28" fill="none" stroke="#5B3C45" stroke-width=".8"/>
+      <path d="M50 50 L50 20 A30 30 0 0 1 80 50 Z" fill="#CA9BAA"/>
+      <path d="M50 50 L50 80 A30 30 0 0 1 20 50 Z" fill="#CA9BAA"/>
+      <path d="M50 50 L80 50 A30 30 0 0 1 50 80 Z" fill="#EDE3D0"/>
+      <path d="M50 50 L20 50 A30 30 0 0 1 50 20 Z" fill="#EDE3D0"/>
+      <circle cx="50" cy="50" r="5" fill="#2a0a12"/>
+    </svg>
+    <span class="vc-text">
+      <span class="vc-title">late night mix</span>
+      <span class="vc-sub">tap for night mode</span>
+      <span class="vc-bar" aria-hidden="true"><i></i></span>
+    </span>
+    <span class="hint hint--desk" style="left:5em; top:4.7em">click me</span>
+  </button>
 
-    <!-- Polaroid: click to flip and read about me -->
+  <!-- =====================================================================
+       ABOUT
+       ===================================================================== -->
+  <section class="item about" id="about" aria-label="About me" style="--x:2.5; --y:21.5; --w:31; --h:33.5; --z:4">
+    <h2 class="about-h">about <em>me</em></h2>
+
     <div class="polaroid c">
-      <span class="pin" aria-hidden="true"></span>
-      <button type="button" class="polaroid-btn" aria-expanded="false" aria-label="Flip the polaroid to read about me">
+      <button type="button" class="polaroid-btn" aria-expanded="false" aria-label="Flip the photo to read about me">
         <span class="pol-inner">
           <span class="pol-face pol-front">
             <span class="pol-photo">
               <span class="ph">add photo:<br>images/headshot.jpg</span>
               <img src="images/headshot.jpg" alt="Portrait of Larianna Ramsey" onerror="this.style.visibility='hidden'">
             </span>
-            <span class="pol-cap">that&rsquo;s me &#10022;</span>
+            <span class="chip chip--a" aria-hidden="true">data science</span>
+            <span class="chip chip--b" aria-hidden="true">ux design</span>
           </span>
           <span class="pol-face pol-back">
             <span class="bio-p">I&rsquo;m drawn to the place where numbers meet people. I study data science at Boston University, but what I care about most is turning data into something a person can understand and use.</span>
-            <!-- <span class="bio-p">[Add one detail only you could say.]</span> -->
+            <span class="bio-p">[Add one detail only you could say.]</span>
           </span>
         </span>
       </button>
-      <span class="hint hint--wall" style="left:9.5em; top:-1.3em">flip me!</span>
+      <span class="hint hint--wall" style="left:12em; top:-1.7em">flip me!</span>
     </div>
 
-    <!-- Index card: quick facts -->
     <article class="card card--about c">
-      <span class="pin pin--blue" aria-hidden="true"></span>
       <h2>Hi, I&rsquo;m Larianna!</h2>
       <ul>
         <li><b>Boston University</b></li>
         <li>B.S. Data Science</li>
-        <!-- <li>Minors: Astronomy, Physics</li> -->
+        <li>Minors: Astronomy, Physics</li>
         <li>Class of May 2028</li>
-        <!-- <li>Treasurer, BU Astro Society</li> -->
+        <li>Treasurer, BU Astro Society</li>
       </ul>
     </article>
 
-    <!-- Index card: what I do -->
     <article class="card card--do c">
-      <span class="pin" aria-hidden="true"></span>
       <h2>What I do</h2>
       <ul>
         <li>Data analysis</li>
@@ -94,12 +118,6 @@
     </article>
   </section>
 
-  <!-- =====================================================================
-       PROJECT DATA (edit your projects here!)
-       On a big screen these get built into the binder pages.
-       On a phone (or without JavaScript) they show as a simple list.
-       To add a project: copy a whole <article class="proj"> block and edit it.
-       ===================================================================== -->
   <section class="proj-source" id="projects" aria-label="Selected work">
     <h2 class="list-title">Selected <em>work</em></h2>
 
@@ -220,7 +238,6 @@
       </div>
     </article>
   </section>
-
   <!-- Contact pages for the end of the binder -->
   <template id="tpl-contact-top">
     <div class="face-in face-in--contact-t">
@@ -234,114 +251,91 @@
       <div class="ct-links">
         <a class="pbtn pbtn--solid" href="mailto:lariannaramsey@gmail.com">Email me &#8599;</a>
         <button type="button" class="pbtn" data-copy="lariannaramsey@gmail.com">Copy email</button>
-        <a class="pbtn" href="https://www.linkedin.com/in/lariannaramsey" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+        <a class="pbtn" href="https://www.linkedin.com/in/lariannaramsey/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
         <a class="pbtn" href="https://github.com/larianna-ramsey" target="_blank" rel="noopener">GitHub &#8599;</a>
         <a class="pbtn" href="resume.pdf" target="_blank" rel="noopener">Resume (PDF) &#8599;</a>
       </div>
       <p class="ct-small">lariannaramsey@gmail.com</p>
     </div>
   </template>
-
   <!-- =====================================================================
-       THE DESK
+       THE DESK EXTRAS
        ===================================================================== -->
 
-  <!-- Desk lamp: click to turn the lights down -->
-  <button type="button" class="item desk-deco lamp" id="lamp" aria-pressed="false" aria-label="Toggle the desk lamp (dims the room)" style="--x:1.2; --y:25; --w:11.5; --h:24; --z:9">
-    <svg viewBox="0 0 120 250" aria-hidden="true" focusable="false">
-      <path class="beam" d="M74 100 L118 90 L190 262 L20 262 Z" />
-      <ellipse cx="60" cy="238" rx="40" ry="9" fill="#2b1018"/>
-      <path d="M60 232 L38 140" stroke="#2b1018" stroke-width="8" stroke-linecap="round" fill="none"/>
-      <path d="M38 140 L82 62" stroke="#2b1018" stroke-width="8" stroke-linecap="round" fill="none"/>
-      <circle cx="38" cy="140" r="7" fill="#a9c8e8" stroke="#2b1018" stroke-width="3"/>
-      <circle cx="82" cy="62" r="7" fill="#a9c8e8" stroke="#2b1018" stroke-width="3"/>
-      <path d="M62 54 L110 40 L120 90 L72 100 Z" fill="#a9c8e8" stroke="#2b1018" stroke-width="3.5" stroke-linejoin="round"/>
-      <circle class="bulb" cx="96" cy="96" r="8" fill="#eef5fb" stroke="#2b1018" stroke-width="2.5"/>
-    </svg>
-    <span class="hint hint--desk" style="left:5.4em; top:2.2em">click!</span>
+  <!-- Folders: click to jump into the binder -->
+  <button type="button" class="item desk-deco folder" data-jump="ux" aria-label="Open the binder to my UX projects" style="--x:79; --y:12.5; --w:9; --h:10.5; --r:-4deg; --z:6">
+    <svg viewBox="0 0 120 96" aria-hidden="true" focusable="false"><path d="M6 14 q0-8 8-8 h30 q6 0 9 5 l4 6 h49 q8 0 8 8 v52 q0 8-8 8 H14 q-8 0-8-8z" fill="#9db4ee"/><rect x="6" y="26" width="108" height="64" rx="8" fill="url(#fg1)"/><defs><linearGradient id="fg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9e2ff"/><stop offset="1" stop-color="#a9bdf2"/></linearGradient></defs></svg>
+    <span class="f-name">ux_projects</span>
+  </button>
+  <button type="button" class="item desk-deco folder" data-jump="data" aria-label="Open the binder to my data projects" style="--x:88.5; --y:19; --w:9; --h:10.5; --r:3deg; --z:6">
+    <svg viewBox="0 0 120 96" aria-hidden="true" focusable="false"><path d="M6 14 q0-8 8-8 h30 q6 0 9 5 l4 6 h49 q8 0 8 8 v52 q0 8-8 8 H14 q-8 0-8-8z" fill="#9db4ee"/><rect x="6" y="26" width="108" height="64" rx="8" fill="url(#fg1)"/></svg>
+    <span class="f-name">data_projects</span>
+  </button>
+  <button type="button" class="item desk-deco folder" data-jump="design" aria-label="Open the binder to my design work" style="--x:80.5; --y:25; --w:9; --h:10.5; --r:-2deg; --z:6">
+    <svg viewBox="0 0 120 96" aria-hidden="true" focusable="false"><path d="M6 14 q0-8 8-8 h30 q6 0 9 5 l4 6 h49 q8 0 8 8 v52 q0 8-8 8 H14 q-8 0-8-8z" fill="#9db4ee"/><rect x="6" y="26" width="108" height="64" rx="8" fill="url(#fg1)"/></svg>
+    <span class="f-name">design_work</span>
   </button>
 
-  <!-- Resume: click to open the PDF -->
-  <a class="item resume" href="resume.pdf" target="_blank" rel="noopener" aria-label="Open my resume (PDF)" style="--x:15; --y:32; --w:17; --h:21; --r:-6deg; --z:5">
-    <span class="clip" aria-hidden="true"></span>
-    <span class="r-head">Resume</span>
-    <span class="r-name">Larianna Ramsey</span>
-    <span class="r-lines" aria-hidden="true"><i></i><i></i><i class="short"></i><i></i><i></i><i class="short"></i><i></i><i></i></span>
-    <span class="r-open">open PDF &#8599;</span>
-  </a>
+  <!-- AirDrop-style resume card -->
+  <div class="item airdrop" style="--x:66.5; --y:35.2; --w:19; --h:12; --r:2.5deg; --z:5">
+    <div class="ad-art" aria-hidden="true"></div>
+    <div class="ad-body">
+      <p class="ad-t"><b>AirDrop</b></p>
+      <p class="ad-s">&ldquo;Larianna&rdquo; would like to share a resume.</p>
+      <div class="ad-btns">
+        <button type="button" class="ad-no" id="ad-no">Decline</button>
+        <a class="ad-yes" href="resume.pdf" target="_blank" rel="noopener">Accept</a>
+      </div>
+    </div>
+  </div>
 
-  <!-- The binder: click to open -->
-  <button type="button" class="item desk-deco binder-closed" id="open-binder" aria-label="Open my portfolio binder to see my work" style="--x:37; --y:29.5; --w:24; --h:25.5; --r:-1.5deg; --z:6">
-    <span class="bc-rings" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-    <span class="bc-body" aria-hidden="true"></span>
-    <span class="bc-label">
-      <strong>Portfolio</strong>
-      <small>Larianna Ramsey</small>
-      <small>Data &middot; UX &middot; Design</small>
-    </span>
-    <span class="bc-star" aria-hidden="true">&#10022;</span>
-    <span class="hint hint--desk" style="left:6em; top:-3.4em">open me!</span>
-  </button>
-
-  <!-- Sticky note: click to read my process -->
-  <button type="button" class="item sticky" id="open-process" aria-label="Read about my process" style="--x:65; --y:34; --w:12.5; --h:12.5; --r:4deg; --z:5">
-    <span class="st-title">Process</span>
+  <!-- Sticky note: process -->
+  <button type="button" class="item sticky" id="open-process" aria-label="Read about my process" style="--x:87.8; --y:38; --w:10; --h:10.5; --r:4deg; --z:5">
+    <span class="st-title">process</span>
     <span class="st-steps" aria-hidden="true">ask &rarr; explore<br>build &rarr; refine</span>
     <span class="st-read">read me &#8599;</span>
   </button>
 
-  <!-- Pencil cup -->
-  <button type="button" class="item desk-deco pencils" id="pencils" aria-label="Pencil cup" style="--x:68; --y:26.5; --w:5.5; --h:8; --z:4">
-    <svg viewBox="0 0 70 100" aria-hidden="true" focusable="false">
-      <g class="pc pc1"><rect x="18" y="4" width="9" height="62" rx="2" fill="#e3b9c7" stroke="#2b1018" stroke-width="3"/><path d="M18 4 L22.5 -8 L27 4Z" fill="#fbf8f6" stroke="#2b1018" stroke-width="2.5"/></g>
-      <g class="pc pc2"><rect x="32" y="10" width="9" height="56" rx="2" fill="#6d1a36" stroke="#2b1018" stroke-width="3"/><path d="M32 10 L36.5 -2 L41 10Z" fill="#fbf8f6" stroke="#2b1018" stroke-width="2.5"/></g>
-      <g class="pc pc3"><rect x="46" y="2" width="9" height="64" rx="2" fill="#fff" stroke="#2b1018" stroke-width="3"/><path d="M46 2 L50.5 -10 L55 2Z" fill="#a9c8e8" stroke="#2b1018" stroke-width="2.5"/></g>
-      <path d="M8 44 H62 L57 96 Q56 100 52 100 H18 Q14 100 13 96 Z" fill="#a9c8e8" stroke="#2b1018" stroke-width="3.5" stroke-linejoin="round"/>
-      <path d="M16 62 H54" stroke="#2b1018" stroke-width="3" stroke-linecap="round" opacity=".35"/>
-    </svg>
-  </button>
-
-  <!-- Mug -->
-  <button type="button" class="item desk-deco mug" id="mug" aria-label="Coffee mug" style="--x:78.5; --y:30.8; --w:7.5; --h:8.5; --z:4">
-    <svg viewBox="0 0 80 90" aria-hidden="true" focusable="false">
-      <g class="steam" fill="none" stroke="#fbf8f6" stroke-width="3.5" stroke-linecap="round">
-        <path d="M24 22 q-7 -8 0 -14 t0 -14" style="animation-delay:0s"/>
-        <path d="M36 22 q-7 -8 0 -14 t0 -14" style="animation-delay:.8s"/>
-        <path d="M48 22 q-7 -8 0 -14 t0 -14" style="animation-delay:1.6s"/>
-      </g>
-      <path d="M58 38 h8 a10 10 0 0 1 0 22 h-8" fill="none" stroke="#2b1018" stroke-width="5" stroke-linecap="round"/>
-      <path d="M12 30 h46 v32 a18 18 0 0 1 -18 18 h-10 a18 18 0 0 1 -18 -18 z" fill="#fff" stroke="#2b1018" stroke-width="3.5" stroke-linejoin="round"/>
-      <ellipse cx="35" cy="30" rx="23" ry="5" fill="#6d1a36" stroke="#2b1018" stroke-width="3"/>
-      <path d="M12 52 h46" stroke="#a9c8e8" stroke-width="7"/>
-    </svg>
-  </button>
-
-  <!-- Plant -->
-  <button type="button" class="item desk-deco plant" id="plant" aria-label="Potted plant" style="--x:89.5; --y:19.5; --w:8; --h:17; --z:3">
-    <svg viewBox="0 0 90 170" aria-hidden="true" focusable="false">
-      <g class="leaves">
-        <path d="M45 120 C20 100 6 70 14 30 C34 44 46 80 45 120Z" fill="#9dbfa8" stroke="#2b1018" stroke-width="3.5" stroke-linejoin="round"/>
-        <path d="M45 120 C70 96 84 66 74 22 C54 40 44 76 45 120Z" fill="#8ab397" stroke="#2b1018" stroke-width="3.5" stroke-linejoin="round"/>
-        <path d="M45 124 C36 90 38 50 48 6 C58 44 56 92 45 124Z" fill="#a8c9b2" stroke="#2b1018" stroke-width="3.5" stroke-linejoin="round"/>
-      </g>
-      <path d="M14 118 H76 L68 164 Q67 168 63 168 H27 Q23 168 22 164 Z" fill="#e3b9c7" stroke="#2b1018" stroke-width="3.5" stroke-linejoin="round"/>
-      <path d="M12 118 H78" stroke="#2b1018" stroke-width="6" stroke-linecap="round"/>
-    </svg>
-  </button>
-
-  <!-- Business card: click the email to copy it -->
-  <div class="item bizcard" style="--x:77.5; --y:43.5; --w:18; --h:10.5; --r:-3deg; --z:5">
-    <span class="bz-name">Larianna Ramsey</span>
-    <span class="bz-role">Data science &middot; UX</span>
+  <!-- Contact card -->
+  <div class="item bizcard" style="--x:65.2; --y:48.4; --w:24.5; --h:7; --r:-1.5deg; --z:5">
+    <span class="bz-script">say hello</span>
     <button type="button" class="bz-email" data-copy="lariannaramsey@gmail.com" aria-label="Copy my email address">lariannaramsey@gmail.com <em>copy</em></button>
     <span class="bz-links">
-      <a href="https://www.linkedin.com/in/lariannaramsey" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:lariannaramsey@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/lariannaramsey/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/larianna-ramsey" target="_blank" rel="noopener">GitHub</a>
     </span>
   </div>
 
-  <!-- Dims the room when the lamp is toggled -->
-  <div class="night-overlay" aria-hidden="true"></div>
+  <!-- Pen -->
+  <button type="button" class="item desk-deco pen" id="pen" aria-label="Pink pen" style="--x:61.6; --y:30; --w:3; --h:17; --r:24deg; --z:7">
+    <svg viewBox="0 0 30 170" aria-hidden="true" focusable="false">
+      <rect x="6" y="14" width="18" height="120" rx="7" fill="#CA9BAA" stroke="#5B3C45" stroke-width="2"/>
+      <rect x="6" y="14" width="18" height="30" rx="7" fill="#EDE3D0" stroke="#5B3C45" stroke-width="2"/>
+      <rect x="22" y="2" width="4" height="56" rx="2" fill="#c8a25a"/>
+      <path d="M6 134 H24 L15 168 Z" fill="#EDE3D0" stroke="#5B3C45" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M12.5 160 L15 168 L17.5 160 Z" fill="#5B3C45"/>
+    </svg>
+  </button>
+
+  <!-- Cursor -->
+  <svg class="item desk-deco cursor" viewBox="0 0 30 40" aria-hidden="true" focusable="false" style="--x:53.5; --y:45.5; --w:3.6; --h:4.8; --z:9">
+    <path d="M3 2 L3 31 L10 24 L15 36 L20 34 L15 22 L25 22 Z" fill="#fff" stroke="#2a0a12" stroke-width="2.4" stroke-linejoin="round"/>
+  </svg>
+
+  <!-- The binder -->
+  <button type="button" class="item desk-deco binder-closed" id="open-binder" aria-label="Open my portfolio binder to see my work" style="--x:35.5; --y:29; --w:29; --h:24.5; --r:-1.2deg; --z:6">
+    <span class="bc-rings" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+    <span class="bc-body" aria-hidden="true"></span>
+    <span class="bc-label">
+      <small class="bc-eyebrow">selected</small>
+      <strong>work</strong>
+      <span class="bc-script">Larianna Ramsey</span>
+    </span>
+    <span class="bc-band" aria-hidden="true"></span>
+    <span class="bc-charm" aria-hidden="true">&#10022;</span>
+    <span class="hint hint--desk" style="left:6em; top:-2.6em">open me!</span>
+  </button>
 
   <!-- =====================================================================
        THE OPEN BINDER (built by desk.js from the project data above)
@@ -368,10 +362,9 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<!-- Sticky note popup: my process -->
 <dialog id="note-dialog" class="note-dialog" aria-label="My process">
   <button type="button" class="note-close" id="note-close" aria-label="Close">&times;</button>
-  <h2>My process</h2>
+  <h2>my process</h2>
   <ol>
     <li><b>Ask.</b> I start with a clear question: who is this for, and what do they need to know or do?</li>
     <li><b>Explore.</b> I look at the data and talk to people. Numbers show what happens, interviews show why.</li>
@@ -380,7 +373,6 @@
   </ol>
 </dialog>
 
-<!-- Image popup -->
 <dialog id="lightbox" class="lightbox" aria-label="Project images">
   <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
   <div class="lightbox-images"></div>
