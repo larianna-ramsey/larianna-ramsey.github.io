@@ -182,15 +182,15 @@
 
   /* =====================================================================
      PROJECT FOLDERS: a drawer of manila folders
-     Click a tab: the chosen folder rises out of the stack, comes forward
-     and settles in front in ONE continuous motion, and its front flap
-     swings open as it lands. The open folder's flap closes at the same time.
+     Click a tab: the chosen folder glides forward from its spot in the
+     stack and its front flap swings open, all in one continuous motion.
+     No hop: it simply comes to the front and opens.
      ===================================================================== */
   var drawer = $('#drawer');
   var folders = $$('.folder', drawer);
   var order = folders.map(function (_, i) { return i; });   // order[0] is the folder in front
   var arrived = false, moving = null;                       // moving = { folder, anim } while a folder is travelling
-  var DURATION = 640;
+  var GLIDE = 620, FADE = 200;
 
   function layout() {
     order.forEach(function (fi, p) {
@@ -213,6 +213,7 @@
     if (!moving) return;
     var f = moving.folder, now = getComputedStyle(f).transform;
     moving.anim.cancel();
+    moving.fades.forEach(function (a) { a.cancel(); });
     f.style.transform = now === 'none' ? '' : now;
     f.classList.remove('moving');
     void f.offsetWidth;                                     // let the browser register the frozen spot
@@ -230,7 +231,6 @@
     var oldP = order.indexOf(fi);
     var r = rem();
     var fromY = oldP * -.8 * r;                             // where it sits in the stack now
-    var peakY = fromY - 3 * r;                              // how high it rises
 
     order = [fi].concat(order.filter(function (x) { return x !== fi; }));
     layout();                                               // the other folders start sliding back right away
@@ -239,13 +239,16 @@
     if (reduce.matches || !target.animate) return;
 
     target.classList.add('moving');                         // CSS transition steps aside; this animation drives it
+    // one gentle glide from its slot to the front (no lift, no hop)...
     var anim = target.animate([
-      { offset: 0,   transform: 'translateY(' + fromY + 'px) rotate(0deg)',   zIndex: 20 - oldP, easing: 'cubic-bezier(.3, 0, .3, 1)' },
-      { offset: .36, transform: 'translateY(' + peakY + 'px) rotate(-.6deg)', zIndex: 20 - oldP },
-      { offset: .37, transform: 'translateY(' + (peakY + .02 * r) + 'px) rotate(-.6deg)', zIndex: 25, easing: 'cubic-bezier(.3, 0, .2, 1)' },
-      { offset: 1,   transform: 'translateY(0px) rotate(0deg)',               zIndex: 25 }
-    ], { duration: DURATION });
-    moving = { folder: target, anim: anim };
+      { transform: 'translateY(' + fromY + 'px)', zIndex: 25 },
+      { transform: 'translateY(0px)',             zIndex: 25 }
+    ], { duration: GLIDE, easing: 'cubic-bezier(.3, .7, .25, 1)' });
+    // ...while its body fades in over the old folder, so it never pops in front
+    var fades = $$('.f-back, .f-paper, .f-front', target).map(function (el) {
+      return el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: FADE, easing: 'ease-out' });
+    });
+    moving = { folder: target, anim: anim, fades: fades };
     anim.onfinish = function () {
       target.classList.remove('moving');
       if (moving && moving.anim === anim) moving = null;
