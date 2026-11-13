@@ -265,10 +265,12 @@ html:not(.js) .car img:first-child { opacity: 1; }
 .car-next { right: .7rem; }
 .car-count, .car-zoom { position: absolute; bottom: .7rem; z-index: 3; padding: .2rem .7rem; font: 400 .72rem var(--f-mono); background: var(--paper); border-radius: 99em; transition: opacity .2s; pointer-events: none; }
 .car-count { right: .7rem; }
+.car-cap { position: absolute; top: .7rem; left: .7rem; z-index: 3; padding: .2rem .7rem; font: 400 .7rem var(--f-mono); letter-spacing: .04em; background: var(--wine); color: var(--champagne); border-radius: 99em; pointer-events: none; transition: opacity .2s; }
+.car-cap:empty { display: none; }
 .car-zoom { left: .7rem; }
 @media (hover: hover) {
-  .car-btn, .car-count, .car-zoom { opacity: 0; }
-  .media:hover .car-btn, .media:hover .car-count, .media:hover .car-zoom,
+  .car-btn, .car-count, .car-zoom, .car-cap { opacity: 0; }
+  .media:hover .car-btn, .media:hover .car-count, .media:hover .car-zoom, .media:hover .car-cap,
   .media:focus-within .car-btn, .media:focus-within .car-count { opacity: 1; }
 }
 

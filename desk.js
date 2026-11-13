@@ -162,8 +162,12 @@
       ph.innerHTML = 'add image:<br>' + imgs[idx].getAttribute('src');
       car.classList.toggle('is-missing', imgs[idx].style.visibility === 'hidden');
       if (count) count.textContent = (idx + 1) + ' / ' + imgs.length;
+      cap.textContent = imgs[idx].getAttribute('data-cap') || '';
     }
     var media = car.parentElement;
+    var cap = document.createElement('span');                  // short label for the current picture, e.g. "LinkedIn size"
+    cap.className = 'car-cap';
+    media.appendChild(cap);
     var zoom = document.createElement('span');
     zoom.className = 'car-zoom'; zoom.textContent = 'click to enlarge';
     media.appendChild(zoom);
