@@ -1,25 +1,19 @@
 /* =========================================================================
-   DESK PORTFOLIO: interactions
-   - Desk objects (lamp, mug, plant, pencils, sticky note, polaroid, business card)
-   - The binder: builds pages from the project list in index.html and flips them
-   - Image popup (lightbox), copy-email, toast messages
+   LARIANNA RAMSEY: PORTFOLIO interactions
+   - fits the big title, bouncy letters
+   - nav highlight, scroll reveals
+   - project folders (open one at a time; the first opens when you scroll to it)
+   - image carousels + popup, photo flip, copy email, AirDrop card
    ========================================================================= */
 (function () {
   'use strict';
 
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
-  function mk(tag, cls, html) {
-    var e = document.createElement(tag);
-    if (cls) e.className = cls;
-    if (html != null) e.innerHTML = html;
-    return e;
-  }
-  function onMQ(mq, fn) { if (mq.addEventListener) mq.addEventListener('change', fn); else mq.addListener(fn); }
-
-  var stage = $('#stage');
-  var desk = window.matchMedia('(min-width: 1000px) and (min-height: 540px)');
+  var wide = window.matchMedia('(min-width: 900px)');
+  var small = window.matchMedia('(max-width: 700px)');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var hasIO = 'IntersectionObserver' in window;
 
   /* ---------- toast ---------- */
   var toastEl = $('#toast'), toastTimer;
@@ -27,44 +21,70 @@
     toastEl.textContent = msg;
     toastEl.classList.add('show');
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2300);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2400);
   }
 
-  /* ---------- name: split into letter circles ---------- */
-  $$('.split').forEach(function (line) {
-    var txt = line.textContent;
-    line.textContent = '';
+  /* ---------- big title: split letters + fit to width ---------- */
+  $$('.split').forEach(function (el) {
+    var txt = el.textContent;
+    el.textContent = '';
     txt.split('').forEach(function (c, i) {
-      var s = mk('span', 'ch');
+      var s = document.createElement('span');
+      s.className = 'ch';
       s.textContent = c;
       s.style.setProperty('--i', i);
-      line.appendChild(s);
+      el.appendChild(s);
     });
   });
-
-  /* ---------- fit the big title and signature to the space, whatever font loads ---------- */
   function fitText() {
-    var isDesk = window.matchMedia('(min-width: 1000px) and (min-height: 540px)').matches;
     $$('[data-fit]').forEach(function (el) {
-      var target = isDesk
-        ? parseFloat(el.getAttribute('data-fit')) * (stage.getBoundingClientRect().width / 100)
-        : el.parentElement.clientWidth * parseFloat(el.getAttribute('data-fit-m') || '.9');
+      var box = el.closest('.hero-title') || el.parentElement;
+      var frac = parseFloat(el.getAttribute(small.matches ? 'data-fit-m' : 'data-fit')) || .8;
+      var max = parseFloat(el.getAttribute('data-max')) || 9999;
       el.style.fontSize = '100px';
       var nat = el.offsetWidth;
-      if (nat > 0 && target > 0) el.style.fontSize = (100 * target / nat) + 'px';
+      if (nat > 0) el.style.fontSize = Math.min(max, 100 * box.clientWidth * frac / nat) + 'px';
     });
   }
   fitText();
-  window.addEventListener('resize', fitText);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitText);
 
-  /* ---------- hints ---------- */
-  function dismissHint(el) {
-    if (!el) return;
-    $$('.hint', el).forEach(function (h) { h.classList.add('gone'); });
+  /* ---------- nav ---------- */
+  var nav = $('#nav');
+  function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 20); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  if (hasIO) {
+    var links = $$('.nav nav a[href^="#"]');
+    var navIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        links.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + en.target.id); });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    $$('main section[id]').forEach(function (s) { navIO.observe(s); });
   }
 
-  /* ---------- copy to clipboard ---------- */
+  /* ---------- scroll reveals ---------- */
+  function revealAll() { $$('.reveal').forEach(function (el) { el.classList.add('is-in'); }); }
+  if (hasIO && !reduce.matches) {
+    var revIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-in'); revIO.unobserve(en.target); }
+      });
+    }, { threshold: .15 });
+    $$('.reveal').forEach(function (el) { revIO.observe(el); });
+  } else { revealAll(); }
+
+  var steps = $('#steps');
+  if (hasIO && !reduce.matches) {
+    var stepIO = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { steps.classList.add('in'); stepIO.disconnect(); }
+    }, { threshold: .25 });
+    stepIO.observe(steps);
+  } else { steps.classList.add('in'); }
+
+  /* ---------- copy email ---------- */
   document.addEventListener('click', function (e) {
     var b = e.target.closest('[data-copy]');
     if (!b) return;
@@ -74,64 +94,26 @@
       var ta = document.createElement('textarea');
       ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
       document.body.appendChild(ta); ta.select();
-      try { document.execCommand('copy'); done(); } catch (err) { toast('Copy it here: ' + text); }
+      try { document.execCommand('copy'); done(); } catch (err) { toast(text); }
       document.body.removeChild(ta);
     }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done, fallback);
-    } else { fallback(); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback);
+    else fallback();
   });
 
-  /* ---------- polaroid ---------- */
+  /* ---------- AirDrop ---------- */
+  $$('.ad-no').forEach(function (b) {
+    b.addEventListener('click', function () { toast('Okay, no pressure. It’s in the menu whenever you want it.'); });
+  });
+
+  /* ---------- photo flip ---------- */
   var pol = $('.polaroid'), polBtn = $('.polaroid-btn');
   function setPol(on) {
     pol.classList.toggle('is-flipped', on);
     polBtn.setAttribute('aria-expanded', on ? 'true' : 'false');
-    polBtn.setAttribute('aria-label', on ? 'Flip the polaroid back over' : 'Flip the polaroid to read about me');
   }
-  polBtn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    setPol(!pol.classList.contains('is-flipped'));
-    dismissHint(pol);
-  });
-  document.addEventListener('click', function (e) {
-    if (pol.classList.contains('is-flipped') && !pol.contains(e.target)) setPol(false);
-  });
-
-  /* ---------- theme: vinyl record toggles night mode ---------- */
-  var themeBtn = $('#theme');
-  themeBtn.addEventListener('click', function () {
-    var on = !document.body.classList.contains('night');
-    document.body.classList.toggle('night', on);
-    themeBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
-    $('.vc-sub', themeBtn).textContent = on ? 'tap for paper mode' : 'tap for night mode';
-    dismissHint(themeBtn);
-  });
-
-  /* ---------- pen + airdrop ---------- */
-  var pen = $('#pen');
-  pen.addEventListener('click', function () {
-    pen.classList.remove('jiggle'); void pen.offsetWidth; pen.classList.add('jiggle');
-    setTimeout(function () { pen.classList.remove('jiggle'); }, 700);
-    toast('Doodling in progress.');
-  });
-  $('#ad-no').addEventListener('click', function () { toast('Okay, no pressure. The resume is one click away whenever.'); });
-
-  /* ---------- sticky note -> process dialog ---------- */
-  var noteDlg = $('#note-dialog');
-  function closeOnBackdrop(dlg) {
-    dlg.addEventListener('click', function (e) {
-      var r = dlg.getBoundingClientRect();
-      var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
-      if (!inside) dlg.close();
-    });
-  }
-  $('#open-process').addEventListener('click', function () {
-    if (typeof noteDlg.showModal === 'function') noteDlg.showModal();
-    else noteDlg.setAttribute('open', '');
-  });
-  $('#note-close').addEventListener('click', function () { noteDlg.close(); });
-  closeOnBackdrop(noteDlg);
+  polBtn.addEventListener('click', function () { setPol(!pol.classList.contains('is-flipped')); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && pol.classList.contains('is-flipped')) setPol(false); });
 
   /* ---------- lightbox ---------- */
   var lb = $('#lightbox'), lbImgs = $('.lightbox-images', lb), lbCap = $('.lightbox-caption', lb);
@@ -143,328 +125,129 @@
       lbImgs.appendChild(im);
     });
     lbCap.textContent = caption || '';
-    if (typeof lb.showModal === 'function') { if (!lb.open) lb.showModal(); }
-    else lb.setAttribute('open', '');
+    if (typeof lb.showModal === 'function') { if (!lb.open) lb.showModal(); } else lb.setAttribute('open', '');
   }
   $('.lightbox-close', lb).addEventListener('click', function () { lb.close(); });
   lb.addEventListener('click', function (e) { if (e.target === lb || e.target === lbImgs) lb.close(); });
 
-  // list view (phones): tap a picture to enlarge
-  $$('.proj-images img').forEach(function (img) {
-    img.addEventListener('click', function () {
-      if (desk.matches) return;
-      var proj = img.closest('.proj');
-      var items = $$('.proj-images img', proj).map(function (i) { return { src: i.getAttribute('src'), alt: i.getAttribute('alt') }; });
-      openLightbox(items, $('h3', proj).textContent);
+  /* ---------- image carousels ---------- */
+  $$('.car').forEach(function (car) {
+    var imgs = $$('img', car);
+    var title = $('h3', car.closest('.fold')).textContent;
+    var idx = 0, count = null;
+    var ph = document.createElement('span');
+    ph.className = 'ph';
+    car.insertBefore(ph, car.firstChild);
+    imgs.forEach(function (img) {
+      img.addEventListener('error', function () { img.style.visibility = 'hidden'; });
+      img.addEventListener('click', function () {
+        openLightbox(imgs.filter(function (i) { return i.style.visibility !== 'hidden'; })
+          .map(function (i) { return { src: i.currentSrc || i.src, alt: i.alt }; }), title);
+      });
     });
+    function show(i) {
+      idx = (i + imgs.length) % imgs.length;
+      imgs.forEach(function (im, k) { im.classList.toggle('is-on', k === idx); });
+      ph.innerHTML = 'add image:<br>' + imgs[idx].getAttribute('src');
+      if (count) count.textContent = (idx + 1) + ' / ' + imgs.length;
+    }
+    var media = car.parentElement;
+    var zoom = document.createElement('span');
+    zoom.className = 'car-zoom'; zoom.textContent = 'click to enlarge';
+    media.appendChild(zoom);
+    if (imgs.length > 1) {
+      var p = document.createElement('button'), n = document.createElement('button');
+      p.type = n.type = 'button';
+      p.className = 'car-btn car-prev'; n.className = 'car-btn car-next';
+      p.innerHTML = '&#8249;'; n.innerHTML = '&#8250;';
+      p.setAttribute('aria-label', 'Previous image'); n.setAttribute('aria-label', 'Next image');
+      count = document.createElement('span'); count.className = 'car-count';
+      p.addEventListener('click', function () { show(idx - 1); });
+      n.addEventListener('click', function () { show(idx + 1); });
+      media.appendChild(p); media.appendChild(n); media.appendChild(count);
+    }
+    show(0);
   });
 
   /* =====================================================================
-     THE BINDER
+     PROJECT FOLDERS
      ===================================================================== */
-  var view = $('#binder-view');
-  var pagesEl = $('#pages');
-  var tabsEl = $('#tabs');
-  var statusEl = $('#bv-status');
-  var prevBtn = $('#bv-prev'), nextBtn = $('#bv-next');
-  var peelPrev = $('#peel-prev'), peelNext = $('#peel-next');
-  var projects = $$('#projects .proj');
-  var N = projects.length;
-  var built = false, isOpen = false, current = 0, opener = null;
-  var leaves = [], tabBtns = [], allFaces = [], faceFor = {};
+  var cabinet = $('#cabinet');
+  var folds = $$('.fold', cabinet);
+  var current = -1;
 
-  function clone(sel, root) { var n = $(sel, root); return n ? n.cloneNode(true) : null; }
-
-  function buildCarousel(imgs, title) {
-    var car = mk('div', 'pv-car');
-    car.setAttribute('role', 'group');
-    car.setAttribute('aria-label', title + ' images');
-    var open = mk('button', 'pv-open'); open.type = 'button';
-    open.setAttribute('aria-label', 'View larger: ' + title);
-    var ph = mk('span', 'ph');
-    var img = document.createElement('img');
-    open.appendChild(ph); open.appendChild(img);
-    open.appendChild(mk('span', 'pv-zoom', 'click to enlarge'));
-    car.appendChild(open);
-    var idx = 0, count = null;
-    function show(i) {
-      idx = (i + imgs.length) % imgs.length;
-      img.style.visibility = '';
-      img.onload = function () { img.style.visibility = ''; };
-      img.onerror = function () { img.style.visibility = 'hidden'; };
-      img.src = imgs[idx].src;
-      img.alt = imgs[idx].alt;
-      ph.innerHTML = 'add image:<br>' + imgs[idx].src;
-      if (count) count.textContent = (idx + 1) + ' / ' + imgs.length;
-    }
-    if (imgs.length > 1) {
-      var p = mk('button', 'pv-arrow pv-arrow--prev', '&#8249;'); p.type = 'button'; p.setAttribute('aria-label', 'Previous image');
-      var n = mk('button', 'pv-arrow pv-arrow--next', '&#8250;'); n.type = 'button'; n.setAttribute('aria-label', 'Next image');
-      count = mk('span', 'pv-count');
-      p.addEventListener('click', function () { show(idx - 1); });
-      n.addEventListener('click', function () { show(idx + 1); });
-      car.appendChild(p); car.appendChild(n); car.appendChild(count);
-    }
-    open.addEventListener('click', function () { openLightbox(imgs, title); });
-    show(0);
-    return car;
+  function sizePanels() {
+    if (!wide.matches) { cabinet.style.removeProperty('--pw'); return; }
+    var w = cabinet.clientWidth;
+    var collapsed = folds[0] ? parseFloat(getComputedStyle(folds[0]).flexBasis) || 73.6 : 73.6;
+    var gap = parseFloat(getComputedStyle(cabinet).columnGap) || 12;
+    var pw = w - (folds.length - 1) * (collapsed + gap) - 2 * 17.6;
+    cabinet.style.setProperty('--pw', Math.max(320, pw) + 'px');
   }
 
-  function previewFace(p) {
-    var f = mk('div', 'face-in face-in--top');
-    var title = $('h3', p).textContent;
-    var imgs = $$('.proj-images img', p).map(function (im) { return { src: im.getAttribute('src'), alt: im.getAttribute('alt') || '' }; });
-    var media = mk('div', 'pv');
-    if (imgs.length) {
-      media.appendChild(buildCarousel(imgs, title));
-    } else {
-      var res = $('.proj-result', p);
-      var text = res ? res.textContent.replace(/^\s*Result\s*/, '') : '';
-      var q = mk('blockquote', 'pv-quote');
-      q.appendChild(mk('span', 'pv-qlabel', 'Result'));
-      var qp = document.createElement('p'); qp.textContent = text;
-      q.appendChild(qp);
-      media.appendChild(q);
-    }
-    var head = mk('div', 'pv-head');
-    head.innerHTML = $('.proj-head', p).innerHTML;
-    f.appendChild(media); f.appendChild(head);
-    f._hasImgs = imgs.length > 0;
-    return f;
-  }
-
-  function detailsFace(p) {
-    var f = mk('div', 'face-in face-in--bot');
-    var hasImgs = $$('.proj-images img', p).length > 0;
-    var main = mk('div', 'bt-main');
-    ['.proj-blurb', hasImgs ? '.proj-result' : null, '.proj-tools', '.proj-links'].forEach(function (sel) {
-      if (!sel) return;
-      var c = clone(sel, p); if (c) main.appendChild(c);
-    });
-    var side = mk('div', 'bt-side');
-    var facts = clone('.proj-facts', p); if (facts) side.appendChild(facts);
-    f.appendChild(main); f.appendChild(side);
-    return f;
-  }
-
-  function tplFace(id) {
-    var f = mk('div');
-    f.appendChild(document.getElementById(id).content.cloneNode(true));
-    return f.firstElementChild;
-  }
-
-  function mkFace(kind, inner) {
-    var d = mk('div', 'face face--' + kind);
-    d.appendChild(inner);
-    allFaces.push(d);
-    return d;
-  }
-
-  function buildBinder() {
-    if (built) return;
-    built = true;
-
-    // rings
-    var rings = $('.rings', view);
-    for (var r = 0; r < 12; r++) rings.appendChild(document.createElement('i'));
-
-    // base halves
-    var baseTop = mk('div', 'half half--top');
-    baseTop.appendChild(mkFace('static', previewFace(projects[0])));
-    var baseBot = mk('div', 'half half--bottom');
-    var baseBotFace = mkFace('static', tplFace('tpl-contact-bottom'));
-    baseBot.appendChild(baseBotFace);
-    pagesEl.appendChild(baseTop);
-    pagesEl.appendChild(baseBot);
-
-    faceFor.top0 = baseTop.firstChild;
-    faceFor.bottomEnd = baseBotFace;
-    faceFor.back = [];
-    faceFor.front = [];
-
-    // leaves
-    for (var i = 0; i < N; i++) {
-      var leaf = mk('div', 'leaf');
-      var front = mkFace('front', detailsFace(projects[i]));
-      var backInner = (i + 1 < N) ? previewFace(projects[i + 1]) : tplFace('tpl-contact-top');
-      var back = mkFace('back', backInner);
-      leaf.appendChild(front); leaf.appendChild(back);
-      leaf._want = false;
-      leaf.style.zIndex = N - i;
-      pagesEl.appendChild(leaf);
-      leaves.push(leaf);
-      faceFor.front.push(front);
-      faceFor.back.push(back);
-    }
-
-    // tabs
-    for (var k = 0; k <= N; k++) {
-      (function (k) {
-        var t = mk('button', 'tab', k < N ? ('0' + (k + 1)).slice(-2) : '&#9993;');
-        t.type = 'button';
-        var title = k < N ? $('h3', projects[k]).textContent : 'Get in touch';
-        t.title = title;
-        t.setAttribute('aria-label', 'Go to ' + title);
-        t.addEventListener('click', function () { goTo(k); });
-        tabsEl.appendChild(t);
-        tabBtns.push(t);
-      })(k);
-    }
-  }
-
-  function refresh() {
-    tabBtns.forEach(function (t, k) {
-      t.classList.toggle('active', k === current);
-      if (k === current) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current');
-    });
-    statusEl.textContent = current < N ? 'Project ' + (current + 1) + ' of ' + N : 'Get in touch';
-    prevBtn.disabled = peelPrev.disabled = current === 0;
-    nextBtn.disabled = peelNext.disabled = current === N;
-    var topVis = current === 0 ? faceFor.top0 : faceFor.back[current - 1];
-    var botVis = current < N ? faceFor.front[current] : faceFor.bottomEnd;
-    allFaces.forEach(function (f) {
-      var vis = (f === topVis || f === botVis);
-      if (vis) { f.removeAttribute('inert'); f.removeAttribute('aria-hidden'); }
-      else { f.setAttribute('inert', ''); f.setAttribute('aria-hidden', 'true'); }
+  function setFold(i) {
+    current = i;
+    folds.forEach(function (f, k) {
+      var on = k === i;
+      var tab = $('.fold-tab', f), panel = $('.fold-panel', f);
+      f.classList.toggle('open', on);
+      tab.setAttribute('aria-expanded', on ? 'true' : 'false');
+      if (on) panel.removeAttribute('inert'); else panel.setAttribute('inert', '');
     });
   }
 
-  function settleZ(li) {
-    var leaf = leaves[li];
-    leaf.style.zIndex = leaf._want ? (li + 1) : (N - li);
-  }
-
-  function goTo(target, instant) {
-    if (!built) return;
-    target = Math.max(0, Math.min(N, target));
-    var forward = target > current;
-    var todo = [];
-    for (var i = 0; i < N; i++) {
-      var want = i < target;
-      if (leaves[i]._want !== want) todo.push(i);
-    }
-    if (!forward) todo.reverse();
-    current = target;
-
-    var fast = instant || reduce.matches;
-    if (fast) pagesEl.classList.add('no-anim');
-    todo.forEach(function (li, k) {
-      var leaf = leaves[li];
-      var want = li < target;
-      leaf._want = want;
-      clearTimeout(leaf._d); clearTimeout(leaf._s);
-      function go() {
-        leaf.style.zIndex = 1000 + (want ? li : (N - li));
-        leaf.classList.toggle('is-flipped', want);
-        leaf._s = setTimeout(function () { settleZ(li); }, fast ? 0 : 1050);
+  folds.forEach(function (f, k) {
+    var tab = $('.fold-tab', f);
+    $('.fold-panel', f).setAttribute('inert', '');
+    tab.addEventListener('click', function () {
+      if (current === k) {
+        if (!wide.matches) setFold(-1);   // on phones, tapping an open folder closes it
+        return;
       }
-      if (fast) go(); else leaf._d = setTimeout(go, k * 140);
+      setFold(k);
+      if (!wide.matches) setTimeout(function () { f.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'start' }); }, 30);
     });
-    if (fast) {
-      void pagesEl.offsetWidth;
-      pagesEl.classList.remove('no-anim');
-    }
-    refresh();
-  }
-
-  function setInert(on) {
-    Array.prototype.forEach.call(stage.children, function (c) {
-      if (c === view) return;
-      if (on) c.setAttribute('inert', ''); else c.removeAttribute('inert');
-    });
-  }
-
-  function openBinder(spread, instant) {
-    if (!desk.matches || isOpen) return;
-    buildBinder();
-    opener = document.activeElement;
-    isOpen = true;
-    setInert(true);
-    view.hidden = false;
-    goTo(spread || 0, true);
-    if (instant || reduce.matches) view.classList.add('open');
-    else requestAnimationFrame(function () { requestAnimationFrame(function () { view.classList.add('open'); }); });
-    $('#bv-close').focus({ preventScroll: true });
-    dismissHint($('#open-binder'));
-  }
-
-  function closeBinder(instant) {
-    if (!isOpen) return;
-    isOpen = false;
-    view.classList.remove('open');
-    setInert(false);
-    setTimeout(function () { if (!isOpen) view.hidden = true; }, instant || reduce.matches ? 0 : 320);
-    var back = (opener && opener.focus && document.contains(opener)) ? opener : $('#open-binder');
-    if (back && back.focus) back.focus({ preventScroll: true });
-    if (/^#(work|projects|contact)$/.test(location.hash) && history.replaceState) {
-      history.replaceState(null, '', location.pathname + location.search);
-    }
-  }
-
-  $('#open-binder').addEventListener('click', function () { openBinder(0); });
-  $('#bv-close').addEventListener('click', function () { closeBinder(); });
-  view.addEventListener('click', function (e) { if (e.target === view) closeBinder(); });
-  prevBtn.addEventListener('click', function () { goTo(current - 1); });
-  nextBtn.addEventListener('click', function () { goTo(current + 1); });
-  peelPrev.addEventListener('click', function () { goTo(current - 1); });
-  peelNext.addEventListener('click', function () { goTo(current + 1); });
-
-  // mouse wheel over the pages flips them
-  var wheelLock = 0;
-  $('.binder-pages', view).addEventListener('wheel', function (e) {
-    if (Math.abs(e.deltaY) < 20) return;
-    e.preventDefault();
-    var now = Date.now();
-    if (now - wheelLock < 700) return;
-    wheelLock = now;
-    goTo(current + (e.deltaY > 0 ? 1 : -1));
-  }, { passive: false });
-
-  // keyboard
-  document.addEventListener('keydown', function (e) {
-    if (lb.open || noteDlg.open) return;
-    if (e.key === 'Escape') {
-      if (isOpen) { e.preventDefault(); closeBinder(); return; }
-      if (pol.classList.contains('is-flipped')) setPol(false);
-      return;
-    }
-    if (!isOpen) return;
-    var k = e.key;
-    if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown') { e.preventDefault(); goTo(current + 1); }
-    else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp') { e.preventDefault(); goTo(current - 1); }
-    else if (k === 'Home') { e.preventDefault(); goTo(0); }
-    else if (k === 'End') { e.preventDefault(); goTo(N); }
-  });
-
-  // leaving desktop size closes the binder
-  onMQ(desk, function () { if (!desk.matches && isOpen) closeBinder(true); });
-
-  // folders on the desk jump to the first project with that tag
-  $$('.folder').forEach(function (f) {
-    f.addEventListener('click', function () {
-      var tag = f.getAttribute('data-jump');
-      var idx = 0;
-      for (var i = 0; i < projects.length; i++) {
-        if ((' ' + projects[i].getAttribute('data-tags') + ' ').indexOf(' ' + tag + ' ') > -1) { idx = i; break; }
-      }
-      openBinder(idx);
+    tab.addEventListener('keydown', function (e) {
+      var d = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : (e.key === 'ArrowLeft' || e.key === 'ArrowUp') ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      $('.fold-tab', folds[(k + d + folds.length) % folds.length]).focus();
     });
   });
 
-  /* ---------- links from other pages (index.html#work etc.) ---------- */
-  var biz = $('.bizcard'); if (biz && !biz.id) biz.id = 'contact';
-  function handleHash() {
-    var h = location.hash;
-    if (h === '#work' || h === '#projects') {
-      if (desk.matches) openBinder(0, true);
-      else { var p = $('#projects'); if (p) p.scrollIntoView(); }
-    } else if (h === '#contact') {
-      if (desk.matches) openBinder(N, true);
-      else if (biz) biz.scrollIntoView();
-    } else if (h === '#about') {
-      if (desk.matches) setPol(true);
+  function openByTag(tag) {
+    for (var i = 0; i < folds.length; i++) {
+      if ((' ' + folds[i].getAttribute('data-tags') + ' ').indexOf(' ' + tag + ' ') > -1) { setFold(i); return; }
     }
   }
-  window.addEventListener('hashchange', handleHash);
-  handleHash();
+
+  // scrolling to the work section opens the first folder
+  var opened = false;
+  function arrive() {
+    if (opened) return;
+    opened = true;
+    cabinet.classList.add('in');
+    if (current < 0 && wide.matches) setTimeout(function () { if (current < 0) setFold(0); }, reduce.matches ? 0 : 650);
+  }
+  if (hasIO) {
+    var cabIO = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { arrive(); cabIO.disconnect(); }
+    }, { threshold: .3 });
+    cabIO.observe(cabinet);
+  } else { arrive(); }
+
+  // folder icons in the hero jump to a project type
+  $$('[data-open]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      arrive();
+      openByTag(a.getAttribute('data-open'));
+    });
+  });
+
+  // links back from case-study pages (index.html#work)
+  if (location.hash === '#work') { arrive(); if (current < 0) setFold(0); }
+
+  sizePanels();
+  window.addEventListener('resize', function () { fitText(); sizePanels(); });
+  if (wide.addEventListener) wide.addEventListener('change', sizePanels);
 })();

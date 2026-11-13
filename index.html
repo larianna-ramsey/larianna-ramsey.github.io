@@ -4,374 +4,428 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Larianna Ramsey | Portfolio</title>
-  <meta name="description" content="Larianna Ramsey: Boston University data science student interested in UX/UI design driven by data and user research. Explore the portfolio.">
-  <meta name="theme-color" content="#EDE3D0">
+  <meta name="description" content="Larianna Ramsey: Boston University data science student who designs with both people and data in mind. UX research, data analysis and design work.">
+  <meta name="theme-color" content="#CFDAFF">
   <!-- Remove this next line when you're ready for search engines to find the redesign -->
   <meta name="robots" content="noindex">
 
-  <!-- Fonts: Bricolage Grotesque (big bold type), Instrument Serif (italic accents), Mrs Saint Delafield (signature script), Caveat (handwriting), DM Mono (small labels). Body text stays Helvetica. -->
+  <!-- Fonts: Bricolage Grotesque (big bold type), Instrument Serif (italic accents),
+       Mrs Saint Delafield (signature), DM Mono (small labels). Body text is Helvetica. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Caveat:wght@500;700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="desk.css?v=1">
-
-  <noscript>
-    <style>
-      html, body { height: auto !important; overflow: auto !important; }
-      .stage { position: static !important; width: auto !important; height: auto !important; max-width: 44rem; margin: 0 auto !important; padding: 1rem !important; font-size: 15px !important; display: flex !important; flex-direction: column; gap: 1.5rem; }
-      .item { position: static !important; width: auto !important; height: auto !important; transform: none !important; }
-      .desk-deco, .hint, .binder-view { display: none !important; }
-      .proj-source { display: block !important; }
-    </style>
-  </noscript>
+  <link rel="stylesheet" href="desk.css?v=3">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 
 <body>
-<div class="stage" id="stage">
 
-  <!-- Big thin hand-drawn star behind everything -->
-  <svg class="item desk-deco bgstar" viewBox="0 0 1000 900" preserveAspectRatio="none" aria-hidden="true" focusable="false" style="--x:18; --y:1.5; --w:62; --h:53; --z:0">
-    <path d="M494 47 L567 324 L829 207 L656 410 L955 536 L626 546 L706 846 L506 583 L307 796 L352 554 L24 548 L345 415 L115 172 L424 306 Z"/>
-    <path d="M503 -7 L575 316 L884 179 L649 423 L920 529 L643 550 L719 869 L501 606 L287 862 L355 552 L33 553 L341 420 L174 211 L426 329 Z" class="s2"/>
-  </svg>
+<!-- =====================================================================
+     NAV
+     ===================================================================== -->
+<header class="nav" id="nav">
+  <a class="nav-name" href="#top" aria-label="Back to top">Larianna Ramsey</a>
+  <nav aria-label="Main">
+    <a href="#work">work</a>
+    <a href="#about">about</a>
+    <a href="#process">process</a>
+    <a href="#contact">contact</a>
+    <a class="nav-pill" href="resume.pdf" target="_blank" rel="noopener">resume &#8599;</a>
+  </nav>
+</header>
 
-  <!-- Little labels across the top -->
-  <p class="item desk-deco toplabel" style="--x:3; --y:2.8; --w:14; --h:6; --z:3">data science<br>ux research<br><i>&amp;</i> design</p>
+<main id="top">
 
   <!-- =====================================================================
-       HERO: signature script over giant type
+       HERO
        ===================================================================== -->
-  <header class="item hero" style="--x:17; --y:4.6; --w:66; --h:26; --z:2">
-    <h1 class="hero-h" aria-label="Larianna Ramsey, portfolio">
-      <span class="script" data-fit="40" data-fit-m=".8" aria-hidden="true">Larianna Ramsey</span>
-      <span class="bigword split" data-fit="54" data-fit-m=".98" aria-hidden="true">portfolio</span>
-    </h1>
-  </header>
-  <p class="item tagline" style="--x:63; --y:5.4; --w:18; --h:7; --z:3">Data science student who designs with both people and data in mind.</p>
-
-  <!-- Theme switch: vinyl record -->
-  <button type="button" class="item desk-deco vinyl-card" id="theme" aria-pressed="false" aria-label="Switch between paper and night mode" style="--x:82; --y:2.4; --w:15.5; --h:8; --z:8">
-    <svg class="vinyl" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-      <circle cx="50" cy="50" r="48" fill="#2a0a12"/>
-      <circle cx="50" cy="50" r="40" fill="none" stroke="#5B3C45" stroke-width=".8"/>
-      <circle cx="50" cy="50" r="34" fill="none" stroke="#5B3C45" stroke-width=".8"/>
-      <circle cx="50" cy="50" r="28" fill="none" stroke="#5B3C45" stroke-width=".8"/>
-      <path d="M50 50 L50 20 A30 30 0 0 1 80 50 Z" fill="#CA9BAA"/>
-      <path d="M50 50 L50 80 A30 30 0 0 1 20 50 Z" fill="#CA9BAA"/>
-      <path d="M50 50 L80 50 A30 30 0 0 1 50 80 Z" fill="#EDE3D0"/>
-      <path d="M50 50 L20 50 A30 30 0 0 1 50 20 Z" fill="#EDE3D0"/>
-      <circle cx="50" cy="50" r="5" fill="#2a0a12"/>
+  <section class="hero" aria-label="Introduction">
+    <svg class="hero-star" viewBox="0 0 1000 900" aria-hidden="true" focusable="false">
+      <path d="M494 47 L567 324 L829 207 L656 410 L955 536 L626 546 L706 846 L506 583 L307 796 L352 554 L24 548 L345 415 L115 172 L424 306 Z"/>
     </svg>
-    <span class="vc-text">
-      <span class="vc-title">late night mix</span>
-      <span class="vc-sub">tap for night mode</span>
-      <span class="vc-bar" aria-hidden="true"><i></i></span>
-    </span>
-    <span class="hint hint--desk" style="left:5em; top:4.7em">click me</span>
-  </button>
+
+    <!-- corner: folders + resume -->
+    <a class="hfolder hfolder--tl" href="#work" data-open="ux" style="--fb:#b98597; --ff:#CA9BAA">
+      <svg viewBox="0 0 120 96" aria-hidden="true" focusable="false"><path class="fi-back" d="M6 14 q0-8 8-8 h30 q6 0 9 5 l4 6 h49 q8 0 8 8 v52 q0 8-8 8 H14 q-8 0-8-8z"/><rect class="fi-paper" x="16" y="12" width="88" height="40" rx="3"/><rect class="fi-front" x="6" y="26" width="108" height="64" rx="8"/></svg>
+      <span class="hf-name">ux_projects</span>
+    </a>
+    <a class="hfolder hfolder--tr" href="#work" data-open="data" style="--fb:#d9ccb2; --ff:#EDE3D0">
+      <svg viewBox="0 0 120 96" aria-hidden="true" focusable="false"><path class="fi-back" d="M6 14 q0-8 8-8 h30 q6 0 9 5 l4 6 h49 q8 0 8 8 v52 q0 8-8 8 H14 q-8 0-8-8z"/><rect class="fi-paper" x="16" y="12" width="88" height="40" rx="3"/><rect class="fi-front" x="6" y="26" width="108" height="64" rx="8"/></svg>
+      <span class="hf-name">data_projects</span>
+    </a>
+    <a class="hfolder hfolder--bl" href="#work" data-open="design" style="--fb:#6c6729; --ff:#827C34">
+      <svg viewBox="0 0 120 96" aria-hidden="true" focusable="false"><path class="fi-back" d="M6 14 q0-8 8-8 h30 q6 0 9 5 l4 6 h49 q8 0 8 8 v52 q0 8-8 8 H14 q-8 0-8-8z"/><rect class="fi-paper" x="16" y="12" width="88" height="40" rx="3"/><rect class="fi-front" x="6" y="26" width="108" height="64" rx="8"/></svg>
+      <span class="hf-name">design_work</span>
+    </a>
+    <svg class="cursor" viewBox="0 0 30 40" aria-hidden="true" focusable="false">
+      <path d="M3 2 L3 31 L10 24 L15 36 L20 34 L15 22 L25 22 Z" fill="#fff" stroke="#410016" stroke-width="2.4" stroke-linejoin="round"/>
+    </svg>
+
+    <div class="airdrop airdrop--hero">
+      <div class="ad-art" aria-hidden="true"></div>
+      <div class="ad-body">
+        <p class="ad-t"><b>AirDrop</b></p>
+        <p class="ad-s">&ldquo;Larianna&rdquo; would like to share a resume.</p>
+        <div class="ad-btns">
+          <button type="button" class="ad-no">Decline</button>
+          <a class="ad-yes" href="resume.pdf" target="_blank" rel="noopener">Accept</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- title -->
+    <div class="hero-title">
+      <h1 aria-label="Larianna Ramsey, portfolio">
+        <span class="script" data-fit=".5" data-fit-m=".78" data-max="190" aria-hidden="true">Larianna Ramsey</span>
+        <span class="bigword split" data-fit=".8" data-fit-m=".94" data-max="300" aria-hidden="true">portfolio</span>
+      </h1>
+      <p class="hero-sub">data science <span>&#10022;</span> ux research <span>&#10022;</span> design</p>
+    </div>
+
+    <p class="hero-tag">I&rsquo;m a data science student who designs with both people and data in mind.</p>
+    <a class="scroll-cue" href="#work"><span>scroll</span> &darr;</a>
+  </section>
+
+  <!-- ticker -->
+  <div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>data analysis</span><i>&#10022;</i><span>ux research</span><i>&#10022;</i><span>data-informed design</span><i>&#10022;</i><span>boston, ma</span><i>&#10022;</i>
+      <span>data analysis</span><i>&#10022;</i><span>ux research</span><i>&#10022;</i><span>data-informed design</span><i>&#10022;</i><span>boston, ma</span><i>&#10022;</i>
+    </div>
+  </div>
+  </div>
+
+  <!-- =====================================================================
+       WORK: file folders
+       To add a project: copy a whole <article class="fold"> block, change --c
+       (folder color), the number, text, images and link.
+       ===================================================================== -->
+  <section class="work" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-num">01 / work</p>
+        <h2 id="work-h" class="sec-title">selected <em>work</em></h2>
+        <p class="sec-note">Click a folder to open it.</p>
+      </div>
+
+      <div class="cabinet" id="cabinet">
+
+        <!-- PROJECT 1 -->
+        <article class="fold" data-tags="ux" style="--c:#CFDAFF; --i:0">
+          <button type="button" class="fold-tab" aria-expanded="false" aria-controls="p1">
+            <span class="ft-num">01</span><span class="ft-title">Building a Professional Wardrobe</span><span class="ft-tag">ux</span>
+          </button>
+          <div class="fold-panel" id="p1">
+            <div class="sheet">
+              <div class="media">
+                <div class="car">
+                  <img src="images/preview-wardrobe.jpg" alt="Screens from the professional wardrobe app">
+                  <!-- add more pictures: copy the <img> line above -->
+                </div>
+              </div>
+              <div class="info">
+                <ul class="tags"><li class="tag tag--ux">UX</li><li class="tag tag--wip">In progress</li></ul>
+                <h3>Building a Professional Wardrobe</h3>
+                <p class="context">Solo semester project &middot; UX/UI Design &middot; Boston University</p>
+                <p class="blurb">An app that helps adults entering or re-entering the workforce build a professional wardrobe.</p>
+                <p class="result"><strong>Result</strong>A user interface with features including a scoring system, outfit builder, budget-inspired shopping list, and a personal, digital wardrobe.</p>
+                <p class="tools">Figma &middot; user interviews &middot; affinity mapping &middot; personas &middot; user flows</p>
+                <details class="more">
+                  <summary>More details</summary>
+                  <dl class="facts">
+                    <dt>Question</dt>
+                    <dd>How do adults entering or re-entering the workforce build a professional wardrobe, and where does that process become difficult?</dd>
+                    <dt>What I did</dt>
+                    <dd>I ran three user interviews, synthesized the findings, created a persona, and mapped opportunities, user stories and user flows in Figma. Currently using low-fidelity sketches to create a high-fidelity prototype.</dd>
+                  </dl>
+                </details>
+                <p class="links"><a class="pbtn pbtn--solid" href="wardrobe-case-study.html">Read case study &rarr;</a></p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 2 (no pictures: shows the result as a big quote) -->
+        <article class="fold" data-tags="data" style="--c:#CA9BAA; --i:1">
+          <button type="button" class="fold-tab" aria-expanded="false" aria-controls="p2">
+            <span class="ft-num">02</span><span class="ft-title">Signs of Mental Illness in Fatal Police Shootings</span><span class="ft-tag">data</span>
+          </button>
+          <div class="fold-panel" id="p2">
+            <div class="sheet">
+              <div class="media">
+                <blockquote class="quote">
+                  <span class="q-label">Result</span>
+                  <p>People with a knife or other non-gun object had about twice the odds of showing signs of mental illness as people with a gun. People who were fleeing had 60&ndash;74% lower odds.</p>
+                </blockquote>
+              </div>
+              <div class="info">
+                <ul class="tags"><li class="tag tag--data">Data</li></ul>
+                <h3>Signs of Mental Illness in Fatal Police Shootings</h3>
+                <p class="context">Group project &middot; Applied Statistics &middot; Boston University</p>
+                <p class="blurb">A logistic regression analysis of 6,421 fatal police shootings, asking which circumstances go with the person showing signs of mental illness.</p>
+                <p class="tools">R &middot; logistic regression &middot; model comparison (AIC) &middot; calibration checks</p>
+                <details class="more">
+                  <summary>More details</summary>
+                  <dl class="facts">
+                    <dt>Question</dt>
+                    <dd>Which circumstances of a fatal police shooting are associated with the person showing signs of mental illness?</dd>
+                    <dt>What we did</dt>
+                    <dd>My group and I cleaned the Washington Post Fatal Force database (6,421 cases, 2015&ndash;2021), compared four logistic regression models, and checked the final model&rsquo;s assumptions.</dd>
+                    <dt>My role</dt>
+                    <dd>I fit the candidate models in R, compared them, justified the final choice, and interpreted the coefficients and associated errors in context.</dd>
+                  </dl>
+                </details>
+                <p class="links"><a class="pbtn pbtn--solid" href="files/police-shootings-presentation.pdf" target="_blank" rel="noopener">View presentation (PDF) &#8599;</a></p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 3 -->
+        <article class="fold" data-tags="ux" style="--c:#EDE3D0; --i:2">
+          <button type="button" class="fold-tab" aria-expanded="false" aria-controls="p3">
+            <span class="ft-num">03</span><span class="ft-title">Helping Students Find Community</span><span class="ft-tag">ux</span>
+          </button>
+          <div class="fold-panel" id="p3">
+            <div class="sheet">
+              <div class="media">
+                <div class="car">
+                  <img src="images/preview-campfire.jpg" alt="Screens from the student community app prototype">
+                </div>
+              </div>
+              <div class="info">
+                <ul class="tags"><li class="tag tag--ux">UX</li></ul>
+                <h3>Helping Students Find Community</h3>
+                <p class="context">Group monthly challenge &middot; FORGE &middot; Boston University</p>
+                <p class="blurb">An app that helps students find clubs and communities that match their interests on a large, diverse campus.</p>
+                <p class="result"><strong>Result</strong>An app that allows students to swipe through campus organizations, add events to a calendar, view student and club profiles, and chat with each other.</p>
+                <p class="tools">Figma &middot; personas &middot; user flows &middot; low fidelity &middot; high fidelity &middot; prototyping</p>
+                <details class="more">
+                  <summary>More details</summary>
+                  <dl class="facts">
+                    <dt>Question</dt>
+                    <dd>How do students find clubs and communities that match their specific interests, especially on a large, diverse campus?</dd>
+                    <dt>What we did</dt>
+                    <dd>We created user personas and a user flow, presented our low fidelity wireframes, and constructed a high fidelity prototype in Figma.</dd>
+                    <dt>My role</dt>
+                    <dd>I helped with overall design and branding, including color palette and typeface choices. I also designed and prototyped the profile screens, for both the user&rsquo;s profile, other students&rsquo; profiles, and club profiles.</dd>
+                  </dl>
+                </details>
+                <p class="links"><a class="pbtn pbtn--solid" href="campfire-case-study.html">Read case study &rarr;</a></p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 4 -->
+        <article class="fold fold--dark" data-tags="design" style="--c:#827C34; --i:3">
+          <button type="button" class="fold-tab" aria-expanded="false" aria-controls="p4">
+            <span class="ft-num">04</span><span class="ft-title">BU Astronomical Society Social Media</span><span class="ft-tag">design</span>
+          </button>
+          <div class="fold-panel" id="p4">
+            <div class="sheet">
+              <div class="media">
+                <div class="car">
+                  <img src="images/observatory-night.jpg" alt="A Canva social media graphic announcing Observatory Night for the BU Astronomical Society">
+                  <img src="images/journal-club.jpg" alt="Journal Club announcement graphic showing the featured research paper">
+                </div>
+              </div>
+              <div class="info">
+                <ul class="tags"><li class="tag tag--design">Design</li></ul>
+                <h3>BU Astronomical Society Social Media</h3>
+                <p class="context">Social Media Coordinator &middot; BU Astronomical Society</p>
+                <p class="blurb">Reusable Canva templates that give the club&rsquo;s meeting announcements a consistent, recognizable look.</p>
+                <p class="result"><strong>Result</strong>Averaged 3000+ views per post and achieved attendance of 40+ new members for meetings.</p>
+                <p class="tools">Canva</p>
+                <details class="more">
+                  <summary>More details</summary>
+                  <dl class="facts">
+                    <dt>Goal</dt>
+                    <dd>Announce club meetings with a consistent, recognizable look.</dd>
+                    <dt>What I did</dt>
+                    <dd>Designed reusable Canva templates, one for regular meetings and one for Journal Club, and used them to announce meetings all year.</dd>
+                  </dl>
+                </details>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 5 -->
+        <article class="fold" data-tags="design data" style="--c:#A4B4BE; --i:4">
+          <button type="button" class="fold-tab" aria-expanded="false" aria-controls="p5">
+            <span class="ft-num">05</span><span class="ft-title">Research Infographics for Caregivers</span><span class="ft-tag">design</span>
+          </button>
+          <div class="fold-panel" id="p5">
+            <div class="sheet">
+              <div class="media">
+                <div class="car">
+                  <img src="images/mhon-harmful-practices.jpg" alt="Infographic listing harmful employer practices according to caregivers with cancer, in Pinterest and LinkedIn sizes">
+                  <img src="images/mhon-self-care.jpg" alt="Infographic on how employers can support caregivers with cancer, summarizing a research study">
+                </div>
+              </div>
+              <div class="info">
+                <ul class="tags"><li class="tag tag--design">Design</li><li class="tag tag--data">Data</li></ul>
+                <h3>Research Infographics for Caregivers</h3>
+                <p class="context">Graphic Design &amp; Branding Apprentice &middot; Mom&rsquo;s Hierarchy of Needs, LLC</p>
+                <p class="blurb">Infographics that turn a study on caregivers with cancer into something employers can understand at a glance.</p>
+                <p class="result"><strong>Result</strong>[Where the graphics were published or how they were used.]</p>
+                <p class="tools">Figma</p>
+                <details class="more">
+                  <summary>More details</summary>
+                  <dl class="facts">
+                    <dt>Goal</dt>
+                    <dd>Turn findings from a study on caregivers with cancer into infographics employers can understand quickly.</dd>
+                    <dt>What I did</dt>
+                    <dd>Designed a set of infographics in Figma, including versions sized for Pinterest and LinkedIn, and a larger summary graphic of the study. I followed the organization&rsquo;s existing brand and color palette closely.</dd>
+                  </dl>
+                </details>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
 
   <!-- =====================================================================
        ABOUT
        ===================================================================== -->
-  <section class="item about" id="about" aria-label="About me" style="--x:2.5; --y:21.5; --w:31; --h:33.5; --z:4">
-    <h2 class="about-h">about <em>me</em></h2>
+  <section class="about" id="about" aria-labelledby="about-h">
+    <div class="wrap about-grid">
 
-    <div class="polaroid c">
-      <button type="button" class="polaroid-btn" aria-expanded="false" aria-label="Flip the photo to read about me">
-        <span class="pol-inner">
-          <span class="pol-face pol-front">
-            <span class="pol-photo">
-              <span class="ph">add photo:<br>images/headshot.jpg</span>
-              <img src="images/headshot.jpg" alt="Portrait of Larianna Ramsey" onerror="this.style.visibility='hidden'">
+      <div class="about-photo reveal">
+        <div class="polaroid">
+          <button type="button" class="polaroid-btn" aria-expanded="false" aria-label="Flip the photo to see a few quick facts">
+            <span class="pol-inner">
+              <span class="pol-face pol-front">
+                <span class="pol-photo">
+                  <span class="ph">add photo:<br>images/headshot.jpg</span>
+                  <img src="images/headshot.jpg" alt="Portrait of Larianna Ramsey" onerror="this.style.visibility='hidden'">
+                </span>
+                <span class="chip chip--a" aria-hidden="true">data science</span>
+                <span class="chip chip--b" aria-hidden="true">ux design</span>
+              </span>
+              <span class="pol-face pol-back">
+                <span class="pb-label">currently</span>
+                <span class="pb-line">Treasurer of the BU Astronomical Society</span>
+                <span class="pb-line">Designing an app for building a professional wardrobe</span>
+                <span class="pb-line">[Something you&rsquo;re into right now]</span>
+                <span class="pb-sign">Larianna</span>
+              </span>
             </span>
-            <span class="chip chip--a" aria-hidden="true">data science</span>
-            <span class="chip chip--b" aria-hidden="true">ux design</span>
-          </span>
-          <span class="pol-face pol-back">
-            <span class="bio-p">I&rsquo;m drawn to the place where numbers meet people. I study data science at Boston University, but what I care about most is turning data into something a person can understand and use.</span>
-            <span class="bio-p">[Add one detail only you could say.]</span>
-          </span>
-        </span>
-      </button>
-      <span class="hint hint--wall" style="left:12em; top:-1.7em">flip me!</span>
+          </button>
+        </div>
+        <p class="photo-hint">tap the photo to flip it &#8599;</p>
+      </div>
+
+      <div class="about-text">
+        <p class="sec-num reveal">02 / about</p>
+        <h2 id="about-h" class="sec-title reveal">about <em>me</em></h2>
+        <p class="lead reveal">I&rsquo;m drawn to the place where numbers meet people. I study data science at Boston University, but what I care about most is turning data into something a person can understand and use.</p>
+        <p class="reveal">That&rsquo;s what pulls me toward UX: research shows me what people need, data shows me what&rsquo;s actually happening, and design is how I make both clear. So far that has looked like app concepts in Figma, statistical models in R, and social graphics for a campus club.</p>
+        <p class="reveal">[Add one detail only you could say: what you do outside class, or what first got you into design.]</p>
+
+        <div class="facts-grid">
+          <div class="fg reveal">
+            <h3>education</h3>
+            <ul class="timeline">
+              <li><b>Boston University</b><span>B.S. Data Science, Class of May 2028</span></li>
+              <li><b>Minors</b><span>Astronomy, Physics</span></li>
+            </ul>
+          </div>
+          <div class="fg reveal">
+            <h3>involvement</h3>
+            <ul class="timeline">
+              <li><b>BU Astronomical Society</b><span>Treasurer &middot; Social Media Coordinator</span></li>
+              <li><b>Mom&rsquo;s Hierarchy of Needs</b><span>Graphic Design &amp; Branding Apprentice</span></li>
+            </ul>
+          </div>
+          <div class="fg reveal">
+            <h3>toolkit</h3>
+            <ul class="pills">
+              <li>Figma</li><li>R</li><li>Canva</li><li>user interviews</li><li>affinity mapping</li><li>prototyping</li><li>regression</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <article class="card card--about c">
-      <h2>Hi, I&rsquo;m Larianna!</h2>
-      <ul>
-        <li><b>Boston University</b></li>
-        <li>B.S. Data Science</li>
-        <li>Minors: Astronomy, Physics</li>
-        <li>Class of May 2028</li>
-        <li>Treasurer, BU Astro Society</li>
-      </ul>
-    </article>
-
-    <article class="card card--do c">
-      <h2>What I do</h2>
-      <ul>
-        <li>Data analysis</li>
-        <li>UX research &amp; design</li>
-        <li>Data-informed design</li>
-      </ul>
-    </article>
   </section>
 
-  <section class="proj-source" id="projects" aria-label="Selected work">
-    <h2 class="list-title">Selected <em>work</em></h2>
+  <!-- =====================================================================
+       PROCESS
+       ===================================================================== -->
+  <section class="process" id="process" aria-labelledby="process-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-num reveal">03 / process</p>
+        <h2 id="process-h" class="sec-title reveal">my <em>process</em></h2>
+        <p class="sec-note reveal">Every project starts with a question and ends with something a person can use. Here&rsquo;s how I get from one to the other.</p>
+      </div>
 
-    <!-- PROJECT 1 -->
-    <article class="proj" data-tags="ux">
-      <div class="proj-head">
-        <span class="proj-num">01</span>
-        <ul class="proj-tags"><li class="ptag ptag--ux">UX</li><li class="ptag ptag--wip">In progress</li></ul>
-        <h3>Building a Professional Wardrobe</h3>
-        <p class="proj-context">Solo semester project &middot; UX/UI Design &middot; Boston University</p>
-      </div>
-      <p class="proj-blurb">An app that helps adults entering or re-entering the workforce build a professional wardrobe.</p>
-      <p class="proj-result"><strong>Result</strong>A user interface with features including a scoring system, outfit builder, budget-inspired shopping list, and a personal, digital wardrobe.</p>
-      <p class="proj-tools">Figma &middot; user interviews &middot; affinity mapping &middot; personas &middot; user flows</p>
-      <dl class="proj-facts">
-        <dt>Question</dt>
-        <dd>How do adults entering or re-entering the workforce build a professional wardrobe, and where does that process become difficult?</dd>
-        <dt>What I did</dt>
-        <dd>I ran three user interviews, synthesized the findings, created a persona, and mapped opportunities, user stories and user flows in Figma. Currently using low-fidelity sketches to create a high-fidelity prototype.</dd>
-      </dl>
-      <p class="proj-links"><a class="pbtn" href="wardrobe-case-study.html">Read case study &rarr;</a></p>
-      <div class="proj-images">
-        <img src="images/preview-wardrobe.jpg" alt="Screens from the professional wardrobe app" loading="lazy" onerror="this.style.visibility='hidden'">
-        <!-- To add more pictures, copy the <img> line above and change the file name -->
-      </div>
-    </article>
-
-    <!-- PROJECT 2 (no pictures: the binder shows the result as a big quote instead) -->
-    <article class="proj" data-tags="data">
-      <div class="proj-head">
-        <span class="proj-num">02</span>
-        <ul class="proj-tags"><li class="ptag ptag--data">Data</li></ul>
-        <h3>Signs of Mental Illness in Fatal Police Shootings</h3>
-        <p class="proj-context">Group project &middot; Applied Statistics &middot; Boston University</p>
-      </div>
-      <p class="proj-blurb">A logistic regression analysis of 6,421 fatal police shootings, asking which circumstances go with the person showing signs of mental illness.</p>
-      <p class="proj-result"><strong>Result</strong>People with a knife or other non-gun object had about twice the odds of showing signs of mental illness as people with a gun. People who were fleeing had 60&ndash;74% lower odds.</p>
-      <p class="proj-tools">R &middot; logistic regression &middot; model comparison (AIC) &middot; calibration checks</p>
-      <dl class="proj-facts">
-        <dt>Question</dt>
-        <dd>Which circumstances of a fatal police shooting are associated with the person showing signs of mental illness?</dd>
-        <dt>What we did</dt>
-        <dd>My group and I cleaned the Washington Post Fatal Force database (6,421 cases, 2015&ndash;2021), compared four logistic regression models, and checked the final model's assumptions.</dd>
-        <dt>My role</dt>
-        <dd>I fit the candidate models in R, compared them, justified the final choice, and interpreted the coefficients and associated errors in context.</dd>
-      </dl>
-      <p class="proj-links"><a class="pbtn" href="files/police-shootings-presentation.pdf" target="_blank" rel="noopener">View presentation (PDF) &#8599;</a></p>
-    </article>
-
-    <!-- PROJECT 3 -->
-    <article class="proj" data-tags="ux">
-      <div class="proj-head">
-        <span class="proj-num">03</span>
-        <ul class="proj-tags"><li class="ptag ptag--ux">UX</li></ul>
-        <h3>Helping Students Find Community</h3>
-        <p class="proj-context">Group monthly challenge &middot; FORGE &middot; Boston University</p>
-      </div>
-      <p class="proj-blurb">An app that helps students find clubs and communities that match their interests on a large, diverse campus.</p>
-      <p class="proj-result"><strong>Result</strong>An app that allows students to swipe through campus organizations, add events to a calendar, view student and club profiles, and chat with each other.</p>
-      <p class="proj-tools">Figma &middot; personas &middot; user flows &middot; low fidelity &middot; high fidelity &middot; prototyping</p>
-      <dl class="proj-facts">
-        <dt>Question</dt>
-        <dd>How do students find clubs and communities that match their specific interests, especially on a large, diverse campus?</dd>
-        <dt>What we did</dt>
-        <dd>We created user personas and a user flow, presented our low fidelity wireframes, and constructed a high fidelity prototype in Figma.</dd>
-        <dt>My role</dt>
-        <dd>I helped with overall design and branding, including color palette and typeface choices. I also designed and prototyped the profile screens, for both the user's profile, other students' profiles, and club profiles.</dd>
-      </dl>
-      <p class="proj-links"><a class="pbtn" href="campfire-case-study.html">Read case study &rarr;</a></p>
-      <div class="proj-images">
-        <img src="images/preview-campfire.jpg" alt="Screens from the student community app prototype" loading="lazy" onerror="this.style.visibility='hidden'">
-      </div>
-    </article>
-
-    <!-- PROJECT 4 -->
-    <article class="proj" data-tags="design">
-      <div class="proj-head">
-        <span class="proj-num">04</span>
-        <ul class="proj-tags"><li class="ptag ptag--design">Design</li></ul>
-        <h3>BU Astronomical Society Social Media</h3>
-        <p class="proj-context">Social Media Coordinator &middot; BU Astronomical Society</p>
-      </div>
-      <p class="proj-blurb">Reusable Canva templates that give the club's meeting announcements a consistent, recognizable look.</p>
-      <p class="proj-result"><strong>Result</strong>Averaged 3000+ views per post and achieved attendance of 40+ new members for meetings.</p>
-      <p class="proj-tools">Canva</p>
-      <dl class="proj-facts">
-        <dt>Goal</dt>
-        <dd>Announce club meetings with a consistent, recognizable look.</dd>
-        <dt>What I did</dt>
-        <dd>Designed reusable Canva templates, one for regular meetings and one for Journal Club, and used them to announce meetings all year.</dd>
-      </dl>
-      <div class="proj-images">
-        <img src="images/observatory-night.jpg" alt="A Canva social media graphic announcing Observatory Night for the BU Astronomical Society" loading="lazy" onerror="this.style.visibility='hidden'">
-        <img src="images/journal-club.jpg" alt="Journal Club announcement graphic showing the featured research paper" loading="lazy" onerror="this.style.visibility='hidden'">
-      </div>
-    </article>
-
-    <!-- PROJECT 5 -->
-    <article class="proj" data-tags="design data">
-      <div class="proj-head">
-        <span class="proj-num">05</span>
-        <ul class="proj-tags"><li class="ptag ptag--design">Design</li><li class="ptag ptag--data">Data</li></ul>
-        <h3>Research Infographics for Caregivers</h3>
-        <p class="proj-context">Graphic Design &amp; Branding Apprentice &middot; Mom&rsquo;s Hierarchy of Needs, LLC</p>
-      </div>
-      <p class="proj-blurb">Infographics that turn a study on caregivers with cancer into something employers can understand at a glance.</p>
-      <p class="proj-result"><strong>Result</strong>[Where the graphics were published or how they were used.]</p>
-      <p class="proj-tools">Figma</p>
-      <dl class="proj-facts">
-        <dt>Goal</dt>
-        <dd>Turn findings from a study on caregivers with cancer into infographics employers can understand quickly.</dd>
-        <dt>What I did</dt>
-        <dd>Designed a set of infographics in Figma, including versions sized for Pinterest and LinkedIn, and a larger summary graphic of the study. I followed the organization&rsquo;s existing brand and color palette closely.</dd>
-      </dl>
-      <div class="proj-images">
-        <img src="images/mhon-harmful-practices.jpg" alt="Infographic listing harmful employer practices according to caregivers with cancer, in Pinterest and LinkedIn sizes" loading="lazy" onerror="this.style.visibility='hidden'">
-        <img src="images/mhon-self-care.jpg" alt="Infographic on how employers can support caregivers with cancer, summarizing a research study" loading="lazy" onerror="this.style.visibility='hidden'">
-      </div>
-    </article>
+      <ol class="steps" id="steps">
+        <li class="step">
+          <span class="st-num">01</span>
+          <h3>Ask.</h3>
+          <p>I start with a clear question: who is this for, and what do they need to know or do?</p>
+          <p class="st-ex"><span>in practice</span>For my wardrobe app: how do adults entering or re-entering the workforce build a professional wardrobe, and where does it get hard?</p>
+        </li>
+        <li class="step">
+          <span class="st-num">02</span>
+          <h3>Explore.</h3>
+          <p>I look at the data and talk to people. Numbers show what happens, interviews show why.</p>
+          <p class="st-ex"><span>in practice</span>I ran three user interviews, then used affinity mapping to turn them into a persona.</p>
+        </li>
+        <li class="step">
+          <span class="st-num">03</span>
+          <h3>Build.</h3>
+          <p>I turn what I learn into a model, a visual, or an interface that makes it easy to understand.</p>
+          <p class="st-ex"><span>in practice</span>In R, I fit and compared four logistic regression models on 6,421 cases.</p>
+        </li>
+        <li class="step">
+          <span class="st-num">04</span>
+          <h3>Check &amp; refine.</h3>
+          <p>I test my assumptions, notice what doesn&rsquo;t work, explain the limits, and improve it.</p>
+          <p class="st-ex"><span>in practice</span>Before interpreting anything, I checked the final model&rsquo;s assumptions and calibration.</p>
+        </li>
+      </ol>
+    </div>
   </section>
-  <!-- Contact pages for the end of the binder -->
-  <template id="tpl-contact-top">
-    <div class="face-in face-in--contact-t">
-      <p class="eyebrow">The end (for now)</p>
-      <h3 class="ct-title">Have a role, project, or question in mind?</h3>
-      <p class="ct-text">Tell me a little about it. I&rsquo;d love to hear from you.</p>
-    </div>
-  </template>
-  <template id="tpl-contact-bottom">
-    <div class="face-in face-in--contact-b">
-      <div class="ct-links">
-        <a class="pbtn pbtn--solid" href="mailto:lariannaramsey@gmail.com">Email me &#8599;</a>
-        <button type="button" class="pbtn" data-copy="lariannaramsey@gmail.com">Copy email</button>
-        <a class="pbtn" href="https://www.linkedin.com/in/lariannaramsey/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
-        <a class="pbtn" href="https://github.com/larianna-ramsey" target="_blank" rel="noopener">GitHub &#8599;</a>
-        <a class="pbtn" href="resume.pdf" target="_blank" rel="noopener">Resume (PDF) &#8599;</a>
-      </div>
-      <p class="ct-small">lariannaramsey@gmail.com</p>
-    </div>
-  </template>
-  <!-- =====================================================================
-       THE DESK EXTRAS
-       ===================================================================== -->
-
-  <!-- Folders: click to jump into the binder -->
-  <button type="button" class="item desk-deco folder" data-jump="ux" aria-label="Open the binder to my UX projects" style="--x:79; --y:12.5; --w:9; --h:10.5; --r:-4deg; --z:6">
-    <svg viewBox="0 0 120 96" aria-hidden="true" focusable="false"><path d="M6 14 q0-8 8-8 h30 q6 0 9 5 l4 6 h49 q8 0 8 8 v52 q0 8-8 8 H14 q-8 0-8-8z" fill="#9db4ee"/><rect x="6" y="26" width="108" height="64" rx="8" fill="url(#fg1)"/><defs><linearGradient id="fg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9e2ff"/><stop offset="1" stop-color="#a9bdf2"/></linearGradient></defs></svg>
-    <span class="f-name">ux_projects</span>
-  </button>
-  <button type="button" class="item desk-deco folder" data-jump="data" aria-label="Open the binder to my data projects" style="--x:88.5; --y:19; --w:9; --h:10.5; --r:3deg; --z:6">
-    <svg viewBox="0 0 120 96" aria-hidden="true" focusable="false"><path d="M6 14 q0-8 8-8 h30 q6 0 9 5 l4 6 h49 q8 0 8 8 v52 q0 8-8 8 H14 q-8 0-8-8z" fill="#9db4ee"/><rect x="6" y="26" width="108" height="64" rx="8" fill="url(#fg1)"/></svg>
-    <span class="f-name">data_projects</span>
-  </button>
-  <button type="button" class="item desk-deco folder" data-jump="design" aria-label="Open the binder to my design work" style="--x:80.5; --y:25; --w:9; --h:10.5; --r:-2deg; --z:6">
-    <svg viewBox="0 0 120 96" aria-hidden="true" focusable="false"><path d="M6 14 q0-8 8-8 h30 q6 0 9 5 l4 6 h49 q8 0 8 8 v52 q0 8-8 8 H14 q-8 0-8-8z" fill="#9db4ee"/><rect x="6" y="26" width="108" height="64" rx="8" fill="url(#fg1)"/></svg>
-    <span class="f-name">design_work</span>
-  </button>
-
-  <!-- AirDrop-style resume card -->
-  <div class="item airdrop" style="--x:66.5; --y:35.2; --w:19; --h:12; --r:2.5deg; --z:5">
-    <div class="ad-art" aria-hidden="true"></div>
-    <div class="ad-body">
-      <p class="ad-t"><b>AirDrop</b></p>
-      <p class="ad-s">&ldquo;Larianna&rdquo; would like to share a resume.</p>
-      <div class="ad-btns">
-        <button type="button" class="ad-no" id="ad-no">Decline</button>
-        <a class="ad-yes" href="resume.pdf" target="_blank" rel="noopener">Accept</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sticky note: process -->
-  <button type="button" class="item sticky" id="open-process" aria-label="Read about my process" style="--x:87.8; --y:38; --w:10; --h:10.5; --r:4deg; --z:5">
-    <span class="st-title">process</span>
-    <span class="st-steps" aria-hidden="true">ask &rarr; explore<br>build &rarr; refine</span>
-    <span class="st-read">read me &#8599;</span>
-  </button>
-
-  <!-- Contact card -->
-  <div class="item bizcard" style="--x:65.2; --y:48.4; --w:24.5; --h:7; --r:-1.5deg; --z:5">
-    <span class="bz-script">say hello</span>
-    <button type="button" class="bz-email" data-copy="lariannaramsey@gmail.com" aria-label="Copy my email address">lariannaramsey@gmail.com <em>copy</em></button>
-    <span class="bz-links">
-      <a href="mailto:lariannaramsey@gmail.com">Email</a>
-      <a href="https://www.linkedin.com/in/lariannaramsey/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/larianna-ramsey" target="_blank" rel="noopener">GitHub</a>
-    </span>
-  </div>
-
-  <!-- Pen -->
-  <button type="button" class="item desk-deco pen" id="pen" aria-label="Pink pen" style="--x:61.6; --y:30; --w:3; --h:17; --r:24deg; --z:7">
-    <svg viewBox="0 0 30 170" aria-hidden="true" focusable="false">
-      <rect x="6" y="14" width="18" height="120" rx="7" fill="#CA9BAA" stroke="#5B3C45" stroke-width="2"/>
-      <rect x="6" y="14" width="18" height="30" rx="7" fill="#EDE3D0" stroke="#5B3C45" stroke-width="2"/>
-      <rect x="22" y="2" width="4" height="56" rx="2" fill="#c8a25a"/>
-      <path d="M6 134 H24 L15 168 Z" fill="#EDE3D0" stroke="#5B3C45" stroke-width="2" stroke-linejoin="round"/>
-      <path d="M12.5 160 L15 168 L17.5 160 Z" fill="#5B3C45"/>
-    </svg>
-  </button>
-
-  <!-- Cursor -->
-  <svg class="item desk-deco cursor" viewBox="0 0 30 40" aria-hidden="true" focusable="false" style="--x:53.5; --y:45.5; --w:3.6; --h:4.8; --z:9">
-    <path d="M3 2 L3 31 L10 24 L15 36 L20 34 L15 22 L25 22 Z" fill="#fff" stroke="#2a0a12" stroke-width="2.4" stroke-linejoin="round"/>
-  </svg>
-
-  <!-- The binder -->
-  <button type="button" class="item desk-deco binder-closed" id="open-binder" aria-label="Open my portfolio binder to see my work" style="--x:35.5; --y:29; --w:29; --h:24.5; --r:-1.2deg; --z:6">
-    <span class="bc-rings" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
-    <span class="bc-body" aria-hidden="true"></span>
-    <span class="bc-label">
-      <small class="bc-eyebrow">selected</small>
-      <strong>work</strong>
-      <span class="bc-script">Larianna Ramsey</span>
-    </span>
-    <span class="bc-band" aria-hidden="true"></span>
-    <span class="bc-charm" aria-hidden="true">&#10022;</span>
-    <span class="hint hint--desk" style="left:6em; top:-2.6em">open me!</span>
-  </button>
 
   <!-- =====================================================================
-       THE OPEN BINDER (built by desk.js from the project data above)
+       CONTACT
        ===================================================================== -->
-  <div class="binder-view" id="binder-view" role="dialog" aria-modal="true" aria-label="Portfolio binder" hidden>
-    <button type="button" class="bv-close" id="bv-close">Close &times;</button>
-    <div class="binder">
-      <div class="binder-pages">
-        <div class="leafbox" id="pages"></div>
-        <div class="rings" aria-hidden="true"></div>
-        <button type="button" class="peel peel--prev" id="peel-prev" aria-label="Previous page"></button>
-        <button type="button" class="peel peel--next" id="peel-next" aria-label="Next page"></button>
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap contact-grid">
+      <div>
+        <p class="sec-num reveal">04 / contact</p>
+        <h2 id="contact-h" class="sec-title reveal">say <em>hello</em></h2>
+        <p class="contact-q reveal">Have a role, project, or question in mind? Tell me a little about it. I&rsquo;d love to hear from you.</p>
+        <div class="contact-links reveal">
+          <a class="pbtn pbtn--light" href="mailto:lariannaramsey@gmail.com">Email me &#8599;</a>
+          <button type="button" class="pbtn pbtn--ghost" data-copy="lariannaramsey@gmail.com">Copy email</button>
+          <a class="pbtn pbtn--ghost" href="https://www.linkedin.com/in/lariannaramsey/" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+          <a class="pbtn pbtn--ghost" href="https://github.com/larianna-ramsey" target="_blank" rel="noopener">GitHub &#8599;</a>
+          <a class="pbtn pbtn--ghost" href="resume.pdf" target="_blank" rel="noopener">Resume (PDF) &#8599;</a>
+        </div>
+        <p class="contact-mail reveal">lariannaramsey@gmail.com</p>
       </div>
-      <nav class="tabs" id="tabs" aria-label="Jump to a project"></nav>
+      <p class="signature reveal" aria-hidden="true">Larianna</p>
     </div>
-    <div class="bv-controls">
-      <button type="button" class="bv-btn" id="bv-prev">&larr; Back</button>
-      <span class="bv-status" id="bv-status" aria-live="polite"></span>
-      <button type="button" class="bv-btn" id="bv-next">Next &rarr;</button>
-    </div>
-  </div>
-
-</div><!-- /stage -->
+    <footer class="wrap">
+      <div class="footer">
+        <span>Larianna Ramsey</span>
+        <span>Data science &middot; UX &middot; Boston, MA</span>
+        <a href="#top">back to top &uarr;</a>
+      </div>
+    </footer>
+  </section>
+</main>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-<dialog id="note-dialog" class="note-dialog" aria-label="My process">
-  <button type="button" class="note-close" id="note-close" aria-label="Close">&times;</button>
-  <h2>my process</h2>
-  <ol>
-    <li><b>Ask.</b> I start with a clear question: who is this for, and what do they need to know or do?</li>
-    <li><b>Explore.</b> I look at the data and talk to people. Numbers show what happens, interviews show why.</li>
-    <li><b>Build.</b> I turn what I learn into a model, a visual, or an interface that makes it easy to understand.</li>
-    <li><b>Check &amp; refine.</b> I test my assumptions, notice what doesn&rsquo;t work, explain the limits, and improve it.</li>
-  </ol>
-</dialog>
 
 <dialog id="lightbox" class="lightbox" aria-label="Project images">
   <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
@@ -379,6 +433,6 @@
   <p class="lightbox-caption"></p>
 </dialog>
 
-<script src="desk.js?v=1"></script>
+<script src="desk.js?v=3"></script>
 </body>
 </html>
