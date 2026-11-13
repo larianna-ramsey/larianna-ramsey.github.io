@@ -182,13 +182,15 @@
 
   /* =====================================================================
      PROJECT FOLDERS: a drawer of manila folders
-     Click a tab: the open folder closes, the chosen one lifts out,
-     moves to the front of the stack, and its front flap opens.
+     Click a tab: the chosen folder rises out of the stack, comes forward
+     and settles in front in ONE continuous motion, and its front flap
+     swings open as it lands. The open folder's flap closes at the same time.
      ===================================================================== */
   var drawer = $('#drawer');
   var folders = $$('.folder', drawer);
   var order = folders.map(function (_, i) { return i; });   // order[0] is the folder in front
-  var arrived = false, timers = [];
+  var arrived = false, moving = null;                       // moving = { folder, anim } while a folder is travelling
+  var DURATION = 640;
 
   function layout() {
     order.forEach(function (fi, p) {
@@ -204,29 +206,50 @@
     if (on) paper.removeAttribute('inert'); else paper.setAttribute('inert', '');
   }
   function after(ms, fn) { return setTimeout(fn, reduce.matches ? 0 : ms); }
-  function later(ms, fn) { timers.push(after(ms, fn)); }
+  function rem() { return parseFloat(getComputedStyle(document.documentElement).fontSize) || 16; }
 
-  // The steps overlap instead of waiting for each other, and a new click
-  // takes over right away instead of waiting in line.
+  // stop a folder mid-flight and let it glide on from wherever it is right now
+  function stopMoving() {
+    if (!moving) return;
+    var f = moving.folder, now = getComputedStyle(f).transform;
+    moving.anim.cancel();
+    f.style.transform = now === 'none' ? '' : now;
+    f.classList.remove('moving');
+    void f.offsetWidth;                                     // let the browser register the frozen spot
+    f.style.transform = '';                                 // ...then the normal transition carries it on
+    moving = null;
+  }
+
   function choose(fi) {
     var target = folders[fi];
-    timers.forEach(clearTimeout); timers = [];
-    folders.forEach(function (f) {
-      if (f === target) return;
-      f.classList.remove('lift');
-      if (f.classList.contains('open')) setOpen(f, false);
-    });
-    if (order[0] === fi) { target.classList.remove('lift'); setOpen(target, true); return; }
+    if (moving && moving.folder === target) return;         // already on its way
+    stopMoving();
+    folders.forEach(function (f) { if (f !== target && f.classList.contains('open')) setOpen(f, false); });
+    if (order[0] === fi) { setOpen(target, true); return; }
 
-    target.classList.add('lift');                            // 1. chosen folder rises while the front one closes
-    later(220, function () {
-      order = [fi].concat(order.filter(function (x) { return x !== fi; }));
-      layout();                                              // 2. slides to the front while still lifted
-      later(170, function () {
-        target.classList.remove('lift');                     // 3. settles into place
-        later(150, function () { setOpen(target, true); });  // 4. flap swings open as it lands
-      });
-    });
+    var oldP = order.indexOf(fi);
+    var r = rem();
+    var fromY = oldP * -.8 * r;                             // where it sits in the stack now
+    var peakY = fromY - 3 * r;                              // how high it rises
+
+    order = [fi].concat(order.filter(function (x) { return x !== fi; }));
+    layout();                                               // the other folders start sliding back right away
+    setOpen(target, true);                                  // flap opening is delayed in CSS so it happens on landing
+
+    if (reduce.matches || !target.animate) return;
+
+    target.classList.add('moving');                         // CSS transition steps aside; this animation drives it
+    var anim = target.animate([
+      { offset: 0,   transform: 'translateY(' + fromY + 'px) rotate(0deg)',   zIndex: 20 - oldP, easing: 'cubic-bezier(.3, 0, .3, 1)' },
+      { offset: .36, transform: 'translateY(' + peakY + 'px) rotate(-.6deg)', zIndex: 20 - oldP },
+      { offset: .37, transform: 'translateY(' + (peakY + .02 * r) + 'px) rotate(-.6deg)', zIndex: 25, easing: 'cubic-bezier(.3, 0, .2, 1)' },
+      { offset: 1,   transform: 'translateY(0px) rotate(0deg)',               zIndex: 25 }
+    ], { duration: DURATION });
+    moving = { folder: target, anim: anim };
+    anim.onfinish = function () {
+      target.classList.remove('moving');
+      if (moving && moving.anim === anim) moving = null;
+    };
   }
 
   folders.forEach(function (f, i) {
@@ -257,7 +280,7 @@
     if (arrived) return;
     arrived = true;
     drawer.classList.add('in');
-    if (!skipOpen) after(600, function () { if (!timers.length && !folders[order[0]].classList.contains('open')) setOpen(folders[order[0]], true); });
+    if (!skipOpen) after(600, function () { if (!moving && !folders[order[0]].classList.contains('open')) setOpen(folders[order[0]], true); });
   }
   if (hasIO) {
     var drawerIO = new IntersectionObserver(function (entries) {

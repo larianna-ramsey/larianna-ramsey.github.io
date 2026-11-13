@@ -200,14 +200,15 @@ html.js .ch { animation: dropin .8s var(--spring) backwards; animation-delay: ca
   mask: radial-gradient(circle 1.7rem at 50% 0, transparent 97%, #000 100%);
   transform-origin: 50% 100%;
   transform: perspective(1400px) rotateX(0deg);
-  transition: transform .3s cubic-bezier(.4, 0, .6, 1);          /* closing: quick */
+  transition: transform .26s cubic-bezier(.4, 0, .6, 1);         /* closing: quick, so it's shut before the new folder passes in front */
   will-change: transform;
   backface-visibility: hidden;
   pointer-events: none;
 }
-.f-front::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: rgba(65, 0, 22, .18); opacity: 0; transition: opacity .3s; }
-.folder.open .f-front { transform: perspective(1400px) rotateX(-88deg); transition-duration: .5s; transition-timing-function: cubic-bezier(.2, .8, .2, 1); }   /* opening: smooth swing */
-.folder.open .f-front::after { opacity: 1; transition-duration: .5s; }
+.f-front::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: rgba(65, 0, 22, .18); opacity: 0; transition: opacity .26s; }
+/* opening: starts while the folder is still settling, so lifting and opening read as one motion */
+.folder.open .f-front { transform: perspective(1400px) rotateX(-88deg); transition: transform .55s cubic-bezier(.25, .7, .2, 1) .3s; }
+.folder.open .f-front::after { opacity: 1; transition: opacity .55s ease .3s; }
 .ff-num { font: 800 clamp(4rem, 9vw, 7.5rem)/.8 var(--f-display); letter-spacing: -.05em; color: transparent; -webkit-text-stroke: 1.5px rgba(65, 0, 22, .3); }
 html:not(.js) .f-front { display: none; }
 html:not(.js) .folder { margin-bottom: 2rem; padding-top: .1px; }
@@ -223,8 +224,8 @@ html.js .folder {
 html.js .folder.front { position: relative; top: 0; }
 html.js .folder { pointer-events: none; }
 html.js .folder .f-tab, html.js .folder .f-back, html.js .folder .f-paper { pointer-events: auto; }
-html.js .folder.lift .f-back, html.js .folder.lift .f-paper { pointer-events: none; }   /* a rising folder never blocks the other tabs */
-html.js .folder.lift { z-index: 25; transform: translateY(calc(var(--p, 0) * -.8rem - 2.8rem)) rotate(-.6deg); }
+html.js .folder.moving .f-back, html.js .folder.moving .f-paper { pointer-events: none; }   /* a travelling folder never blocks the other tabs */
+html.js .folder.moving { transition: translate .3s var(--spring), opacity .6s; }   /* JavaScript animates its movement */
 /* folders further back look a little darker (a fading overlay is much cheaper to animate than a filter) */
 html.js .folder .f-back::after, html.js .folder .f-tab::after {
   content: ""; position: absolute; inset: 0; border-radius: inherit; background: #000; pointer-events: none;
