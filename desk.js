@@ -188,7 +188,7 @@
   var drawer = $('#drawer');
   var folders = $$('.folder', drawer);
   var order = folders.map(function (_, i) { return i; });   // order[0] is the folder in front
-  var busy = false, arrived = false, queued = null;
+  var arrived = false, timers = [];
 
   function layout() {
     order.forEach(function (fi, p) {
@@ -204,26 +204,27 @@
     if (on) paper.removeAttribute('inert'); else paper.setAttribute('inert', '');
   }
   function after(ms, fn) { return setTimeout(fn, reduce.matches ? 0 : ms); }
+  function later(ms, fn) { timers.push(after(ms, fn)); }
 
+  // The steps overlap instead of waiting for each other, and a new click
+  // takes over right away instead of waiting in line.
   function choose(fi) {
-    if (busy) { queued = fi; return; }
     var target = folders[fi];
-    if (order[0] === fi) { setOpen(target, true); return; }
-    busy = true;
-    setOpen(folders[order[0]], false);                       // 1. close the front folder
-    after(450, function () {
-      target.classList.add('lift');                          // 2. pull the chosen folder up
-      after(420, function () {
-        order = [fi].concat(order.filter(function (x) { return x !== fi; }));
-        layout();                                            // 3. move it to the front
-        after(60, function () {
-          target.classList.remove('lift');                   // 4. set it down
-          after(400, function () {
-            setOpen(target, true);                           // 5. open the flap
-            busy = false;
-            if (queued !== null && queued !== fi) { var q = queued; queued = null; choose(q); } else queued = null;
-          });
-        });
+    timers.forEach(clearTimeout); timers = [];
+    folders.forEach(function (f) {
+      if (f === target) return;
+      f.classList.remove('lift');
+      if (f.classList.contains('open')) setOpen(f, false);
+    });
+    if (order[0] === fi) { target.classList.remove('lift'); setOpen(target, true); return; }
+
+    target.classList.add('lift');                            // 1. chosen folder rises while the front one closes
+    later(220, function () {
+      order = [fi].concat(order.filter(function (x) { return x !== fi; }));
+      layout();                                              // 2. slides to the front while still lifted
+      later(170, function () {
+        target.classList.remove('lift');                     // 3. settles into place
+        later(150, function () { setOpen(target, true); });  // 4. flap swings open as it lands
       });
     });
   }
@@ -256,7 +257,7 @@
     if (arrived) return;
     arrived = true;
     drawer.classList.add('in');
-    if (!skipOpen) after(750, function () { if (!busy && !folders[order[0]].classList.contains('open')) setOpen(folders[order[0]], true); });
+    if (!skipOpen) after(600, function () { if (!timers.length && !folders[order[0]].classList.contains('open')) setOpen(folders[order[0]], true); });
   }
   if (hasIO) {
     var drawerIO = new IntersectionObserver(function (entries) {
@@ -275,7 +276,7 @@
       }
       arrive(true);
       scrollToDrawer();
-      after(550, function () { choose(idx); });
+      after(450, function () { choose(idx); });
     });
   });
 

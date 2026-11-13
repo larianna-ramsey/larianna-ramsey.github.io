@@ -183,12 +183,11 @@ html.js .ch { animation: dropin .8s var(--spring) backwards; animation-delay: ca
   display: flex; align-items: center; gap: .5rem; padding: .3rem .65rem .15rem;
   border: 0; border-radius: .8rem .8rem 0 0; background: var(--manila); color: var(--wine);
   text-align: left; cursor: pointer;
-  transition: filter .45s;
 }
 .t-num { font: 500 .7rem var(--f-mono); letter-spacing: .06em; opacity: .8; }
 .t-name { flex: 1; min-width: 0; padding: .22rem .55rem; border-radius: .25rem; background: var(--sticker, var(--paper)); font: 700 .84rem/1.15 var(--f-display); letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: 0 1px 0 rgba(65, 0, 22, .12); }
 .f-tab--dark .t-name { color: var(--champagne); }
-.f-back { position: absolute; z-index: 0; top: 2.5rem; left: 0; right: 0; bottom: 0; background: var(--manila); border-radius: .4rem 1rem 1rem 1rem; box-shadow: 0 -.2rem .6rem rgba(42, 6, 18, .25), inset 0 1px 0 rgba(255, 255, 255, .45); transition: filter .45s; }
+.f-back { position: absolute; z-index: 0; top: 2.5rem; left: 0; right: 0; bottom: 0; background: var(--manila); border-radius: .4rem 1rem 1rem 1rem; box-shadow: 0 -.2rem .6rem rgba(42, 6, 18, .25), inset 0 1px 0 rgba(255, 255, 255, .45); }
 .f-paper { position: relative; z-index: 1; margin: 3.4rem 1rem 1.4rem; }
 .f-paper::before { content: ""; position: absolute; z-index: -1; top: -.5rem; left: 2rem; right: 2.6rem; height: 2rem; background: #efe7d7; border-radius: .4rem; transform: rotate(.8deg); }
 .f-front {
@@ -200,12 +199,15 @@ html.js .ch { animation: dropin .8s var(--spring) backwards; animation-delay: ca
   -webkit-mask: radial-gradient(circle 1.7rem at 50% 0, transparent 97%, #000 100%);
   mask: radial-gradient(circle 1.7rem at 50% 0, transparent 97%, #000 100%);
   transform-origin: 50% 100%;
-  transition: transform .6s cubic-bezier(.55, 0, .2, 1);
+  transform: perspective(1400px) rotateX(0deg);
+  transition: transform .3s cubic-bezier(.4, 0, .6, 1);          /* closing: quick */
+  will-change: transform;
+  backface-visibility: hidden;
   pointer-events: none;
 }
-.f-front::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: rgba(65, 0, 22, .18); opacity: 0; transition: opacity .6s; }
-.folder.open .f-front { transform: rotateX(-88deg); }
-.folder.open .f-front::after { opacity: 1; }
+.f-front::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: rgba(65, 0, 22, .18); opacity: 0; transition: opacity .3s; }
+.folder.open .f-front { transform: perspective(1400px) rotateX(-88deg); transition-duration: .5s; transition-timing-function: cubic-bezier(.2, .8, .2, 1); }   /* opening: smooth swing */
+.folder.open .f-front::after { opacity: 1; transition-duration: .5s; }
 .ff-num { font: 800 clamp(4rem, 9vw, 7.5rem)/.8 var(--f-display); letter-spacing: -.05em; color: transparent; -webkit-text-stroke: 1.5px rgba(65, 0, 22, .3); }
 html:not(.js) .f-front { display: none; }
 html:not(.js) .folder { margin-bottom: 2rem; padding-top: .1px; }
@@ -215,13 +217,19 @@ html.js .folder {
   position: absolute; top: 3.4rem; left: 0; right: 0; bottom: 0; overflow: hidden;
   z-index: calc(20 - var(--p, 0));
   transform: translateY(calc(var(--p, 0) * -.8rem));
-  transition: transform .45s cubic-bezier(.3, .7, .2, 1), translate .3s var(--spring), opacity .6s;
+  transition: transform .38s cubic-bezier(.2, .8, .2, 1), translate .3s var(--spring), opacity .6s;
+  will-change: transform;
 }
 html.js .folder.front { position: relative; top: 0; }
 html.js .folder { pointer-events: none; }
 html.js .folder .f-tab, html.js .folder .f-back, html.js .folder .f-paper { pointer-events: auto; }
-html.js .folder.lift { transform: translateY(calc(var(--p, 0) * -.8rem - 2.8rem)) rotate(-.6deg); }
-html.js .folder .f-back, html.js .folder .f-tab { filter: brightness(calc(1 - var(--p, 0) * .055)); }
+html.js .folder.lift .f-back, html.js .folder.lift .f-paper { pointer-events: none; }   /* a rising folder never blocks the other tabs */
+html.js .folder.lift { z-index: 25; transform: translateY(calc(var(--p, 0) * -.8rem - 2.8rem)) rotate(-.6deg); }
+/* folders further back look a little darker (a fading overlay is much cheaper to animate than a filter) */
+html.js .folder .f-back::after, html.js .folder .f-tab::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; background: #000; pointer-events: none;
+  opacity: calc(var(--p, 0) * .055); transition: opacity .38s;
+}
 html.js .folder:not(.front):has(.f-tab:hover) { translate: 0 -.5rem; }
 html.js .folder.front .f-tab { cursor: default; }
 html.js .drawer:not(.in) .folder { opacity: 0; translate: 0 2rem; }
