@@ -41,6 +41,8 @@
       var box = el.closest('.hero-title') || el.parentElement;
       var frac = parseFloat(el.getAttribute(small.matches ? 'data-fit-m' : 'data-fit')) || .8;
       var max = parseFloat(el.getAttribute('data-max')) || 9999;
+      var mvh = parseFloat(el.getAttribute('data-maxvh'));
+      if (mvh && !small.matches) max = Math.min(max, window.innerHeight * mvh);
       el.style.fontSize = '100px';
       var nat = el.offsetWidth;
       if (nat > 0) el.style.fontSize = Math.min(max, 100 * box.clientWidth * frac / nat) + 'px';
@@ -64,6 +66,14 @@
     }, { rootMargin: '-45% 0px -50% 0px' });
     $$('main section[id]').forEach(function (s) { navIO.observe(s); });
   }
+
+  /* ---------- star turns only while you scroll ---------- */
+  var star = $('.hero-star'), spinning = false;
+  window.addEventListener('scroll', function () {
+    if (spinning || reduce.matches || !star) return;
+    spinning = true;
+    requestAnimationFrame(function () { star.style.rotate = (window.scrollY * 0.06) + 'deg'; spinning = false; });
+  }, { passive: true });
 
   /* ---------- scroll reveals ---------- */
   function revealAll() { $$('.reveal').forEach(function (el) { el.classList.add('is-in'); }); }
@@ -133,13 +143,14 @@
   /* ---------- image carousels ---------- */
   $$('.car').forEach(function (car) {
     var imgs = $$('img', car);
-    var title = $('h3', car.closest('.fold')).textContent;
+    var title = $('h3', car.closest('.folder')).textContent;
     var idx = 0, count = null;
     var ph = document.createElement('span');
     ph.className = 'ph';
     car.insertBefore(ph, car.firstChild);
     imgs.forEach(function (img) {
       img.addEventListener('error', function () { img.style.visibility = 'hidden'; });
+      if (img.complete && img.naturalWidth === 0) img.style.visibility = 'hidden';   // already failed before this ran
       img.addEventListener('click', function () {
         openLightbox(imgs.filter(function (i) { return i.style.visibility !== 'hidden'; })
           .map(function (i) { return { src: i.currentSrc || i.src, alt: i.alt }; }), title);
@@ -170,84 +181,109 @@
   });
 
   /* =====================================================================
-     PROJECT FOLDERS
+     PROJECT FOLDERS: a drawer of manila folders
+     Click a tab: the open folder closes, the chosen one lifts out,
+     moves to the front of the stack, and its front flap opens.
      ===================================================================== */
-  var cabinet = $('#cabinet');
-  var folds = $$('.fold', cabinet);
-  var current = -1;
+  var drawer = $('#drawer');
+  var folders = $$('.folder', drawer);
+  var order = folders.map(function (_, i) { return i; });   // order[0] is the folder in front
+  var busy = false, arrived = false, queued = null;
 
-  function sizePanels() {
-    if (!wide.matches) { cabinet.style.removeProperty('--pw'); return; }
-    var w = cabinet.clientWidth;
-    var collapsed = folds[0] ? parseFloat(getComputedStyle(folds[0]).flexBasis) || 73.6 : 73.6;
-    var gap = parseFloat(getComputedStyle(cabinet).columnGap) || 12;
-    var pw = w - (folds.length - 1) * (collapsed + gap) - 2 * 17.6;
-    cabinet.style.setProperty('--pw', Math.max(320, pw) + 'px');
+  function layout() {
+    order.forEach(function (fi, p) {
+      var f = folders[fi];
+      f.style.setProperty('--p', p);
+      f.classList.toggle('front', p === 0);
+      $('.f-tab', f).setAttribute('aria-pressed', p === 0 ? 'true' : 'false');
+    });
   }
+  function setOpen(f, on) {
+    f.classList.toggle('open', on);
+    var paper = $('.f-paper', f);
+    if (on) paper.removeAttribute('inert'); else paper.setAttribute('inert', '');
+  }
+  function after(ms, fn) { return setTimeout(fn, reduce.matches ? 0 : ms); }
 
-  function setFold(i) {
-    current = i;
-    folds.forEach(function (f, k) {
-      var on = k === i;
-      var tab = $('.fold-tab', f), panel = $('.fold-panel', f);
-      f.classList.toggle('open', on);
-      tab.setAttribute('aria-expanded', on ? 'true' : 'false');
-      if (on) panel.removeAttribute('inert'); else panel.setAttribute('inert', '');
+  function choose(fi) {
+    if (busy) { queued = fi; return; }
+    var target = folders[fi];
+    if (order[0] === fi) { setOpen(target, true); return; }
+    busy = true;
+    setOpen(folders[order[0]], false);                       // 1. close the front folder
+    after(450, function () {
+      target.classList.add('lift');                          // 2. pull the chosen folder up
+      after(420, function () {
+        order = [fi].concat(order.filter(function (x) { return x !== fi; }));
+        layout();                                            // 3. move it to the front
+        after(60, function () {
+          target.classList.remove('lift');                   // 4. set it down
+          after(400, function () {
+            setOpen(target, true);                           // 5. open the flap
+            busy = false;
+            if (queued !== null && queued !== fi) { var q = queued; queued = null; choose(q); } else queued = null;
+          });
+        });
+      });
     });
   }
 
-  folds.forEach(function (f, k) {
-    var tab = $('.fold-tab', f);
-    $('.fold-panel', f).setAttribute('inert', '');
+  folders.forEach(function (f, i) {
+    var tab = $('.f-tab', f);
+    tab.setAttribute('aria-label', 'Show project: ' + $('h3', f).textContent);
+    $('.f-paper', f).setAttribute('inert', '');
     tab.addEventListener('click', function () {
-      if (current === k) {
-        if (!wide.matches) setFold(-1);   // on phones, tapping an open folder closes it
-        return;
-      }
-      setFold(k);
-      if (!wide.matches) setTimeout(function () { f.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'start' }); }, 30);
+      arrive(true);
+      choose(i);
+      if (!wide.matches) scrollToDrawer();
     });
     tab.addEventListener('keydown', function (e) {
       var d = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : (e.key === 'ArrowLeft' || e.key === 'ArrowUp') ? -1 : 0;
       if (!d) return;
       e.preventDefault();
-      $('.fold-tab', folds[(k + d + folds.length) % folds.length]).focus();
+      $('.f-tab', folders[(i + d + folders.length) % folders.length]).focus();
     });
   });
+  layout();
 
-  function openByTag(tag) {
-    for (var i = 0; i < folds.length; i++) {
-      if ((' ' + folds[i].getAttribute('data-tags') + ' ').indexOf(' ' + tag + ' ') > -1) { setFold(i); return; }
-    }
+  function scrollToDrawer() {
+    var y = drawer.getBoundingClientRect().top + window.scrollY - nav.offsetHeight - 12;
+    window.scrollTo({ top: Math.max(0, y), behavior: reduce.matches ? 'auto' : 'smooth' });
   }
 
-  // scrolling to the work section opens the first folder
-  var opened = false;
-  function arrive() {
-    if (opened) return;
-    opened = true;
-    cabinet.classList.add('in');
-    if (current < 0 && wide.matches) setTimeout(function () { if (current < 0) setFold(0); }, reduce.matches ? 0 : 650);
+  // when the drawer scrolls into view, the folders slide in and the front one opens
+  function arrive(skipOpen) {
+    if (arrived) return;
+    arrived = true;
+    drawer.classList.add('in');
+    if (!skipOpen) after(750, function () { if (!busy && !folders[order[0]].classList.contains('open')) setOpen(folders[order[0]], true); });
   }
   if (hasIO) {
-    var cabIO = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) { arrive(); cabIO.disconnect(); }
+    var drawerIO = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { arrive(); drawerIO.disconnect(); }
     }, { threshold: .3 });
-    cabIO.observe(cabinet);
+    drawerIO.observe(drawer);
   } else { arrive(); }
 
-  // folder icons in the hero jump to a project type
+  // folder icons on the first screen: scroll so the whole folder fits, then pull that folder
   $$('[data-open]').forEach(function (a) {
-    a.addEventListener('click', function () {
-      arrive();
-      openByTag(a.getAttribute('data-open'));
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var tag = a.getAttribute('data-open'), idx = 0;
+      for (var i = 0; i < folders.length; i++) {
+        if ((' ' + folders[i].getAttribute('data-tags') + ' ').indexOf(' ' + tag + ' ') > -1) { idx = i; break; }
+      }
+      arrive(true);
+      scrollToDrawer();
+      after(550, function () { choose(idx); });
     });
   });
 
   // links back from case-study pages (index.html#work)
-  if (location.hash === '#work') { arrive(); if (current < 0) setFold(0); }
+  if (location.hash === '#work') {
+    arrive(true);
+    setTimeout(function () { scrollToDrawer(); after(400, function () { choose(order[0]); }); }, 60);
+  }
 
-  sizePanels();
-  window.addEventListener('resize', function () { fitText(); sizePanels(); });
-  if (wide.addEventListener) wide.addEventListener('change', sizePanels);
+  window.addEventListener('resize', fitText);
 })();
