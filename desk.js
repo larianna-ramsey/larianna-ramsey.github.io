@@ -284,7 +284,8 @@
 
     var oldP = order.indexOf(fi);
     var r = rem();
-    var fromY = oldP * -.8 * r;                             // where it sits in the stack now
+    var step = parseFloat(getComputedStyle(drawer).getPropertyValue('--step')) || -.6;
+    var fromY = oldP * step * r;                            // where it sits in the stack now
 
     order = [fi].concat(order.filter(function (x) { return x !== fi; }));
     layout();                                               // the other folders start sliding back right away
