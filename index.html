@@ -492,6 +492,55 @@
       });
     })();
 
+    // "More details": open and close smoothly instead of snapping
+    (function () {
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var easing = "cubic-bezier(0.2, 0.8, 0.2, 1)";
+
+      document.querySelectorAll("details.more").forEach(function (el) {
+        var summary = el.querySelector("summary");
+        var content = el.querySelector(".facts");
+        var anim = null;
+
+        summary.addEventListener("click", function (e) {
+          if (reduceMotion || !el.animate) { return; }   // let the browser open it normally
+          e.preventDefault();
+
+          var startHeight = el.offsetHeight;
+          if (anim) { anim.cancel(); }
+
+          var opening = !el.open || el.classList.contains("is-closing");
+          var endHeight;
+
+          if (opening) {
+            el.classList.remove("is-closing");
+            el.open = true;
+            endHeight = summary.offsetHeight + content.offsetHeight +
+                        parseFloat(getComputedStyle(content).marginTop);
+            if (content.animate) {
+              content.animate(
+                [{ opacity: 0, transform: "translateY(-4px)" }, { opacity: 1, transform: "none" }],
+                { duration: 220, easing: easing }
+              );
+            }
+          } else {
+            el.classList.add("is-closing");
+            endHeight = summary.offsetHeight;
+          }
+
+          var duration = Math.min(320, Math.max(180, Math.abs(endHeight - startHeight) * 0.8));
+          anim = el.animate(
+            { height: [startHeight + "px", endHeight + "px"] },
+            { duration: duration, easing: easing }
+          );
+          anim.onfinish = function () {
+            if (!opening) { el.open = false; el.classList.remove("is-closing"); }
+            anim = null;
+          };
+        });
+      });
+    })();
+
     // Image popup: click a picture to see it bigger without leaving the page
     (function () {
       var box = document.getElementById("lightbox");
