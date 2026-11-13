@@ -149,7 +149,7 @@
     ph.className = 'ph';
     car.insertBefore(ph, car.firstChild);
     imgs.forEach(function (img) {
-      img.addEventListener('error', function () { img.style.visibility = 'hidden'; });
+      img.addEventListener('error', function () { img.style.visibility = 'hidden'; show(idx); });
       if (img.complete && img.naturalWidth === 0) img.style.visibility = 'hidden';   // already failed before this ran
       img.addEventListener('click', function () {
         openLightbox(imgs.filter(function (i) { return i.style.visibility !== 'hidden'; })
@@ -160,6 +160,7 @@
       idx = (i + imgs.length) % imgs.length;
       imgs.forEach(function (im, k) { im.classList.toggle('is-on', k === idx); });
       ph.innerHTML = 'add image:<br>' + imgs[idx].getAttribute('src');
+      car.classList.toggle('is-missing', imgs[idx].style.visibility === 'hidden');
       if (count) count.textContent = (idx + 1) + ' / ' + imgs.length;
     }
     var media = car.parentElement;
@@ -179,6 +180,55 @@
     }
     show(0);
   });
+
+  /* ---------- phone screens: click one to see the screens bigger ---------- */
+  $$('.phones').forEach(function (group) {
+    var title = (group.closest('.folder') || document).querySelector('h3, h1');
+    $$('img', group).forEach(function (img) {
+      img.addEventListener('click', function () {
+        openLightbox($$('img', group).map(function (i) { return { src: i.currentSrc || i.src, alt: i.alt }; }), title ? title.textContent : '');
+      });
+    });
+  });
+
+  /* ---------- fill each folder page before tucking text into "More details" ----------
+     Every detail that fits is shown on the page. Only the ones that would be cut off
+     go into the "More details" drop-down, and it disappears when everything fits. */
+  var fitters = $$('.folder .info').map(function (info) {
+    var details = $('.more', info);
+    if (!details) return null;
+    var tucked = $('.facts', details);
+    var shown = document.createElement('dl');
+    shown.className = 'facts facts--shown';
+    details.parentNode.insertBefore(shown, details);
+    var groups = [];
+    $$('dt', tucked).forEach(function (dt) {
+      var g = [dt], n = dt.nextElementSibling;
+      while (n && n.tagName === 'DD') { g.push(n); n = n.nextElementSibling; }
+      groups.push(g);
+    });
+    return function fit() {
+      groups.forEach(function (g) { g.forEach(function (el) { shown.appendChild(el); }); });
+      details.hidden = true;
+      if (!wide.matches) return;                               // smaller screens: the page just grows, so show everything
+      var i = groups.length;
+      while (i > 0 && info.scrollHeight > info.clientHeight + 1) {
+        i--;
+        details.hidden = false;
+        groups[i].slice().reverse().forEach(function (el) { tucked.insertBefore(el, tucked.firstChild); });
+      }
+    };
+  }).filter(Boolean);
+  var fitQueued = false;
+  function fitDetails() {
+    if (fitQueued) return;
+    fitQueued = true;
+    requestAnimationFrame(function () { fitQueued = false; fitters.forEach(function (f) { f(); }); });
+  }
+  fitDetails();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitDetails);
+  window.addEventListener('load', fitDetails);
+  window.addEventListener('resize', fitDetails);
 
   /* =====================================================================
      PROJECT FOLDERS: a drawer of manila folders

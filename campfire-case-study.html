@@ -5,138 +5,161 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Campfire Case Study | Larianna Ramsey</title>
   <meta name="description" content="A UX case study on how students find clubs and communities that match their specific interests.">
-  <meta name="theme-color" content="#dcebf7">
+  <meta name="theme-color" content="#CFDAFF">
+  <meta name="robots" content="noindex">
 
   <!-- Same fonts and stylesheet as the home page -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=12">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="desk.css?v=8">
 </head>
-<body>
-  <div class="sheet">
 
-    <!-- ============ NAV (links go back to the home page) ============ -->
-    <nav class="nav" aria-label="Main">
-      <a href="index.html">Home</a>
-      <a href="index.html#work">Work</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
+<body class="case-page">
 
-    <!-- ============ HEADER ============ -->
-    <header class="case-header">
-      <p class="eyebrow">Case study &middot; UX/UI design</p>
-      <h1 class="title">Helping students find <em>community</em></h1>
-      <p class="case-lede">
-        [One or two sentences that sum up the project: who it&rsquo;s for, the problem, and what you designed.]
-      </p>
+<header class="nav" id="nav">
+  <a class="nav-name" href="index.html" aria-label="Back to home">Larianna Ramsey</a>
+  <nav aria-label="Main">
+    <a href="index.html#work" class="is-active">work</a>
+    <a href="index.html#about">about</a>
+    <a href="index.html#process">process</a>
+    <a href="index.html#contact">contact</a>
+    <a class="nav-pill" href="resume.pdf" target="_blank" rel="noopener">resume &#8599;</a>
+  </nav>
+</header>
 
-      <dl class="case-meta">
-        <div><dt>Project</dt><dd>Group monthly challenge, FORGE, Boston University</dd></div>
-        <div><dt>My role</dt><dd>[Solo, or describe your part]</dd></div>
-        <div><dt>Timeline</dt><dd>October 2026</dd></div>
-        <div><dt>Tools</dt><dd>Figma</dd></div>
-      </dl>
-    </header>
+<main id="top">
 
-    <!-- ============ BODY ============ -->
-    <main class="case">
+  <!-- ============ HEADER ============ -->
+  <section class="case-hero wrap">
+    <a class="case-back" href="index.html#work">&larr; all work</a>
+    <p class="sec-num">case study &middot; ux/ui design</p>
+    <h1 class="sec-title">helping students find <em>community</em></h1>
+    <p class="case-lede">An app that helps students find clubs and communities that match their interests on a large, diverse campus.</p>
+    <dl class="case-meta">
+      <div><dt>Project</dt><dd>Group monthly challenge, FORGE, Boston University</dd></div>
+      <div><dt>My role</dt><dd>Design and branding; profile screens</dd></div>
+      <div><dt>Timeline</dt><dd>October 2026</dd></div>
+      <div><dt>Tools</dt><dd>Figma</dd></div>
+    </dl>
+  </section>
 
-      <section>
-        <h2><span>01</span>The problem</h2>
-        <p>
-          Adults entering or re-entering the workforce often have to build a professional wardrobe
-          quickly and on a budget, without knowing what &ldquo;professional&rdquo; means for their
-          workplace. [Say why this matters and what you set out to understand.]
-        </p>
-        <div class="callout">
-          <strong>Research question:</strong> How do adults entering or re-entering the workforce
-          build a professional wardrobe, and where does that process get hard?
-        </div>
-      </section>
+  <!-- ============ SCREENS ============
+       Blank phone screens. To add one, replace a <span ...></span> with
+       <img src="images/campfire-screen-1.png" alt="describe the screen"> -->
+  <section class="case-screens" aria-label="App screens">
+    <div class="wrap">
+      <p class="sec-num">the app</p>
+      <div class="phones">
+        <div class="phone"><span class="phone-ph">screen</span></div>
+        <div class="phone"><span class="phone-ph">screen</span></div>
+        <div class="phone"><span class="phone-ph">screen</span></div>
+        <div class="phone"><span class="phone-ph">screen</span></div>
+        <div class="phone"><span class="phone-ph">screen</span></div>
+      </div>
+      <p class="case-note">Swiping, calendar, profile and chat screens coming soon.</p>
+    </div>
+  </section>
 
-      <section>
-        <h2><span>02</span>Research</h2>
-        <p>
-          I interviewed three people about how they shop for and decide what to wear to work.
-          [Add who they were, how you found them, and what you asked about.]
-        </p>
-        <figure class="project-img">
-          <img src="images/wardrobe-synthesis.jpg" alt="Synthesis of the three user interviews">
-          <figcaption>Synthesis of the three interviews</figcaption>
+  <!-- ============ BODY ============ -->
+  <div class="wrap case-body">
+
+    <section class="case-sec">
+      <div><span class="st-num">01</span><h2>The problem</h2></div>
+      <div class="case-sec-body">
+        <p>On a large, diverse campus, it can be hard for students to find the clubs and communities that fit their specific interests. [Say why this matters and what your group set out to understand.]</p>
+        <div class="case-callout"><strong>Question</strong>How do students find clubs and communities that match their specific interests, especially on a large, diverse campus?</div>
+      </div>
+    </section>
+
+    <section class="case-sec">
+      <div><span class="st-num">02</span><h2>Who we designed for</h2></div>
+      <div class="case-sec-body">
+        <p>We created user personas to keep the students we were designing for in view. [Describe the personas: who they are, what they want, and what gets in their way.]</p>
+        <figure class="shot">
+          <img src="images/campfire-personas.jpg" alt="User personas for the student community app" onerror="this.parentNode.classList.add('is-missing')">
+          <span class="ph">add image: images/campfire-personas.jpg</span>
+          <figcaption>User personas</figcaption>
         </figure>
-      </section>
+      </div>
+    </section>
 
-      <section>
-        <h2><span>03</span>What I learned</h2>
-        <ul class="case-list">
-          <li>[Insight 1: something specific people said or did]</li>
-          <li>[Insight 2]</li>
-          <li>[Insight 3]</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2><span>04</span>Who I designed for</h2>
-        <p>
-          <strong>Maya</strong> is 22 and works as an executive assistant in Boston.
-          [Add her goals, frustrations, and how she currently shops.]
-        </p>
-        <figure class="project-img">
-          <img src="images/wardrobe-persona.jpg" alt="Persona card for Maya, a 22-year-old executive assistant in Boston">
-          <figcaption>Persona: Maya</figcaption>
-        </figure>
-      </section>
-
-      <section>
-        <h2><span>05</span>Opportunities</h2>
-        <p>
-          From the research I identified three opportunities, then wrote user stories for each.
-        </p>
-        <ul class="case-list">
-          <li>[Opportunity 1: &ldquo;How might we&hellip;&rdquo;]</li>
-          <li>[Opportunity 2]</li>
-          <li>[Opportunity 3]</li>
-        </ul>
-        <p>
-          Example user story: <em>[As a ___, I want to ___ so that ___.]</em>
-        </p>
-      </section>
-
-      <section>
-        <h2><span>06</span>Design</h2>
-        <p>
-          [Describe the user flow you designed and why. Say what decisions you made and what you
-          traded off.]
-        </p>
-        <figure class="project-img">
-          <img src="images/wardrobe-user-flow.jpg" alt="User flow diagram from Figma">
+    <section class="case-sec">
+      <div><span class="st-num">03</span><h2>User flow</h2></div>
+      <div class="case-sec-body">
+        <p>[Describe the main path through the app: how a student goes from opening it to finding a club and joining an event.]</p>
+        <figure class="shot">
+          <img src="images/campfire-user-flow.jpg" alt="User flow diagram for the student community app" onerror="this.parentNode.classList.add('is-missing')">
+          <span class="ph">add image: images/campfire-user-flow.jpg</span>
           <figcaption>User flow</figcaption>
         </figure>
-      </section>
+      </div>
+    </section>
 
-      <section>
-        <h2><span>07</span>Reflection</h2>
-        <p>
-          [What worked, what you would change, and what you would do next, such as testing a prototype
-          with real users.]
-        </p>
-      </section>
+    <section class="case-sec">
+      <div><span class="st-num">04</span><h2>Wireframes</h2></div>
+      <div class="case-sec-body">
+        <p>We presented low fidelity wireframes, then built them out into a high fidelity prototype in Figma. [Say what changed between the two and why.]</p>
+        <figure class="shot">
+          <img src="images/campfire-wireframes.jpg" alt="Low fidelity wireframes for the student community app" onerror="this.parentNode.classList.add('is-missing')">
+          <span class="ph">add image: images/campfire-wireframes.jpg</span>
+          <figcaption>Low fidelity wireframes</figcaption>
+        </figure>
+      </div>
+    </section>
 
-    </main>
+    <section class="case-sec">
+      <div><span class="st-num">05</span><h2>My part</h2></div>
+      <div class="case-sec-body">
+        <p>I helped with the overall design and branding, including the color palette and typeface choices. I also designed and prototyped the profile screens: the user&rsquo;s own profile, other students&rsquo; profiles, and club profiles.</p>
+        <ul class="case-list">
+          <li>[A design decision you made on the profile screens, and why]</li>
+          <li>[Another decision]</li>
+        </ul>
+      </div>
+    </section>
 
-    <div class="case-next">
-      <a class="btn" href="index.html#work">&larr; Back to all work</a>
-    </div>
+    <section class="case-sec">
+      <div><span class="st-num">06</span><h2>Result</h2></div>
+      <div class="case-sec-body">
+        <p>An app that allows students to swipe through campus organizations, add events to a calendar, view student and club profiles, and chat with each other.</p>
+      </div>
+    </section>
 
-    <!-- ============ FOOTER ============ -->
-    <footer class="footer">
-      <span><span class="star star--tiny" aria-hidden="true"></span> Larianna Ramsey</span>
-      <span>Data science &middot; UX &middot; Boston, MA</span>
-      <span>&copy; 2026</span>
-    </footer>
+    <section class="case-sec">
+      <div><span class="st-num">07</span><h2>Reflection</h2></div>
+      <div class="case-sec-body">
+        <p>[What worked, what you would change, and what you would do next, such as testing the prototype with students.]</p>
+      </div>
+    </section>
 
   </div>
+
+  <!-- ============ END ============ -->
+  <section class="contact case-end">
+    <div class="wrap">
+      <p class="sec-num">next project</p>
+      <h2 class="sec-title">building a professional <em>wardrobe</em></h2>
+      <div class="contact-links" style="margin-top: 2rem;">
+        <a class="pbtn pbtn--light" href="wardrobe-case-study.html">Read case study &rarr;</a>
+        <a class="pbtn pbtn--ghost" href="index.html#work">&larr; All work</a>
+      </div>
+    </div>
+    <footer class="wrap">
+      <div class="footer">
+        <span>Larianna Ramsey</span>
+        <span>Data science &middot; UX &middot; Boston, MA</span>
+        <a href="#top">back to top &uarr;</a>
+      </div>
+    </footer>
+  </section>
+</main>
+
+<dialog id="lightbox" class="lightbox" aria-label="Project images">
+  <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+  <div class="lightbox-images"></div>
+  <p class="lightbox-caption"></p>
+</dialog>
+<script src="case.js?v=1"></script>
 </body>
 </html>
