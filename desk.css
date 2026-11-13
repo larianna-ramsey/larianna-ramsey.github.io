@@ -178,19 +178,19 @@ html.js .ch { animation: dropin .8s var(--spring) backwards; animation-delay: ca
 .work { position: relative; z-index: 1; background: var(--wine); color: var(--champagne); border-radius: 2.4rem 2.4rem 0 0; padding: 7rem 0 6.5rem; }
 .work .sec-title em { color: var(--mauve); }
 
-.drawer { position: relative; margin-top: 2.2rem; padding-top: 3.4rem; }
+.drawer { --step: -.6rem; position: relative; margin-top: 2.2rem; padding-top: 3.4rem; }
 
 /* one manila folder: tab + back panel + paper + front flap */
 .folder { --manila: #E6D0A0; --manila-lt: #EEDDB5; position: relative; color: var(--wine); }
 .f-tab {
   position: absolute; z-index: 3; top: 0;
-  left: calc(.6% + var(--i, 0) * 19.9%); width: 19.2%; height: 2.6rem;
+  left: calc(.6% + var(--i, 0) * (98.8% / var(--n, 5))); width: calc(98.8% / var(--n, 5) - .7%); height: 2.6rem;
   display: flex; align-items: center; gap: .5rem; padding: .3rem .65rem .15rem;
   border: 0; border-radius: .8rem .8rem 0 0; background: var(--manila); color: var(--wine);
   text-align: left; cursor: pointer;
 }
 .t-num { font: 500 .7rem var(--f-mono); letter-spacing: .06em; opacity: .8; }
-.t-name { flex: 1; min-width: 0; padding: .22rem .55rem; border-radius: .25rem; background: var(--sticker, var(--paper)); font: 700 .84rem/1.15 var(--f-display); letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: inset -.55rem 0 0 var(--sticker2, transparent), 0 1px 0 rgba(65, 0, 22, .12); }
+.t-name { flex: 1; min-width: 0; padding: .22rem .45rem; border-radius: .25rem; background: var(--sticker, var(--paper)); font: 700 .78rem/1.15 var(--f-display); letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: inset -.55rem 0 0 var(--sticker2, transparent), 0 1px 0 rgba(65, 0, 22, .12); }
 .f-tab--dark .t-name { color: var(--champagne); }
 .f-back { position: absolute; z-index: 0; top: 2.5rem; left: 0; right: 0; bottom: 0; background: var(--manila); border-radius: .4rem 1rem 1rem 1rem; box-shadow: 0 -.2rem .6rem rgba(42, 6, 18, .25), inset 0 1px 0 rgba(255, 255, 255, .45); }
 .f-paper { position: relative; z-index: 1; margin: 3.4rem 1rem 1.4rem; }
@@ -222,7 +222,7 @@ html:not(.js) .folder { margin-bottom: 2rem; padding-top: .1px; }
 html.js .folder {
   position: absolute; top: 3.4rem; left: 0; right: 0; bottom: 0; overflow: hidden;
   z-index: calc(20 - var(--p, 0));
-  transform: translateY(calc(var(--p, 0) * -.8rem));
+  transform: translateY(calc(var(--p, 0) * var(--step, -.6rem)));
   transition: transform .38s cubic-bezier(.2, .8, .2, 1), translate .3s var(--spring), opacity .6s;
   will-change: transform;
 }
@@ -295,6 +295,10 @@ html:not(.js) .car img:first-child { opacity: 1; }
 
 .quote { position: absolute; inset: 0; margin: 0; padding: clamp(1.4rem, 3vw, 2.4rem); display: flex; flex-direction: column; justify-content: center; background: var(--c-data); border-radius: .5rem; }
 .q-label { font: 400 .72rem var(--f-mono); letter-spacing: .2em; text-transform: uppercase; margin-bottom: .8rem; }
+.quote--stats { gap: 1.4rem; }
+.quote--stats .q-label { margin-bottom: 0; }
+.quote .stat { font: 400 1.05rem/1.25 var(--f-body); }
+.quote .stat b { display: block; font: 800 clamp(2.6rem, 5vw, 4.2rem)/.95 var(--f-display); letter-spacing: -.04em; margin-bottom: .2rem; }
 .quote p { margin: 0; font: 400 clamp(1.35rem, 2.2vw, 1.95rem)/1.15 var(--f-serif); }
 
 .tags { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; margin: 0 0 .8rem; padding: 0; }
@@ -303,6 +307,7 @@ html:not(.js) .car img:first-child { opacity: 1; }
 .tag--data { background: var(--c-data); }
 .tag--design { background: var(--c-design); border-color: var(--c-design); color: var(--champagne); }
 .tag--wip { border-style: dashed; }
+.tag:not([class*='tag--']) { background: var(--paper); }
 .info h3 { margin: 0 0 .35rem; font: 800 clamp(1.5rem, 2.3vw, 2.1rem)/1.02 var(--f-display); letter-spacing: -.035em; }
 .context { margin: 0 0 1rem; font: italic 400 1.15rem/1.2 var(--f-serif); color: var(--cabernet); }
 .blurb { margin: 0 0 .9rem; font-size: 1.02rem; }
@@ -342,6 +347,10 @@ html:not(.js) .car img:first-child { opacity: 1; }
   html.js .sheet { height: 100%; padding: 1.3rem; }
   html.js .media { aspect-ratio: auto; height: 100%; }
   html.js .info { overflow-y: auto; padding: .6rem .8rem .4rem 0; scrollbar-width: thin; }
+}
+/* mid-size screens: tab numbers step aside so the names fit */
+@media (min-width: 641px) and (max-width: 1540px) {
+  .t-num { display: none; }
 }
 @media (max-width: 640px) {
   .t-name { display: none; }
@@ -384,13 +393,17 @@ html:not(.js) .car img:first-child { opacity: 1; }
 .about-text .sec-title { margin-bottom: 1.6rem; }
 .about-text > p { max-width: 38rem; margin: 0 0 1rem; }
 .about-text .lead { font: 400 clamp(1.4rem, 2.2vw, 1.8rem)/1.2 var(--f-serif); margin-bottom: 1.3rem; }
-.facts-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.8rem; margin-top: 2.6rem; padding-top: 2rem; border-top: 1px solid rgba(65, 0, 22, .2); }
+.facts-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1.1fr); gap: 2.4rem; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(65, 0, 22, .2); }
 .fg h3 { margin: 0 0 1rem; font: 400 .72rem var(--f-mono); letter-spacing: .2em; text-transform: uppercase; }
 .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 1.5px solid var(--wine); }
 .timeline li { position: relative; margin-bottom: 1rem; }
 .timeline li::before { content: ""; position: absolute; left: calc(-1.1rem - 5px); top: .35rem; width: 8px; height: 8px; border-radius: 50%; background: var(--wine); }
 .timeline b { display: block; font: 700 .98rem/1.2 var(--f-display); letter-spacing: -.01em; }
 .timeline span { display: block; font-size: .88rem; line-height: 1.35; margin-top: .15rem; }
+.timeline span i { font: 400 .7rem var(--f-mono); font-style: normal; letter-spacing: .04em; color: var(--cabernet); margin-left: .35rem; white-space: nowrap; }
+.timeline .tl-note { font-size: .82rem; color: var(--cabernet); margin: .1rem 0 .35rem; }
+.pill-label { margin: 0 0 .45rem; font: 400 .64rem var(--f-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--cabernet); }
+.pills + .pill-label { margin-top: 1rem; }
 .pills { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
 .pills li { font: 400 .7rem var(--f-mono); padding: .3rem .7rem; border: 1px solid var(--wine); border-radius: 99em; background: var(--paper); transition: transform .25s var(--spring), background .2s; }
 .pills li:hover { transform: translateY(-.15rem) rotate(-3deg); background: var(--mauve); }
