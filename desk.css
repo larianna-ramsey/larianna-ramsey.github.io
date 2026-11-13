@@ -17,6 +17,11 @@
   --cabernet: #5B3C45;
   --wine: #410016;
 
+  /* one color per kind of project: used on the first-screen folders, the folder tabs and the tags */
+  --c-ux: #CA9BAA;       /* pink  = UX */
+  --c-data: #A9BCF5;     /* blue  = data */
+  --c-design: #827C34;   /* green = design */
+
   --f-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
   --f-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
   --f-script: "Mrs Saint Delafield", "Snell Roundhand", "Apple Chancery", cursive;
@@ -185,7 +190,7 @@ html.js .ch { animation: dropin .8s var(--spring) backwards; animation-delay: ca
   text-align: left; cursor: pointer;
 }
 .t-num { font: 500 .7rem var(--f-mono); letter-spacing: .06em; opacity: .8; }
-.t-name { flex: 1; min-width: 0; padding: .22rem .55rem; border-radius: .25rem; background: var(--sticker, var(--paper)); font: 700 .84rem/1.15 var(--f-display); letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: 0 1px 0 rgba(65, 0, 22, .12); }
+.t-name { flex: 1; min-width: 0; padding: .22rem .55rem; border-radius: .25rem; background: var(--sticker, var(--paper)); font: 700 .84rem/1.15 var(--f-display); letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: inset -.55rem 0 0 var(--sticker2, transparent), 0 1px 0 rgba(65, 0, 22, .12); }
 .f-tab--dark .t-name { color: var(--champagne); }
 .f-back { position: absolute; z-index: 0; top: 2.5rem; left: 0; right: 0; bottom: 0; background: var(--manila); border-radius: .4rem 1rem 1rem 1rem; box-shadow: 0 -.2rem .6rem rgba(42, 6, 18, .25), inset 0 1px 0 rgba(255, 255, 255, .45); }
 .f-paper { position: relative; z-index: 1; margin: 3.4rem 1rem 1.4rem; }
@@ -286,15 +291,15 @@ html:not(.js) .car img:first-child { opacity: 1; }
 .phones .phone:nth-child(2) { z-index: 1; scale: 1.06; }
 .phones .phone:nth-child(3) { rotate: 5deg; translate: -8% 4%; }
 
-.quote { position: absolute; inset: 0; margin: 0; padding: clamp(1.4rem, 3vw, 2.4rem); display: flex; flex-direction: column; justify-content: center; background: var(--mauve); border-radius: .5rem; }
+.quote { position: absolute; inset: 0; margin: 0; padding: clamp(1.4rem, 3vw, 2.4rem); display: flex; flex-direction: column; justify-content: center; background: var(--c-data); border-radius: .5rem; }
 .q-label { font: 400 .72rem var(--f-mono); letter-spacing: .2em; text-transform: uppercase; margin-bottom: .8rem; }
 .quote p { margin: 0; font: 400 clamp(1.35rem, 2.2vw, 1.95rem)/1.15 var(--f-serif); }
 
 .tags { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; margin: 0 0 .8rem; padding: 0; }
 .tag { font: 400 .68rem var(--f-mono); letter-spacing: .1em; text-transform: uppercase; padding: .28rem .75rem; border: 1px solid var(--wine); border-radius: 99em; }
-.tag--ux { background: var(--baby); }
-.tag--data { background: var(--mauve); }
-.tag--design { background: var(--moss); border-color: var(--moss); color: var(--champagne); }
+.tag--ux { background: var(--c-ux); }
+.tag--data { background: var(--c-data); }
+.tag--design { background: var(--c-design); border-color: var(--c-design); color: var(--champagne); }
 .tag--wip { border-style: dashed; }
 .info h3 { margin: 0 0 .35rem; font: 800 clamp(1.5rem, 2.3vw, 2.1rem)/1.02 var(--f-display); letter-spacing: -.035em; }
 .context { margin: 0 0 1rem; font: italic 400 1.15rem/1.2 var(--f-serif); color: var(--cabernet); }
