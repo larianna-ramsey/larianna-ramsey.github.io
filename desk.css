@@ -350,7 +350,7 @@ html:not(.js) .car img:first-child { opacity: 1; }
 }
 /* mid-size screens: tab numbers step aside so the names fit */
 @media (min-width: 641px) and (max-width: 1540px) {
-  .t-num { display: none; }
+  .drawer:has(.folder:nth-of-type(6)) .t-num { display: none; }   /* only when there are 6+ folders */
 }
 /* phones and tablets: folders are much taller here, so the flap swings with a flatter
    perspective and folds down to a thin lip instead of covering the project text */

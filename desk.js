@@ -242,6 +242,7 @@
      ===================================================================== */
   var drawer = $('#drawer');
   var folders = $$('.folder', drawer);
+  drawer.style.setProperty('--n', folders.length);              // tabs share the width, however many folders are on the page
   var order = folders.map(function (_, i) { return i; });   // order[0] is the folder in front
   var arrived = false, moving = null;                       // moving = { folder, anim } while a folder is travelling
   var GLIDE = 620, FADE = 200;
