@@ -13,7 +13,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="desk.css?v=16">
+  <!-- Campfire's own fonts, for the branding section. text= downloads only the letters shown there,
+       so update it if you change the sample words. -->
+  <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Pacifico&family=Sriracha&family=Winky+Sans&family=Marhey&family=Kurale&family=Matangi&family=Mozilla+Text&family=Montserrat&family=Jersey+20&family=Krona+One&family=Zen+Dots&text=Campfire&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;600&text=AaKevin%20SmithGraduating%20Spring%202028&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="desk.css?v=17">
 </head>
 
 <body class="case-page">
@@ -81,31 +85,138 @@
     <section class="case-sec">
       <div><span class="st-num">02</span><h2>Who we designed for</h2></div>
       <div class="case-sec-body">
-        <p>We wrote three personas, each a BU student at a different stage. Mia is a freshman who is overwhelmed by how many clubs there are, prefers small groups, and has niche hobbies like embroidery. Maya is a sophomore who transferred into Questrom and wants professional development and a core social group. Kevin, my persona, is a junior who transferred from the west coast, works 18 to 20 hours a week, and finds existing cliques intimidating.</p>
-        <p>Between them, they needed a way to find smaller communities, clear information about when and where clubs meet, and ways to get involved without a big time commitment.</p>
-        <figure class="shot">
-          <img src="images/campfire-persona-kevin.jpg" width="741" height="438" loading="lazy" alt="Persona card for Kevin, 21, from California: a junior who recently transferred to BU, finds existing cliques intimidating, works 18 to 20 hours a week, and wants a friend group without a big time commitment">
-          <figcaption>Kevin, the persona I wrote</figcaption>
-        </figure>
-        <div class="shot-grid">
-          <figure class="shot">
-            <img src="images/campfire-persona-mia.jpg" width="741" height="438" loading="lazy" alt="Persona card for Mia, 18, from New Jersey: a freshman overwhelmed by the number of clubs, who prefers smaller groups and wants to make a new friend group">
-            <figcaption>Mia</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="images/campfire-persona-maya.jpg" width="741" height="438" loading="lazy" alt="Persona card for Maya, 19, from Illinois: a sophomore who transferred into Questrom and wants professional development, mentorship and community">
-            <figcaption>Maya</figcaption>
-          </figure>
+        <p>We wrote three personas, each a BU student at a different stage. I wrote Kevin.</p>
+        <div class="personas">
+          <article class="persona is-mine">
+            <header class="persona-head">
+              <span class="persona-av" aria-hidden="true">K</span>
+              <div>
+                <h3 class="persona-name">Kevin</h3>
+                <p class="persona-meta">21 &middot; California &middot; Junior</p>
+              </div>
+              <span class="tag tag--ux">my persona</span>
+            </header>
+            <div class="persona-cols">
+              <div>
+                <h4>Background</h4>
+                <ul>
+                  <li>Recently transferred to BU from a west coast school, and still adjusting to Boston and the east coast</li>
+                  <li>Has been to a few club meetings, but existing cliques feel intimidating, especially as a junior</li>
+                  <li>Works a part-time job that takes up 18 to 20 hours every week</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Goals</h4>
+                <ul>
+                  <li>Get more involved in and familiar with campus</li>
+                  <li>Find a friend group that exists outside of just one club</li>
+                  <li>Get involved without committing a lot of time to any one activity</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="persona">
+            <header class="persona-head">
+              <span class="persona-av" aria-hidden="true">M</span>
+              <div>
+                <h3 class="persona-name">Mia</h3>
+                <p class="persona-meta">18 &middot; New Jersey &middot; Freshman</p>
+              </div>
+            </header>
+            <div class="persona-cols">
+              <div>
+                <h4>Background</h4>
+                <ul>
+                  <li>Overwhelmed by how many clubs BU has; Splash and Instagram feel hard to navigate</li>
+                  <li>Prefers small groups where she can get to know people, and feels lost in the crowd at big club meetings</li>
+                  <li>Has niche hobbies like embroidery, walking and squash</li>
+                  <li>Lives in Warren Towers and doesn&rsquo;t know campus well yet, so mostly sticks to BU Central and the dining hall</li>
+                  <li>Still figuring out her schedule, and struggles to keep track of all her interests</li>
+                  <li>Has a few one-on-one friends from orientation and classes, but no community yet</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Goals</h4>
+                <ul>
+                  <li>Make a new friend group</li>
+                  <li>Find a consistent place to socialize</li>
+                  <li>Connect with others over similar hobbies</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="persona">
+            <header class="persona-head">
+              <span class="persona-av" aria-hidden="true">M</span>
+              <div>
+                <h3 class="persona-name">Maya</h3>
+                <p class="persona-meta">19 &middot; Illinois &middot; Sophomore</p>
+              </div>
+            </header>
+            <div class="persona-cols">
+              <div>
+                <h4>Background</h4>
+                <ul>
+                  <li>Transferred from CAS to Questrom and wants a fresh start</li>
+                  <li>Wants professional development and experience to get ahead, and feels behind because of the transfer</li>
+                  <li>Looking for a core social group with shared interests</li>
+                  <li>Wants one place with general information about clubs, their meeting times, and events and applications</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Goals</h4>
+                <ul>
+                  <li>Get into business at BU, but doesn&rsquo;t know where to start</li>
+                  <li>Build community in her new surroundings</li>
+                  <li>Find mentorship and get more in touch with business activities</li>
+                </ul>
+              </div>
+            </div>
+          </article>
         </div>
+        <p>Between them, they needed a way to find smaller communities, clear information about when and where clubs meet, and ways to get involved without a big time commitment.</p>
       </div>
     </section>
 
     <section class="case-sec">
       <div><span class="st-num">03</span><h2>User flow</h2></div>
       <div class="case-sec-body">
-        <p>We listed the features our personas needed, including club swiping, filtered search, a calendar of events, messaging and e-board profiles. Then we mapped how they fit together. After onboarding, students land on a home page that branches into four sections: Profile, Messages, Explore and Calendar. There were four of us, so each person took one section, and I took Profile.</p>
-        <figure class="shot">
-          <img src="images/campfire-user-flow.jpg" width="928" height="575" loading="lazy" alt="User flow: onboarding and sign-in lead to a home page that branches into Profile, Messages, Explore and Calendar, each with its own pages, such as saved clubs, chat, club matching and past events">
+        <p>We listed the features our personas needed, including club swiping, filtered search, a calendar of events, messaging and e-board profiles. Then we mapped how they fit together. After onboarding, students land on a home page that branches into four sections. There were four of us, so each person took one section, and I took Profile.</p>
+        <figure class="flow">
+          <ol class="flow-trunk">
+            <li class="flow-node">Onboarding &amp; sign in</li>
+            <li class="flow-node">Home page</li>
+          </ol>
+          <ul class="flow-branches">
+            <li class="flow-branch is-mine">
+              <p class="flow-sec">Profile <span>by me</span></p>
+              <ul class="flow-pages">
+                <li>Clubs you&rsquo;re active in</li>
+                <li>Saved clubs you&rsquo;re interested in</li>
+              </ul>
+            </li>
+            <li class="flow-branch">
+              <p class="flow-sec">Messages <span>by Linda</span></p>
+              <ul class="flow-pages">
+                <li>Chat</li>
+                <li>Friends</li>
+              </ul>
+            </li>
+            <li class="flow-branch">
+              <p class="flow-sec">Explore <span>by Will</span></p>
+              <ul class="flow-pages">
+                <li>Matching with clubs<small>A match shows the club&rsquo;s info and meeting dates to add to your calendar</small></li>
+                <li>Filtered search</li>
+              </ul>
+            </li>
+            <li class="flow-branch">
+              <p class="flow-sec">Calendar <span>by Sophia</span></p>
+              <ul class="flow-pages">
+                <li>Customize and view your calendar</li>
+                <li>Past events attended</li>
+              </ul>
+            </li>
+          </ul>
           <figcaption>User flow, with one section for each of us</figcaption>
         </figure>
       </div>
@@ -114,17 +225,51 @@
     <section class="case-sec">
       <div><span class="st-num">04</span><h2>Branding</h2></div>
       <div class="case-sec-body">
-        <p>In the first week, we put together a mood board and our own brand guidelines. The palette is built around a warm campfire orange, with soft peach, butter yellow and cream, and a deep brown for buttons. We tried more than a dozen typefaces for the name before choosing a hand-drawn script, which became the wordmark on the welcome screen.</p>
-        <div class="shot-grid">
-          <figure class="shot">
-            <img src="images/campfire-colors.jpg" width="620" height="450" loading="lazy" alt="Campfire color palette: orange #DB5618, peach #FF9564, yellow #FEE49E, cream #F9F1E0 and mauve #B396A2, with browns and accent colors">
-            <figcaption>Color palette</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="images/campfire-type.jpg" width="620" height="425" loading="lazy" alt="Typeface explorations: the word Campfire set in more than a dozen fonts, including hand-drawn scripts">
-            <figcaption>Typeface explorations</figcaption>
-          </figure>
+        <p>In the first week, we put together a mood board and our own brand guidelines. The palette is built around a warm campfire orange, with soft peach, butter yellow and cream, and deep browns for buttons and accents. We tried a dozen typefaces for the name before choosing Gochi Hand, a hand-drawn script, for the wordmark. The interface is set in Google Sans Flex.</p>
+
+        <h3 class="case-sub">Color</h3>
+        <ul class="palette">
+          <li style="--c:#DB5618"><span class="swatch"></span><b>Orange</b><code>#DB5618</code></li>
+          <li style="--c:#FF9564"><span class="swatch"></span><b>Peach</b><code>#FF9564</code></li>
+          <li style="--c:#FEE49E"><span class="swatch"></span><b>Butter</b><code>#FEE49E</code></li>
+          <li style="--c:#F9F1E0"><span class="swatch"></span><b>Cream</b><code>#F9F1E0</code></li>
+          <li style="--c:#B396A2"><span class="swatch"></span><b>Mauve</b><code>#B396A2</code></li>
+        </ul>
+        <ul class="palette palette--accents">
+          <li style="--c:#5F1607"><span class="swatch"></span><b>Dark brown</b><code>#5F1607</code></li>
+          <li style="--c:#962E09"><span class="swatch"></span><b>Rust</b><code>#962E09</code></li>
+          <li style="--c:#243121"><span class="swatch"></span><b>Dark green</b><code>#243121</code></li>
+          <li style="--c:#E8C898"><span class="swatch"></span><b>Sand</b><code>#E8C898</code></li>
+          <li style="--c:#FFDEB2"><span class="swatch"></span><b>Light peach</b><code>#FFDEB2</code></li>
+        </ul>
+
+        <h3 class="case-sub">Type</h3>
+        <div class="type-pair">
+          <div class="type-card type-card--mark">
+            <span class="type-mark">Campfire</span>
+            <p class="type-label">Wordmark &middot; Gochi Hand</p>
+          </div>
+          <div class="type-card">
+            <span class="type-aa">Aa</span>
+            <p class="type-ui"><b>Kevin Smith</b><br>Graduating Spring 2028</p>
+            <p class="type-label">Interface &middot; Google Sans Flex</p>
+          </div>
         </div>
+        <p class="case-sub case-sub--minor">Wordmarks we tried</p>
+        <ul class="type-tried">
+          <li class="is-pick" style="--ff:'Gochi Hand'">Campfire<span>Gochi Hand &middot; our pick</span></li>
+          <li style="--ff:'Pacifico'">Campfire<span>Pacifico</span></li>
+          <li style="--ff:'Sriracha'">Campfire<span>Sriracha</span></li>
+          <li style="--ff:'Winky Sans'">Campfire<span>Winky Sans</span></li>
+          <li style="--ff:'Marhey'">Campfire<span>Marhey</span></li>
+          <li style="--ff:'Kurale'">Campfire<span>Kurale</span></li>
+          <li style="--ff:'Matangi'">Campfire<span>Matangi</span></li>
+          <li style="--ff:'Mozilla Text'">Campfire<span>Mozilla Text</span></li>
+          <li style="--ff:'Montserrat'">Campfire<span>Montserrat</span></li>
+          <li style="--ff:'Jersey 20'; --fs:1.7rem">Campfire<span>Jersey 20</span></li>
+          <li style="--ff:'Krona One'; --fs:1.05rem">Campfire<span>Krona One</span></li>
+          <li style="--ff:'Zen Dots'; --fs:1.1rem">Campfire<span>Zen Dots</span></li>
+        </ul>
       </div>
     </section>
 
