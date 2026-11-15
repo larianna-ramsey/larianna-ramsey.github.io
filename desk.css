@@ -352,6 +352,12 @@ html:not(.js) .car img:first-child { opacity: 1; }
 @media (min-width: 641px) and (max-width: 1540px) {
   .t-num { display: none; }
 }
+/* phones and tablets: folders are much taller here, so the flap swings with a flatter
+   perspective and folds down to a thin lip instead of covering the project text */
+@media (max-width: 899px) {
+  .f-front { transform: perspective(6000px) rotateX(0deg); }
+  .folder.open .f-front { transform: perspective(6000px) rotateX(-89deg); }
+}
 @media (max-width: 640px) {
   .t-name { display: none; }
   .f-tab { justify-content: center; padding: .3rem .2rem .1rem; }
@@ -479,11 +485,21 @@ html.js .steps.in .step:nth-child(4) { transition-delay: 0s, 0s, .45s, .45s; }
   .nav nav { gap: .9rem; }
   .nav nav a { font-size: .92rem; }
   .hero { padding-top: 4.2rem; padding-bottom: 3.5rem; }
-  .hero-stage { padding: 6.2rem 0 1rem; }
+  /* phones: two folders above the title, the third folder and the AirDrop card below it */
+  .hero-stage { padding: 6.4rem 0 10.5rem; }
+  .hfolder { width: 4.6rem; }
+  .hf-name { font-size: .74rem; }
   .hfolder--tl { left: 3%; top: 0; }
   .hfolder--tr { right: 3%; top: .8rem; }
-  .hfolder--bl, .airdrop--hero, .cursor { display: none; }
-  .hfolder { width: 4.6rem; }
+  .hfolder--bl { left: 5%; bottom: 2.2rem; }
+  .cursor { left: calc(3% + 4rem); top: 2.1rem; width: 1.45rem; }
+  .airdrop--hero { right: 3%; bottom: .4rem; width: 11.2rem; }
+  .airdrop--hero .ad-art { height: 2.1rem; }
+  .airdrop--hero .ad-body { padding: .55rem .7rem .65rem; }
+  .airdrop--hero .ad-t { font-size: .78rem; }
+  .airdrop--hero .ad-s { font-size: .7rem; margin-bottom: .5rem !important; }
+  .airdrop--hero .ad-no, .airdrop--hero .ad-yes { font-size: .75rem; padding: .35rem; }
+  .hero-tag { font-size: 1.15rem; }
   .hero-sub { font-size: .66rem; letter-spacing: .14em; }
   .work, .contact { border-radius: 1.6rem 1.6rem 0 0; padding-top: 5rem; }
   .process { border-radius: 1.6rem; padding: 5rem 0; }
