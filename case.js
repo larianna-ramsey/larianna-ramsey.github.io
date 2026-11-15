@@ -26,8 +26,12 @@
   });
   document.querySelectorAll('.phones').forEach(function (group) {
     var imgs = Array.prototype.slice.call(group.querySelectorAll('img'));
+    // use the group's own caption if it has one, otherwise the page title
+    var fig = group.closest('figure');
+    var cap = fig && fig.querySelector('figcaption');
+    var text = cap ? cap.textContent : document.querySelector('h1').textContent;
     imgs.forEach(function (img) {
-      img.addEventListener('click', function () { open(imgs, document.querySelector('h1').textContent); });
+      img.addEventListener('click', function () { open(imgs, text); });
     });
   });
 

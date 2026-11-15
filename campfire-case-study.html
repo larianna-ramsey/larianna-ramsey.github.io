@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="desk.css?v=15">
+  <link rel="stylesheet" href="desk.css?v=16">
 </head>
 
 <body class="case-page">
@@ -36,29 +36,27 @@
     <a class="case-back" href="index.html#work">&larr; all work</a>
     <p class="sec-num">case study &middot; ux/ui design</p>
     <h1 class="sec-title">helping students find <em>community</em></h1>
-    <p class="case-lede">An app that helps students find clubs and communities that match their interests on a large, diverse campus.</p>
+    <p class="case-lede">Campfire, an app that helps students find clubs and communities that match their interests on a large, diverse campus.</p>
     <dl class="case-meta">
       <div><dt>Project</dt><dd>Group monthly challenge, FORGE, Boston University</dd></div>
-      <div><dt>My role</dt><dd>Design and branding; profile screens</dd></div>
-      <div><dt>Timeline</dt><dd>October 2026</dd></div>
+      <div><dt>My role</dt><dd>Profile screens; branding and design feedback</dd></div>
+      <div><dt>Timeline</dt><dd>October 2026, 4 weeks</dd></div>
       <div><dt>Tools</dt><dd>Figma</dd></div>
     </dl>
   </section>
 
-  <!-- ============ SCREENS ============
-       Blank phone screens. To add one, replace a <span ...></span> with
-       <img src="images/campfire-screen-1.png" alt="describe the screen"> -->
+  <!-- ============ SCREENS ============ -->
   <section class="case-screens" aria-label="App screens">
     <div class="wrap">
       <p class="sec-num">the app</p>
       <div class="phones">
-        <div class="phone"><span class="phone-ph">screen</span></div>
-        <div class="phone"><span class="phone-ph">screen</span></div>
-        <div class="phone"><span class="phone-ph">screen</span></div>
-        <div class="phone"><span class="phone-ph">screen</span></div>
-        <div class="phone"><span class="phone-ph">screen</span></div>
+        <div class="phone"><img src="images/campfire-welcome.jpg" alt="Welcome screen: the hand-drawn Campfire wordmark on orange, with Log In and Sign Up buttons"></div>
+        <div class="phone"><img src="images/campfire-explore.jpg" alt="Explore screen: swiping through clubs, showing BU FORGE with its logo, description, social links and e-board"></div>
+        <div class="phone"><img src="images/campfire-profile.jpg" alt="Your own profile: Kevin Smith&rsquo;s photo, contact details, major and minor, graduation year, clubs with roles, and account options"></div>
+        <div class="phone"><img src="images/campfire-calendar.jpg" alt="Calendar screen: an October month view with the day&rsquo;s events, FORGE UX Challenge and Outing Club, listed below"></div>
+        <div class="phone"><img src="images/campfire-chats.jpg" alt="Chats screen: pinned club chats, tabs for direct messages and organizations, and a list of conversations"></div>
       </div>
-      <p class="case-note">Swiping, calendar, profile and chat screens coming soon.</p>
+      <p class="case-note">Welcome, explore, profile, calendar and chat screens from our final prototype.</p>
     </div>
   </section>
 
@@ -68,67 +66,120 @@
     <section class="case-sec">
       <div><span class="st-num">01</span><h2>The problem</h2></div>
       <div class="case-sec-body">
-        <p>On a large, diverse campus, it can be hard for students to find the clubs and communities that fit their specific interests. [Say why this matters and what your group set out to understand.]</p>
+        <p>FORGE&rsquo;s October UX challenge introduced Campfire: a space where any student, no matter how specific their interest, can find the small group of people on campus already gathering around it. The brief described a familiar problem. Every fall, thousands of new students arrive on a huge campus and still end up eating lunch alone. Club fairs are overwhelming and easy to forget by the second week, it&rsquo;s not clear how to join, and it&rsquo;s hard to tell which clubs are actually active and which are just a name on a list.</p>
         <div class="case-callout"><strong>Question</strong>How do students find clubs and communities that match their specific interests, especially on a large, diverse campus?</div>
+        <p>The brief suggested three routes, and our app ended up covering all three:</p>
+        <ul class="case-list">
+          <li><strong>Discover:</strong> find clubs that match specific interests, including the smaller, niche ones, not just the biggest organizations.</li>
+          <li><strong>Connect:</strong> lower the barrier to the first step by previewing a club&rsquo;s vibe, seeing upcoming meetups, or messaging someone before showing up alone.</li>
+          <li><strong>Navigate:</strong> figure out where and when clubs meet, and fit it all around a packed schedule.</li>
+        </ul>
+        <p>We narrowed our ideas down to a mobile app where students swipe through clubs, a little like a dating app, and keep track of club events on a calendar.</p>
       </div>
     </section>
 
     <section class="case-sec">
       <div><span class="st-num">02</span><h2>Who we designed for</h2></div>
       <div class="case-sec-body">
-        <p>We created user personas to keep the students we were designing for in view. [Describe the personas: who they are, what they want, and what gets in their way.]</p>
+        <p>We wrote three personas, each a BU student at a different stage. Mia is a freshman who is overwhelmed by how many clubs there are, prefers small groups, and has niche hobbies like embroidery. Maya is a sophomore who transferred into Questrom and wants professional development and a core social group. Kevin, my persona, is a junior who transferred from the west coast, works 18 to 20 hours a week, and finds existing cliques intimidating.</p>
+        <p>Between them, they needed a way to find smaller communities, clear information about when and where clubs meet, and ways to get involved without a big time commitment.</p>
         <figure class="shot">
-          <img src="images/campfire-personas.jpg" alt="User personas for the student community app" onerror="this.parentNode.classList.add('is-missing')">
-          <span class="ph">add image: images/campfire-personas.jpg</span>
-          <figcaption>User personas</figcaption>
+          <img src="images/campfire-persona-kevin.jpg" width="741" height="438" loading="lazy" alt="Persona card for Kevin, 21, from California: a junior who recently transferred to BU, finds existing cliques intimidating, works 18 to 20 hours a week, and wants a friend group without a big time commitment">
+          <figcaption>Kevin, the persona I wrote</figcaption>
         </figure>
+        <div class="shot-grid">
+          <figure class="shot">
+            <img src="images/campfire-persona-mia.jpg" width="741" height="438" loading="lazy" alt="Persona card for Mia, 18, from New Jersey: a freshman overwhelmed by the number of clubs, who prefers smaller groups and wants to make a new friend group">
+            <figcaption>Mia</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="images/campfire-persona-maya.jpg" width="741" height="438" loading="lazy" alt="Persona card for Maya, 19, from Illinois: a sophomore who transferred into Questrom and wants professional development, mentorship and community">
+            <figcaption>Maya</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
     <section class="case-sec">
       <div><span class="st-num">03</span><h2>User flow</h2></div>
       <div class="case-sec-body">
-        <p>[Describe the main path through the app: how a student goes from opening it to finding a club and joining an event.]</p>
+        <p>We listed the features our personas needed, including club swiping, filtered search, a calendar of events, messaging and e-board profiles. Then we mapped how they fit together. After onboarding, students land on a home page that branches into four sections: Profile, Messages, Explore and Calendar. There were four of us, so each person took one section, and I took Profile.</p>
         <figure class="shot">
-          <img src="images/campfire-user-flow.jpg" alt="User flow diagram for the student community app" onerror="this.parentNode.classList.add('is-missing')">
-          <span class="ph">add image: images/campfire-user-flow.jpg</span>
-          <figcaption>User flow</figcaption>
+          <img src="images/campfire-user-flow.jpg" width="928" height="575" loading="lazy" alt="User flow: onboarding and sign-in lead to a home page that branches into Profile, Messages, Explore and Calendar, each with its own pages, such as saved clubs, chat, club matching and past events">
+          <figcaption>User flow, with one section for each of us</figcaption>
         </figure>
       </div>
     </section>
 
     <section class="case-sec">
-      <div><span class="st-num">04</span><h2>Wireframes</h2></div>
+      <div><span class="st-num">04</span><h2>Branding</h2></div>
       <div class="case-sec-body">
-        <p>We presented low fidelity wireframes, then built them out into a high fidelity prototype in Figma. [Say what changed between the two and why.]</p>
-        <figure class="shot">
-          <img src="images/campfire-wireframes.jpg" alt="Low fidelity wireframes for the student community app" onerror="this.parentNode.classList.add('is-missing')">
-          <span class="ph">add image: images/campfire-wireframes.jpg</span>
-          <figcaption>Low fidelity wireframes</figcaption>
+        <p>In the first week, we put together a mood board and our own brand guidelines. The palette is built around a warm campfire orange, with soft peach, butter yellow and cream, and a deep brown for buttons. We tried more than a dozen typefaces for the name before choosing a hand-drawn script, which became the wordmark on the welcome screen.</p>
+        <div class="shot-grid">
+          <figure class="shot">
+            <img src="images/campfire-colors.jpg" width="620" height="450" loading="lazy" alt="Campfire color palette: orange #DB5618, peach #FF9564, yellow #FEE49E, cream #F9F1E0 and mauve #B396A2, with browns and accent colors">
+            <figcaption>Color palette</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="images/campfire-type.jpg" width="620" height="425" loading="lazy" alt="Typeface explorations: the word Campfire set in more than a dozen fonts, including hand-drawn scripts">
+            <figcaption>Typeface explorations</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-sec">
+      <div><span class="st-num">05</span><h2>Low to high fidelity</h2></div>
+      <div class="case-sec-body">
+        <p>We started with low fidelity screens to settle the layout and features before adding color, and presented them to the group. Then we built them out into a high fidelity prototype in Figma. The calendar shows the jump: the layout stayed the same, and the high fidelity version brought in the brand colors, a warm gradient, highlighted day labels and softer event cards.</p>
+        <figure class="case-phones">
+          <div class="phones">
+            <div class="phone"><img src="images/campfire-lofi-calendar.jpg" loading="lazy" alt="Low fidelity calendar screen: a plain month grid with the day&rsquo;s events listed below"></div>
+            <div class="phone"><img src="images/campfire-calendar.jpg" loading="lazy" alt="High fidelity calendar screen: the same layout with peach day labels, an orange highlight on today, and event cards over a warm gradient"></div>
+          </div>
+          <figcaption>Calendar screen, low fidelity (left) and high fidelity (right)</figcaption>
         </figure>
       </div>
     </section>
 
     <section class="case-sec">
-      <div><span class="st-num">05</span><h2>My part</h2></div>
+      <div><span class="st-num">06</span><h2>My part</h2></div>
       <div class="case-sec-body">
-        <p>I helped with the overall design and branding, including the color palette and typeface choices. I also designed and prototyped the profile screens: the user&rsquo;s own profile, other students&rsquo; profiles, and club profiles.</p>
+        <p>I designed and prototyped the profile screens: the student&rsquo;s own profile, other students&rsquo; profiles, and club profiles. I also helped with the overall design and branding, including the color palette and typeface choices, and gave feedback on everything we made as a group.</p>
+        <figure class="case-phones">
+          <div class="phones">
+            <div class="phone"><img src="images/campfire-profile.jpg" loading="lazy" alt="Your own profile: Kevin Smith, with an edit button, contact details, major and minor, graduation year, clubs with roles, and sign out and delete account options"></div>
+            <div class="phone"><img src="images/campfire-profile-student.jpg" loading="lazy" alt="Another student&rsquo;s profile: Maya Jones, with message and calendar buttons, her major, graduation year and clubs with roles"></div>
+            <div class="phone"><img src="images/campfire-profile-club.jpg" loading="lazy" alt="Club profile for CDS Stu Gov: a short description, the weekly meeting time and room with an add-to-calendar button, and the e-board"></div>
+          </div>
+          <figcaption>Your own profile, another student&rsquo;s profile, and a club&rsquo;s profile</figcaption>
+        </figure>
         <ul class="case-list">
-          <li>[A design decision you made on the profile screens, and why]</li>
-          <li>[Another decision]</li>
+          <li><strong>One layout, three kinds of profile.</strong> Every profile follows the same order (photo, name, contact, details, clubs), so students only have to learn it once. The header color shows whose page you&rsquo;re on: orange for your own, green for another student, and rust for a club.</li>
+          <li><strong>Your profile and someone else&rsquo;s.</strong> Your own profile has an edit button, your phone number, and account options. Another student&rsquo;s profile leaves out the phone number and adds message and calendar buttons, so it&rsquo;s easy to reach out before showing up alone.</li>
+          <li><strong>Clubs that look active.</strong> A club&rsquo;s profile shows what it does, when and where it meets, with a button to add the meeting to your calendar, and who runs it. Students can tell it&rsquo;s an active club and not just a name on a list.</li>
+          <li><strong>People and clubs connect.</strong> Students&rsquo; clubs are listed with their role, like President or Member, and a club lists its e-board by name. The details match across screens: Maya and Kevin are president and vice president of CDS Stu Gov on their own profiles and on the club&rsquo;s.</li>
         </ul>
       </div>
     </section>
 
     <section class="case-sec">
-      <div><span class="st-num">06</span><h2>Result</h2></div>
+      <div><span class="st-num">07</span><h2>Result</h2></div>
       <div class="case-sec-body">
-        <p>An app that allows students to swipe through campus organizations, add events to a calendar, view student and club profiles, and chat with each other.</p>
+        <p>An app that allows students to swipe through campus organizations, add events to a calendar, view student and club profiles, and chat with each other. Onboarding introduces the app with the three routes from the brief: Discover Clubs, Find a Community, and Navigate Times.</p>
+        <figure class="case-phones">
+          <div class="phones">
+            <div class="phone"><img src="images/campfire-onboarding-1.jpg" loading="lazy" alt="Onboarding, step 1, Discover Clubs: find clubs and communities that match your specific interests and niches"></div>
+            <div class="phone"><img src="images/campfire-onboarding-2.jpg" loading="lazy" alt="Onboarding, step 2, Find a Community: preview a club&rsquo;s vibe, see upcoming meetups, or message someone before showing up"></div>
+            <div class="phone"><img src="images/campfire-onboarding-3.jpg" loading="lazy" alt="Onboarding, step 3, Navigate Times: figure out where and when clubs actually meet, fitting it all around a packed schedule"></div>
+          </div>
+          <figcaption>Onboarding</figcaption>
+        </figure>
       </div>
     </section>
 
     <section class="case-sec">
-      <div><span class="st-num">07</span><h2>Reflection</h2></div>
+      <div><span class="st-num">08</span><h2>Reflection</h2></div>
       <div class="case-sec-body">
         <p>[What worked, what you would change, and what you would do next, such as testing the prototype with students.]</p>
       </div>
@@ -161,6 +212,6 @@
   <div class="lightbox-images"></div>
   <p class="lightbox-caption"></p>
 </dialog>
-<script src="case.js?v=1"></script>
+<script src="case.js?v=2"></script>
 </body>
 </html>

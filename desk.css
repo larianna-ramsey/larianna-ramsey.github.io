@@ -572,6 +572,14 @@ html.js .steps.in .step:nth-child(4) { transition-delay: 0s, 0s, .45s, .45s; }
 .shot.is-missing img { display: none; }
 .shot.is-missing .ph { display: flex; align-items: center; justify-content: center; min-height: 13rem; padding: 1rem; text-align: center; border: 1.5px dashed rgba(65, 0, 22, .3); border-radius: .5rem; background: rgba(250, 246, 236, .5); font: 400 .78rem var(--f-mono); color: var(--cabernet); }
 .shot figcaption { margin-top: .8rem; font: 400 .74rem var(--f-mono); letter-spacing: .06em; color: var(--cabernet); }
+/* two pictures side by side */
+.shot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 1.4rem; margin: 1.6rem 0 1.2rem; }
+.shot-grid .shot { margin: 0; }
+/* a row of phone screens inside a section, upright and the same size */
+.case-phones { margin: 1.8rem 0 1.2rem; }
+.case-phones .phones { justify-content: flex-start; align-items: flex-start; flex-wrap: wrap; gap: clamp(.7rem, 2.5vw, 1.4rem); }
+.case-phones .phones .phone { height: auto; width: clamp(6.4rem, 21vw, 10.5rem); rotate: none; translate: none; scale: none; }
+.case-phones figcaption { margin-top: 1rem; font: 400 .74rem var(--f-mono); letter-spacing: .06em; color: var(--cabernet); }
 
 .case-end { margin-top: 3rem; padding-top: 5rem; }
 .case-end .sec-title { font-size: clamp(2.6rem, 6vw, 4.6rem); }
@@ -583,4 +591,7 @@ html.js .steps.in .step:nth-child(4) { transition-delay: 0s, 0s, .45s, .45s; }
 @media (max-width: 700px) {
   .case-screens { border-radius: 1.6rem; }
   .case-screens .phones { justify-content: flex-start; overflow-x: auto; padding-left: var(--pad); padding-right: var(--pad); }
+}
+@media (max-width: 520px) {
+  .shot-grid { grid-template-columns: 1fr; }
 }
