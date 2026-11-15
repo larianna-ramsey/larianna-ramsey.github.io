@@ -353,7 +353,9 @@
     a.addEventListener('click', function (e) {
       e.preventDefault();
       var tag = a.getAttribute('data-open'), idx = 0;
-      for (var i = 0; i < folders.length; i++) {
+      var named = folders.map(function (f) { return f.getAttribute('data-project'); }).indexOf(tag);
+      if (named > -1) idx = named;                                     // a specific project, e.g. data-open="astro"
+      else for (var i = 0; i < folders.length; i++) {                  // otherwise the first folder with that tag
         if ((' ' + folders[i].getAttribute('data-tags') + ' ').indexOf(' ' + tag + ' ') > -1) { idx = i; break; }
       }
       arrive(true);

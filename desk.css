@@ -408,6 +408,18 @@ html:not(.js) .car img:first-child { opacity: 1; }
 .timeline span { display: block; font-size: .88rem; line-height: 1.35; margin-top: .15rem; }
 .timeline span i { font: 400 .7rem var(--f-mono); font-style: normal; letter-spacing: .04em; color: var(--cabernet); margin-left: .35rem; white-space: nowrap; }
 .timeline .tl-note { font-size: .82rem; color: var(--cabernet); margin: .1rem 0 .35rem; }
+/* experience: portfolio-style entries */
+.xp li { margin-bottom: 1.6rem; }
+.xp li::before { top: .2rem; }
+.timeline .xp-where { margin: 0 0 .25rem; font: 400 .64rem/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--cabernet); }
+.timeline .xp-head { font: italic 400 1.45rem/1.1 var(--f-serif); letter-spacing: 0; }
+.timeline .xp-text { margin-top: .35rem; font-size: .9rem; line-height: 1.45; }
+.timeline .xp-skills { margin-top: .45rem; font: 400 .68rem var(--f-mono); letter-spacing: .04em; color: var(--cabernet); }
+.timeline .xp-skills::before { content: "\2726  "; color: var(--moss); }
+.xp-link, .xp-resume { display: inline-block; font: 400 .72rem var(--f-mono); letter-spacing: .04em; text-underline-offset: .2em; }
+.xp-link { margin-top: .45rem; }
+.xp-link:hover, .xp-resume:hover { color: var(--cabernet); }
+.xp-resume { margin-left: 1.1rem; }
 .pill-label { margin: 0 0 .45rem; font: 400 .64rem var(--f-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--cabernet); }
 .pills + .pill-label { margin-top: 1rem; }
 .pills { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
