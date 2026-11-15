@@ -185,8 +185,8 @@
     show(0);
   });
 
-  /* ---------- phone screens: click one to see the screens bigger ---------- */
-  $$('.phones').forEach(function (group) {
+  /* ---------- phone screens and sketches: click one to see them all bigger ---------- */
+  $$('.phones, .sketches--fan').forEach(function (group) {
     var title = (group.closest('.folder') || document).querySelector('h3, h1');
     $$('img', group).forEach(function (img) {
       img.addEventListener('click', function () {

@@ -293,6 +293,14 @@ html:not(.js) .car img:first-child { opacity: 1; }
 .phones .phone:nth-child(2) { z-index: 1; scale: 1.06; }
 .phones .phone:nth-child(3) { rotate: 5deg; translate: -8% 4%; }
 
+/* hand-drawn sketches fanned out in a folder, like the phones (sketch styles are with the case studies) */
+.media .sketches--fan { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; container-type: size; }
+.sketches--fan .sketch { flex: none; height: min(84cqh, 30cqw * 1.79); }
+.sketches--fan .sketch img { width: auto; height: 100%; }
+.sketches--fan .sketch:nth-child(1) { rotate: -6deg; translate: 10% 4%; }
+.sketches--fan .sketch:nth-child(2) { z-index: 1; scale: 1.05; }
+.sketches--fan .sketch:nth-child(3) { rotate: 6deg; translate: -10% 4%; }
+
 .quote { position: absolute; inset: 0; margin: 0; padding: clamp(1.4rem, 3vw, 2.4rem); display: flex; flex-direction: column; justify-content: center; background: var(--c-data); border-radius: .5rem; }
 .q-label { font: 400 .72rem var(--f-mono); letter-spacing: .2em; text-transform: uppercase; margin-bottom: .8rem; }
 .quote--stats { gap: 1.4rem; }
@@ -409,13 +417,11 @@ html:not(.js) .car img:first-child { opacity: 1; }
 .timeline span i { font: 400 .7rem var(--f-mono); font-style: normal; letter-spacing: .04em; color: var(--cabernet); margin-left: .35rem; white-space: nowrap; }
 .timeline .tl-note { font-size: .82rem; color: var(--cabernet); margin: .1rem 0 .35rem; }
 /* experience: portfolio-style entries */
-.xp li { margin-bottom: 1.6rem; }
+.xp li { margin-bottom: 1.2rem; }
 .xp li::before { top: .2rem; }
 .timeline .xp-where { margin: 0 0 .25rem; font: 400 .64rem/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--cabernet); }
 .timeline .xp-head { font: italic 400 1.45rem/1.1 var(--f-serif); letter-spacing: 0; }
 .timeline .xp-text { margin-top: .35rem; font-size: .9rem; line-height: 1.45; }
-.timeline .xp-skills { margin-top: .45rem; font: 400 .68rem var(--f-mono); letter-spacing: .04em; color: var(--cabernet); }
-.timeline .xp-skills::before { content: "\2726  "; color: var(--moss); }
 .xp-link, .xp-resume { display: inline-block; font: 400 .72rem var(--f-mono); letter-spacing: .04em; text-underline-offset: .2em; }
 .xp-link { margin-top: .45rem; }
 .xp-link:hover, .xp-resume:hover { color: var(--cabernet); }
@@ -572,11 +578,18 @@ html.js .steps.in .step:nth-child(4) { transition-delay: 0s, 0s, .45s, .45s; }
 .shot.is-missing img { display: none; }
 .shot.is-missing .ph { display: flex; align-items: center; justify-content: center; min-height: 13rem; padding: 1rem; text-align: center; border: 1.5px dashed rgba(65, 0, 22, .3); border-radius: .5rem; background: rgba(250, 246, 236, .5); font: 400 .78rem var(--f-mono); color: var(--cabernet); }
 .shot figcaption { margin-top: .8rem; font: 400 .74rem var(--f-mono); letter-spacing: .06em; color: var(--cabernet); }
-/* a row of phone screens inside a section, upright and the same size */
-.case-phones { margin: 1.8rem 0 1.2rem; }
-.case-phones .phones { justify-content: flex-start; align-items: flex-start; flex-wrap: wrap; gap: clamp(.7rem, 2.5vw, 1.4rem); }
-.case-phones .phones .phone { height: auto; width: clamp(6.4rem, 21vw, 10.5rem); rotate: none; translate: none; scale: none; }
-.case-phones figcaption, .flow figcaption { margin-top: 1rem; font: 400 .74rem var(--f-mono); letter-spacing: .06em; color: var(--cabernet); }
+/* phone screens inside a section, each with notes: three across, or phone beside notes on narrow screens */
+.page-notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.2rem 1.8rem; }
+.page-note { margin: 0; }
+.page-note .phones { justify-content: flex-start; }
+.page-note .phones .phone { height: auto; width: clamp(9rem, 16vw, 12rem); rotate: none; translate: none; scale: none; }
+.page-note figcaption { margin-top: 1.2rem; }
+.page-note h3 { margin: 0; font: italic 400 1.7rem/1.05 var(--f-serif); }
+.page-note .persona-meta { margin-bottom: .9rem; }
+.page-note ul { margin: 0; padding: 0; list-style: none; }
+.page-note li { position: relative; padding: 0 0 .45rem 1rem; font-size: .9rem; line-height: 1.4; }
+.page-note li::before { content: ""; position: absolute; left: .1rem; top: .5em; width: .4rem; height: .4rem; border-radius: 50%; background: var(--mauve); }
+.flow figcaption { margin-top: 1rem; font: 400 .74rem var(--f-mono); letter-spacing: .06em; color: var(--cabernet); }
 
 /* small label above a group inside a section, e.g. "Color" */
 .case-sec-body > .case-sub { margin: 2.2rem 0 .9rem; font: 400 .7rem var(--f-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--cabernet); }
@@ -609,13 +622,16 @@ html.js .steps.in .step:nth-child(4) { transition-delay: 0s, 0s, .45s, .45s; }
 .flow-node + .flow-node { margin-top: var(--drop); }
 .flow-node + .flow-node::before, .flow-branches::before, .flow-branch::before { content: ""; position: absolute; border-left: 1.5px solid var(--line); }
 .flow-node + .flow-node::before { left: 50%; bottom: 100%; height: var(--drop); }
-.flow .flow-branches { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); padding-top: calc(var(--drop) * 2); }
+.flow .flow-branches { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: start; gap: var(--gap); padding-top: calc(var(--drop) * 2); }
 .flow-branches::before { left: 50%; top: 0; height: var(--drop); }
 /* the bar joining the four columns runs from the middle of the first to the middle of the last */
 .flow-branches::after { content: ""; position: absolute; top: var(--drop); left: calc((100% - 3 * var(--gap)) / 8); right: calc((100% - 3 * var(--gap)) / 8); border-top: 1.5px solid var(--line); }
 .flow-branch { position: relative; padding: .85rem .85rem .5rem; background: var(--paper); border-radius: .9rem; }
 .flow-branch::before { left: 50%; bottom: 100%; height: var(--drop); }
 .flow-branch.is-mine { background: var(--mauve); }
+/* teammates' sections: just the name, so my section stands out */
+.flow-branch.is-other { padding-bottom: .85rem; background: transparent; border: 1.5px dashed rgba(65, 0, 22, .3); }
+.flow-branch.is-other .flow-sec { margin: 0; color: var(--cabernet); }
 .flow-sec { margin: 0 0 .55rem; font: 700 1.05rem/1.1 var(--f-display); }
 .flow-sec span { display: block; margin-top: .3rem; font: 400 .6rem var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--cabernet); }
 .is-mine .flow-sec span { color: var(--wine); }
@@ -781,6 +797,10 @@ html.js .steps.in .step:nth-child(4) { transition-delay: 0s, 0s, .45s, .45s; }
 
 @media (max-width: 900px) {
   .people { grid-template-columns: 1fr; }
+  .page-notes { grid-template-columns: 1fr; gap: 1.8rem; }
+  .page-note { display: grid; grid-template-columns: minmax(0, 9rem) minmax(0, 1fr); gap: 1.3rem; align-items: start; }
+  .page-note .phones .phone { width: 100%; }
+  .page-note figcaption { margin-top: 0; }
   .sketches--grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 820px) {
