@@ -64,7 +64,7 @@
     // use the group's own caption if it has one, otherwise the page title
     var fig = group.closest('figure');
     var cap = fig && fig.querySelector('figcaption');
-    var text = cap ? cap.textContent : document.querySelector('h1').textContent;
+    var text = cap ? (cap.querySelector('h3') || cap).textContent : document.querySelector('h1').textContent;
     imgs.forEach(function (img) {
       img.addEventListener('click', function () { open(imgs, text); });
     });
