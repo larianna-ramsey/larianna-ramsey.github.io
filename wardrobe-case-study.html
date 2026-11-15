@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="desk.css?v=17">
+  <link rel="stylesheet" href="desk.css?v=18">
 </head>
 
 <body class="case-page">
@@ -36,29 +36,29 @@
     <a class="case-back" href="index.html#work">&larr; all work</a>
     <p class="sec-num">case study &middot; ux/ui design</p>
     <h1 class="sec-title">building a professional <em>wardrobe</em></h1>
-    <p class="case-lede">[One or two sentences that sum up the project: who it&rsquo;s for, the problem, and what you designed.]</p>
+    <p class="case-lede">An app that helps adults entering or re-entering the workforce build a professional wardrobe: see what their workplace expects, shop within a budget, and find clothes that fit.</p>
     <dl class="case-meta">
       <div><dt>Project</dt><dd>Semester project, UX/UI Design, Boston University</dd></div>
-      <div><dt>My role</dt><dd>[Solo, or describe your part]</dd></div>
-      <div><dt>Timeline</dt><dd>[Fall 2026, ## weeks]</dd></div>
-      <div><dt>Tools</dt><dd>Figma, user interviews, affinity mapping</dd></div>
+      <div><dt>My role</dt><dd>Solo: research and design</dd></div>
+      <div><dt>Timeline</dt><dd>Fall 2026, in progress</dd></div>
+      <div><dt>Tools</dt><dd>Figma, FigJam, user interviews</dd></div>
     </dl>
   </section>
 
-  <!-- ============ SCREENS ============
-       Blank phone screens. To add one, replace a <span ...></span> with
-       <img src="images/wardrobe-screen-1.png" alt="describe the screen"> -->
-  <section class="case-screens" aria-label="App screens">
+  <!-- ============ SKETCHES ============
+       Hand-drawn wireframes from Figma. When the high-fidelity screens are ready,
+       this can switch back to phone frames (see campfire-case-study.html). -->
+  <section class="case-screens" aria-label="App sketches">
     <div class="wrap">
-      <p class="sec-num">the app</p>
-      <div class="phones">
-        <div class="phone"><span class="phone-ph">screen</span></div>
-        <div class="phone"><span class="phone-ph">screen</span></div>
-        <div class="phone"><span class="phone-ph">screen</span></div>
-        <div class="phone"><span class="phone-ph">screen</span></div>
-        <div class="phone"><span class="phone-ph">screen</span></div>
+      <p class="sec-num">the app, sketched</p>
+      <div class="sketches sketches--strip">
+        <figure class="sketch"><img src="images/wardrobe-sketch-explore.jpg" alt="Sketch of the home and explore screen: a search bar, filter chips and a grid of clothing"></figure>
+        <figure class="sketch"><img src="images/wardrobe-sketch-item.jpg" alt="Sketch of a clothing item: a large photo, the item&rsquo;s score, details and two action buttons"></figure>
+        <figure class="sketch"><img src="images/wardrobe-sketch-outfit.jpg" alt="Sketch of the outfit generator: an outfit score, formality tags and three pieces with alternatives"></figure>
+        <figure class="sketch"><img src="images/wardrobe-sketch-shopping.jpg" alt="Sketch of the shopping list: a budget at the top and a checklist of items with links"></figure>
+        <figure class="sketch"><img src="images/wardrobe-sketch-profile.jpg" alt="Sketch of the profile: role details, a budget pie chart, fit sizes for tops, pants and shoes, and settings"></figure>
       </div>
-      <p class="case-note">Scoring system, outfit builder, shopping list and digital wardrobe screens coming soon.</p>
+      <p class="case-note">Hand-drawn wireframes of the main screens. The high-fidelity prototype in Figma is in progress.</p>
     </div>
   </section>
 
@@ -68,73 +68,394 @@
     <section class="case-sec">
       <div><span class="st-num">01</span><h2>The problem</h2></div>
       <div class="case-sec-body">
-        <p>Adults entering or re-entering the workforce often have to build a professional wardrobe quickly and on a budget, without knowing what &ldquo;professional&rdquo; means for their workplace. [Say why this matters and what you set out to understand.]</p>
-        <div class="case-callout"><strong>Research question</strong>How do adults entering or re-entering the workforce build a professional wardrobe, and where does that process get hard?</div>
+        <p>Most businesses want their employees to dress well and professionally. But for someone starting their first job, or coming back to work after time away, it isn&rsquo;t always clear what that means or how to get there. I focused on young adults and first-time workers.</p>
+        <div class="case-callout"><strong>Research question</strong>How do adults entering (or re-entering) the workforce manage the process of acquiring a professional wardrobe?</div>
       </div>
     </section>
 
     <section class="case-sec">
       <div><span class="st-num">02</span><h2>Research</h2></div>
       <div class="case-sec-body">
-        <p>I interviewed three people about how they shop for and decide what to wear to work. [Add who they were, how you found them, and what you asked about.]</p>
-        <figure class="shot">
-          <img src="images/wardrobe-synthesis.jpg" alt="Synthesis of the three user interviews" onerror="this.parentNode.classList.add('is-missing')">
-          <span class="ph">add image: images/wardrobe-synthesis.jpg</span>
-          <figcaption>Synthesis of the three interviews</figcaption>
-        </figure>
+        <p>I interviewed three people who had started or returned to jobs that needed a professional wardrobe. I asked each of them six questions:</p>
+        <ol class="q-list">
+          <li>Which jobs needed a professional wardrobe, and what did you wear before?</li>
+          <li>When did you realize you needed new clothes, and where did you go for guidance?</li>
+          <li>Where do you buy work clothes, and how do you weigh the trade-offs?</li>
+          <li>Which pieces do you buy first, and why?</li>
+          <li>How do you decide when to add, rotate or replace pieces?</li>
+          <li>How do you feel about the process overall?</li>
+        </ol>
+      </div>
+      <div class="case-wide">
+        <ul class="people">
+          <li class="person">
+            <p class="person-num">Interview 1</p>
+            <h3>21, male</h3>
+            <p class="persona-meta">Internships and co-ops</p>
+            <ul>
+              <li>Moved from remote to in-person internships, and from business casual toward business formal</li>
+              <li>Starts thinking about clothes after the job offer, checking the office&rsquo;s social media and asking his parents</li>
+              <li>Buys more once he sees what coworkers wear and hears the dress code at orientation</li>
+              <li>Shops department stores like Macy&rsquo;s for quality pieces on sale, and buys shirts before jackets because he wears them more</li>
+              <li>Enjoys it, depending on the workplace, but finds men&rsquo;s clothes expensive</li>
+            </ul>
+          </li>
+          <li class="person">
+            <p class="person-num">Interview 2</p>
+            <h3>60, female</h3>
+            <p class="persona-meta">Office jobs, after retail</p>
+            <ul>
+              <li>Needed a professional wardrobe for her first office job, with few women in the office to look to as examples</li>
+              <li>Rebuilt her wardrobe when remote work during COVID ended, drawing on fashion content she&rsquo;d watched</li>
+              <li>Used department stores, catalogs and specialty stores; now buys mostly online, which she finds much easier</li>
+              <li>Prioritizes tops, jackets and a well-fitting suit; pants long enough for her are her &ldquo;nemesis&rdquo;</li>
+              <li>Replaces pieces when her size changes or they start to look dated</li>
+            </ul>
+          </li>
+          <li class="person">
+            <p class="person-num">Interview 3</p>
+            <h3>21, female</h3>
+            <p class="persona-meta">Gym concierge, after retail</p>
+            <ul>
+              <li>Realized she&rsquo;d need new clothes while applying, after a retail job where she wore denim</li>
+              <li>Asked her mom and used Pinterest and TikTok for inspiration</li>
+              <li>Shops mostly secondhand, at thrift stores and on Depop, plus H&amp;M, Aritzia, Banana Republic and TJ Maxx</li>
+              <li>Buys tops first and re-wears the same pants; well-fitting pants are much harder to find than tops</li>
+              <li>Finds shopping &ldquo;super fun&rdquo; but wishes the clothes weren&rsquo;t so expensive</li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </section>
 
     <section class="case-sec">
       <div><span class="st-num">03</span><h2>What I learned</h2></div>
       <div class="case-sec-body">
+        <h3 class="case-sub">Patterns</h3>
         <ul class="case-list">
-          <li>[Insight 1: something specific people said or did]</li>
-          <li>[Insight 2]</li>
-          <li>[Insight 3]</li>
+          <li>Planning starts with the job offer, but most of the shopping happens after people see what coworkers wear or hear the dress code at orientation.</li>
+          <li>Tops come first, and pants stay basic.</li>
+          <li>People shop where they can balance quality and price.</li>
         </ul>
+        <h3 class="case-sub">Surprises</h3>
+        <ul class="case-list">
+          <li>Pants were a big pain point, even though they were the lowest priority.</li>
+          <li>Most people weren&rsquo;t worried about having the right clothes on day one. They were comfortable building up pieces over time.</li>
+        </ul>
+        <div class="case-callout"><strong>Key insight</strong>Adults entering the workforce build their professional wardrobe piece by piece, after the job is secured.</div>
+        <p>That pointed to an opportunity: helping people see what&rsquo;s expected in a specific role or workplace before their first day. It also left me with new questions. Does building a wardrobe piece by piece cause problems of its own? How do people spot the gaps in their wardrobe? And what about clothes for interviews and recruiting?</p>
       </div>
     </section>
 
     <section class="case-sec">
       <div><span class="st-num">04</span><h2>Who I designed for</h2></div>
       <div class="case-sec-body">
-        <p><strong>Maya</strong> is 22 and works as an executive assistant in Boston. [Add her goals, frustrations, and how she currently shops.]</p>
-        <figure class="shot">
-          <img src="images/wardrobe-persona.jpg" alt="Persona card for Maya, a 22-year-old executive assistant in Boston" onerror="this.parentNode.classList.add('is-missing')">
-          <span class="ph">add image: images/wardrobe-persona.jpg</span>
-          <figcaption>Persona: Maya</figcaption>
+        <p>I brought what I heard together into one persona, Maya. She&rsquo;s just started her first in-person corporate job, and she worries about cost the way the people I interviewed did.</p>
+      </div>
+      <div class="case-wide">
+        <article class="persona persona--full">
+          <header class="persona-head">
+            <span class="persona-av" aria-hidden="true">M</span>
+            <div>
+              <h3 class="persona-name">Maya</h3>
+              <p class="persona-meta">22 &middot; Boston &middot; Executive assistant (corporate)</p>
+            </div>
+            <span class="tag">Budget-savvy young professional</span>
+          </header>
+          <div class="persona-top">
+            <div>
+              <p class="persona-bio">Maya just started her first in-person corporate job after a more casual retail and college background. She recently graduated with a bachelor&rsquo;s degree and lives alone. So she wouldn&rsquo;t buy clothes she didn&rsquo;t need, she didn&rsquo;t think much about her wardrobe until she was hired. Now she&rsquo;s working out her office&rsquo;s dress code by watching coworkers and scrolling social media.</p>
+              <p class="persona-quote">&ldquo;I wish the clothes were not as expensive as they are.&rdquo;</p>
+            </div>
+            <div>
+              <h4>Personality</h4>
+              <ul class="traits">
+                <li style="--v:.48" aria-label="Between introvert and extrovert: in the middle"><span>Introvert</span><span>Extrovert</span></li>
+                <li style="--v:.43" aria-label="Between analytical and creative: in the middle"><span>Analytical</span><span>Creative</span></li>
+                <li style="--v:.31" aria-label="Between busy and time rich: leaning busy"><span>Busy</span><span>Time rich</span></li>
+                <li style="--v:.72" aria-label="Between messy and organized: leaning organized"><span>Messy</span><span>Organized</span></li>
+                <li style="--v:.41" aria-label="Between independent and team player: in the middle"><span>Independent</span><span>Team player</span></li>
+                <li style="--v:.79" aria-label="Between passive and active: leaning active"><span>Passive</span><span>Active</span></li>
+                <li style="--v:.13" aria-label="Between safe and risky: strongly safe"><span>Safe</span><span>Risky</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="persona-groups">
+            <div>
+              <h4>Goals</h4>
+              <ul>
+                <li>Fit in and look polished at her first professional job</li>
+                <li>Build a versatile wardrobe that lasts</li>
+                <li>Keep a steady rotation of outfits without constantly rebuying</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Needs and expectations</h4>
+              <ul>
+                <li>Clear information on the dress code before she has to buy clothes</li>
+                <li>Quality pieces at affordable prices</li>
+                <li>Options that fit well and are tailored to her</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Pain points</h4>
+              <ul>
+                <li>Dress expectations are unclear until after she&rsquo;s hired or has started</li>
+                <li>Professional clothes are expensive</li>
+                <li>Clothes that fit well can be hard to find</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Motivations</h4>
+              <ul>
+                <li>Confidence and making a good impression at work</li>
+                <li>Enjoying shopping and putting outfits together</li>
+                <li>Getting the most value from every purchase</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Influences</h4>
+              <ul>
+                <li>Her parents, especially her mom, for advice on what to wear</li>
+                <li>Coworkers and the office dress code, once she starts or at orientation</li>
+                <li>Social media and online shopping for inspiration</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Interests</h4>
+              <ul>
+                <li>Fashion content on Pinterest and TikTok</li>
+                <li>Finding good deals, at discount stores, on sale or secondhand</li>
+                <li>Putting together outfits that fit her personality</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="case-sec">
+      <div><span class="st-num">05</span><h2>User stories</h2></div>
+      <div class="case-sec-body">
+        <p>From the research, I wrote three opportunities, a user story for each, and a flow for how Maya would move through the app. Together they cover the three things my interviewees struggled with: knowing what to wear, paying for it, and finding pieces that fit.</p>
+      </div>
+      <div class="case-wide">
+        <div class="stories" data-tabs>
+          <div class="story-tabs" role="tablist" aria-label="User stories">
+            <button type="button" role="tab" id="story-tab-1" aria-controls="story-1" aria-selected="true"><span>01</span> Know the dress code</button>
+            <button type="button" role="tab" id="story-tab-2" aria-controls="story-2" aria-selected="false" tabindex="-1"><span>02</span> Stay on budget</button>
+            <button type="button" role="tab" id="story-tab-3" aria-controls="story-3" aria-selected="false" tabindex="-1"><span>03</span> Find the right fit</button>
+          </div>
+
+          <section class="story" id="story-1" role="tabpanel" aria-labelledby="story-tab-1">
+            <h3 class="story-title">01 &middot; Know the dress code</h3>
+            <p class="story-line">As a <b>new hire starting my first corporate job</b>, I want to <b>see what people in my role and workplace actually wear</b>, so that <b>I can buy the right clothes before my first day</b>.</p>
+            <div class="story-cols">
+              <div>
+                <dl class="story-facts">
+                  <dt>Problem</dt><dd>New professionals don&rsquo;t know what a workplace expects them to wear until after they&rsquo;re hired or have started, so they buy clothes without knowing the dress code.</dd>
+                  <dt>Why it matters</dt><dd>Guessing wrong wastes money, risks a bad first impression, and reflects poorly on the company.</dd>
+                  <dt>Scenario</dt><dd>Maya accepts an executive assistant offer and starts in two weeks. She realizes she doesn&rsquo;t know what counts as &ldquo;professional&rdquo; there.</dd>
+                </dl>
+                <h4>Steps</h4>
+                <ol class="story-steps">
+                  <li><b>Enter her job role and company</b> The app shows a dress-code summary and example outfits for that role.</li>
+                  <li><b>Browse outfits from coworkers, employer guidelines or similar workplaces</b> Examples are grouped by formality and personal style.</li>
+                  <li><b>Save outfits she likes</b> They go to a saved board to look at later.</li>
+                  <li><b>Add her start date</b> She gets suggestions for what to buy first and what can wait until she starts.</li>
+                </ol>
+              </div>
+              <div>
+                <h4>Flow</h4>
+                <ol class="uflow">
+                  <li class="uf-node">Opens the app after a job offer</li>
+                  <li class="uf-node">Enters role, company and start date</li>
+                  <li class="uf-q">
+                    <p>Is there company-specific info?</p>
+                    <div class="uf-fork">
+                      <div class="uf-branch"><b>Yes</b> Shows the employer&rsquo;s dress code and examples</div>
+                      <div class="uf-branch"><b>No</b> Shows examples from similar roles, and offers to ask a coworker or the hiring contact</div>
+                    </div>
+                  </li>
+                  <li class="uf-node">Browses and saves looks</li>
+                  <li class="uf-node uf-end">A saved board of outfit ideas and a &ldquo;buy now / wait&rdquo; list</li>
+                </ol>
+              </div>
+            </div>
+          </section>
+
+          <section class="story" id="story-2" role="tabpanel" aria-labelledby="story-tab-2">
+            <h3 class="story-title">02 &middot; Stay on budget</h3>
+            <p class="story-line">As a <b>new professional on a budget</b>, I want to <b>compare work-appropriate options across new, sale and secondhand sources in one place</b>, so that <b>I can build a polished wardrobe without overspending</b>.</p>
+            <div class="story-cols">
+              <div>
+                <dl class="story-facts">
+                  <dt>Problem</dt><dd>New professionals struggle to balance quality and affordability when building a work wardrobe.</dd>
+                  <dt>Why it matters</dt><dd>Without help, people spend more than they can afford or buy pieces that wear out quickly.</dd>
+                  <dt>Scenario</dt><dd>Maya has two weeks until her start date and a set budget. She wants a few key pieces, but doesn&rsquo;t want to, or have time to, check five different stores.</dd>
+                </dl>
+                <h4>Steps</h4>
+                <ol class="story-steps">
+                  <li><b>Set a budget and choose item types</b> The app filters to work-appropriate options within budget.</li>
+                  <li><b>Filter by source</b> Results update with prices and sales.</li>
+                  <li><b>Compare items by price and quality (brand, material, reviews)</b> A side-by-side view gives each item a score, so the best value is easy to spot.</li>
+                  <li><b>Add items to her wardrobe board</b> A running total shows her spending against her budget.</li>
+                </ol>
+              </div>
+              <div>
+                <h4>Flow</h4>
+                <ol class="uflow">
+                  <li class="uf-node">Opens the app with a budget in mind</li>
+                  <li class="uf-node">Sets a budget and item types</li>
+                  <li class="uf-q">
+                    <p>Buy new or secondhand?</p>
+                    <div class="uf-fork">
+                      <div class="uf-branch"><b>New</b> Shows department store and off-price options, focusing on sales</div>
+                      <div class="uf-branch"><b>Secondhand</b> Shows thrift and resale listings</div>
+                    </div>
+                  </li>
+                  <li class="uf-node">Browses, compares and saves items</li>
+                  <li class="uf-q">
+                    <p>Is the plan over budget?</p>
+                    <div class="uf-fork">
+                      <div class="uf-branch"><b>Yes</b> Suggests cheaper alternatives, or lower-priority items to wait on</div>
+                      <div class="uf-branch is-skip"><b>No</b> Goes straight to the list</div>
+                    </div>
+                  </li>
+                  <li class="uf-node uf-end">A budgeted shopping list with links to buy</li>
+                </ol>
+              </div>
+            </div>
+          </section>
+
+          <section class="story" id="story-3" role="tabpanel" aria-labelledby="story-tab-3">
+            <h3 class="story-title">03 &middot; Find the right fit</h3>
+            <p class="story-line">As a <b>young professional who struggles to find clothes that fit</b>, I want to <b>save my measurements and filter for fit and length</b>, so that <b>I can shop online with confidence and avoid returns or clothes that don&rsquo;t fit</b>.</p>
+            <div class="story-cols">
+              <div>
+                <dl class="story-facts">
+                  <dt>Problem</dt><dd>Professional clothes that fit well are hard to find and shop for, especially for people whose fit needs standard sizing doesn&rsquo;t cover, like extended lengths.</dd>
+                  <dt>Why it matters</dt><dd>Poor fit undermines the polished look people want at work, and can reflect poorly on them and the company.</dd>
+                  <dt>Scenario</dt><dd>Maya is shopping online for work pants with a 34&Prime; inseam. Most options come in standard lengths, and she can&rsquo;t tell whether they&rsquo;ll fit.</dd>
+                </dl>
+                <h4>Steps</h4>
+                <ol class="story-steps">
+                  <li><b>Enter measurements or preferred fit</b> The app saves a fit profile.</li>
+                  <li><b>Search for pants</b> Results show only items that come in her length or fit.</li>
+                  <li><b>Read fit notes and reviews from similar body types</b> Each item shows fit feedback.</li>
+                  <li><b>Pick an item and size</b> The app confirms the recommended size and the return policy.</li>
+                </ol>
+              </div>
+              <div>
+                <h4>Flow</h4>
+                <ol class="uflow">
+                  <li class="uf-node">Searches for a specific item, like pants</li>
+                  <li class="uf-q">
+                    <p>Has a saved fit profile?</p>
+                    <div class="uf-fork">
+                      <div class="uf-branch is-skip"><b>Yes</b> Carries on</div>
+                      <div class="uf-branch"><b>No</b> Prompted to create one</div>
+                    </div>
+                  </li>
+                  <li class="uf-node">Filters by length and fit</li>
+                  <li class="uf-q">
+                    <p>Are there any matches?</p>
+                    <div class="uf-fork">
+                      <div class="uf-branch"><b>Yes</b> Shows fit reviews</div>
+                      <div class="uf-branch"><b>No</b> Suggests retailers with extended sizing, or tailoring tips</div>
+                    </div>
+                  </li>
+                  <li class="uf-node uf-end">Item added to the cart or wardrobe board, with a recommended size</li>
+                </ol>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-sec">
+      <div><span class="st-num">06</span><h2>Site map</h2></div>
+      <div class="case-sec-body">
+        <p>I organized the app around five areas reachable from the home page. Explore leads to filters and individual items, and saved clothes feed the outfit generator. Items and outfits each get a score, the shopping list tracks spending against your budget, and buying happens on the retailer&rsquo;s own site.</p>
+      </div>
+      <div class="case-wide">
+        <figure class="sitemap">
+          <ul class="sm-key" aria-label="Key">
+            <li><span class="sm-chip">Members only</span></li>
+            <li><span class="sm-chip is-auth">Log in or sign up</span></li>
+            <li><span class="sm-chip is-out">Outside link</span></li>
+          </ul>
+          <p class="sm-root">Home page</p>
+          <ul class="sm-cols">
+            <li class="sm-col">
+              <div class="sm-page">
+                <h4>Explore</h4>
+                <ul><li class="sm-chip">Search bar</li><li class="sm-chip">Suggestions</li></ul>
+              </div>
+              <div class="sm-page">
+                <h4>Filters</h4>
+                <ul><li class="sm-chip">Sort by</li><li class="sm-chip">Item type</li><li class="sm-chip">Fits me / size</li><li class="sm-chip">Color</li><li class="sm-chip">Formality level</li></ul>
+              </div>
+              <div class="sm-page">
+                <h4>Clothing item</h4>
+                <ul><li class="sm-chip">Add to shopping list</li><li class="sm-chip">Save to board</li><li class="sm-chip">Similar pieces</li><li class="sm-chip">Recommended outfit</li><li class="sm-chip">Add to outfit</li><li class="sm-chip is-out">Buy on website</li></ul>
+              </div>
+            </li>
+            <li class="sm-col">
+              <div class="sm-page">
+                <h4>Saved clothes</h4>
+                <ul><li class="sm-chip">Add to outfit generator</li><li class="sm-chip">Add to shopping list</li><li class="sm-chip">Filter</li></ul>
+              </div>
+              <div class="sm-page">
+                <h4>Outfit generator</h4>
+                <ul><li class="sm-chip">Outfit score</li><li class="sm-chip">Formality level</li><li class="sm-chip">Recommended alternatives</li><li class="sm-chip">Save outfit</li></ul>
+              </div>
+            </li>
+            <li class="sm-col">
+              <div class="sm-page">
+                <h4>Profile</h4>
+                <ul><li class="sm-chip">Your role info</li><li class="sm-chip">Your budget</li><li class="sm-chip">Your fit profile</li><li class="sm-chip">Settings</li><li class="sm-chip is-auth">Log out</li></ul>
+              </div>
+            </li>
+            <li class="sm-col">
+              <div class="sm-page">
+                <h4>Shopping list</h4>
+                <ul><li class="sm-chip">Budget status</li><li class="sm-chip">Item score</li><li class="sm-chip">Filters</li><li class="sm-chip is-out">Link to website</li></ul>
+              </div>
+            </li>
+            <li class="sm-col">
+              <div class="sm-page">
+                <h4>Sign up &amp; onboarding</h4>
+                <ul><li class="sm-chip is-auth">Enter role info</li><li class="sm-chip is-auth">Set budget</li><li class="sm-chip is-auth">Set fit profile</li><li class="sm-chip is-auth">Walk through the app</li><li class="sm-chip is-auth">Complete registration</li></ul>
+              </div>
+            </li>
+          </ul>
+          <figcaption>Site map. Log in is also on the home page.</figcaption>
         </figure>
       </div>
     </section>
 
     <section class="case-sec">
-      <div><span class="st-num">05</span><h2>Opportunities</h2></div>
+      <div><span class="st-num">07</span><h2>Wireframes</h2></div>
       <div class="case-sec-body">
-        <p>From the research I identified three opportunities, then wrote user stories for each.</p>
-        <ul class="case-list">
-          <li>[Opportunity 1: &ldquo;How might we&hellip;&rdquo;]</li>
-          <li>[Opportunity 2]</li>
-          <li>[Opportunity 3]</li>
-        </ul>
-        <p>Example user story: <em>[As a ___, I want to ___ so that ___.]</em></p>
+        <p>I sketched the main screens by hand to work out the layout before moving into Figma. Each one follows a page from the site map, with the same four-tab bar along the bottom.</p>
+      </div>
+      <div class="case-wide">
+        <div class="sketches sketches--grid">
+          <figure class="sketch"><img src="images/wardrobe-sketch-explore.jpg" loading="lazy" alt="Sketch of the home and explore screen: a search bar, filter chips and a grid of clothing"><figcaption><b>Home / explore</b> Search, filters and a grid of suggested pieces</figcaption></figure>
+          <figure class="sketch"><img src="images/wardrobe-sketch-onboarding.jpg" loading="lazy" alt="Sketch of onboarding: a short form with text fields and multiple-choice questions"><figcaption><b>Onboarding</b> Questions about role, budget and fit</figcaption></figure>
+          <figure class="sketch"><img src="images/wardrobe-sketch-item.jpg" loading="lazy" alt="Sketch of a clothing item: a large photo, the item&rsquo;s score, details and two action buttons"><figcaption><b>Clothing item</b> A photo, the item&rsquo;s score, a link to buy, and buttons to save it or add it to a list</figcaption></figure>
+          <figure class="sketch"><img src="images/wardrobe-sketch-saved.jpg" loading="lazy" alt="Sketch of saved clothing: a title, sort and filter controls, and a grid of saved pieces with checkboxes"><figcaption><b>Saved clothing</b> Saved pieces to sort, filter and select</figcaption></figure>
+          <figure class="sketch"><img src="images/wardrobe-sketch-profile.jpg" loading="lazy" alt="Sketch of the profile: role details, a budget pie chart, fit sizes for tops, pants and shoes, and settings"><figcaption><b>Profile</b> Role info, a budget breakdown, a fit profile for tops, pants and shoes, and settings</figcaption></figure>
+          <figure class="sketch"><img src="images/wardrobe-sketch-shopping.jpg" loading="lazy" alt="Sketch of the shopping list: a budget at the top and a checklist of items with links"><figcaption><b>Shopping list</b> A checklist of items with links, under a budget total</figcaption></figure>
+          <figure class="sketch"><img src="images/wardrobe-sketch-outfit.jpg" loading="lazy" alt="Sketch of the outfit generator: an outfit score, formality tags and three pieces with alternatives"><figcaption><b>Outfit generator</b> An outfit score and formality level, with alternatives for each piece</figcaption></figure>
+        </div>
       </div>
     </section>
 
     <section class="case-sec">
-      <div><span class="st-num">06</span><h2>Design</h2></div>
-      <div class="case-sec-body">
-        <p>[Describe the user flow you designed and why. Say what decisions you made and what you traded off.]</p>
-        <figure class="shot">
-          <img src="images/wardrobe-user-flow.jpg" alt="User flow diagram from Figma" onerror="this.parentNode.classList.add('is-missing')">
-          <span class="ph">add image: images/wardrobe-user-flow.jpg</span>
-          <figcaption>User flow</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="case-sec">
-      <div><span class="st-num">07</span><h2>Reflection</h2></div>
+      <div><span class="st-num">08</span><h2>Reflection</h2></div>
       <div class="case-sec-body">
         <p>[What worked, what you would change, and what you would do next, such as testing a prototype with real users.]</p>
       </div>
@@ -167,6 +488,6 @@
   <div class="lightbox-images"></div>
   <p class="lightbox-caption"></p>
 </dialog>
-<script src="case.js?v=1"></script>
+<script src="case.js?v=3"></script>
 </body>
 </html>
