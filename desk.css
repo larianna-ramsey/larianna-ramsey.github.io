@@ -256,6 +256,9 @@ html.js .drawer:not(.in) .folder { opacity: 0; translate: 0 2rem; }
 }
 .car img:nth-of-type(even) { rotate: 1deg; }
 .car img.is-on { opacity: 1; pointer-events: auto; }
+/* faster first visit: a folder's pictures aren't fetched until it has been at the front once.
+   Browsers skip lazy images that aren't displayed. Without JavaScript everything shows as usual. */
+html.js .folder:not(.seen) .media img { display: none; }
 html:not(.js) .car img:first-child { opacity: 1; }
 .car .ph { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; text-align: center; padding: 1rem; font: 400 .8rem var(--f-mono); color: var(--cabernet); border: 1.5px dashed rgba(65, 0, 22, .25); border-radius: .5rem; }
 .car.is-missing .ph { display: flex; }   /* only shows if a picture file can't be found */
