@@ -150,7 +150,8 @@
     car.insertBefore(ph, car.firstChild);
     imgs.forEach(function (img) {
       img.addEventListener('error', function () { img.style.visibility = 'hidden'; show(idx); });
-      if (img.complete && img.naturalWidth === 0) img.style.visibility = 'hidden';   // already failed before this ran
+      // already failed before this ran (a lazy image that hasn't started loading has no currentSrc yet)
+      if (img.complete && img.naturalWidth === 0 && img.currentSrc) img.style.visibility = 'hidden';
       img.addEventListener('click', function () {
         openLightbox(imgs.filter(function (i) { return i.style.visibility !== 'hidden'; })
           .map(function (i) { return { src: i.currentSrc || i.src, alt: i.alt }; }), title);
@@ -252,6 +253,7 @@
       var f = folders[fi];
       f.style.setProperty('--p', p);
       f.classList.toggle('front', p === 0);
+      if (p === 0) f.classList.add('seen');                 // its pictures load now (see desk.css), and stay
       $('.f-tab', f).setAttribute('aria-pressed', p === 0 ? 'true' : 'false');
     });
   }
